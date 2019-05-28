@@ -41,8 +41,8 @@
 40,育,,肉,8,3,,nurture,"イク、そだ-つ、そだ-てる、はぐく-むiku, soda-tsu, soda-teru, haguku-mu"
 41,一,,一,1,1,,one,"イチ、イツ、ひと、ひと-つichi, itsu, hito, hito-tsu"
 42,壱,壹,士,7,S,,one (falsification prevention),イチichi
-43,逸,逸 [4],辵,11,S,,deviate,イツitsu
-44,茨 [5],,艸,9,S,2010,thorn,（いばら）[6](ibara)
+43,逸,逸 ,辵,11,S,,deviate,イツitsu
+44,茨 ,,艸,9,S,2010,thorn,（いばら）(ibara)
 45,芋,,艸,6,S,,potato,いもimo
 46,引,,弓,4,2,,pull,"イン、ひ-く、ひ-けるin, hi-ku, hi-keru"
 47,印,,卩,6,4,,mark,"イン、しるしin, shirushi"
@@ -51,7 +51,7 @@
 50,姻,,女,9,S,,matrimony,インin
 51,員,,口,10,3,,member,インin
 52,院,,阜,10,3,,institution,インin
-53,淫 [7],,水,11,S,2010,lewdness,"イン、みだ-らin, mida-ra"
+53,淫 ,,水,11,S,2010,lewdness,"イン、みだ-らin, mida-ra"
 54,陰,,阜,11,S,,shade,"イン、かげ、かげ-るin, kage, kage-ru"
 55,飲,,食,12,3,,drink,"イン、の-むin, no-mu"
 56,隠,隱,阜,14,S,,conceal,"イン、かく-す、かく-れるin, kaku-su, kaku-reru"
@@ -83,7 +83,7 @@
 82,駅,驛,馬,14,3,,station,エキeki
 83,悦,,心,10,S,,ecstasy,エツetsu
 84,越,,走,12,S,,cross over,"エツ、こ-す、こ-えるetsu, ko-su, ko-eru"
-85,謁,謁 [4],言,15,S,,audience,エツetsu
+85,謁,謁 ,言,15,S,,audience,エツetsu
 86,閲,,門,15,S,,review,エツetsu
 87,円,圓,囗,4,1,,"round, yen","エン、まる-いen, maru-i"
 88,延,,廴,8,6,,prolong,"エン、の-びる、の-べる、の-ばすen, no-biru, no-beru, no-basu"
@@ -116,7 +116,7 @@
 115,翁,,羽,10,S,,venerable old man,オウō
 116,奥,奧,大,12,S,,heart,"オウ、おくō, oku"
 117,横,橫,木,15,3,,side,"オウ、よこō, yoko"
-118,岡,,山,8,S,2010,hill,（おか）[6](oka)
+118,岡,,山,8,S,2010,hill,（おか）(oka)
 119,屋,,尸,9,3,,roof,"オク、やoku, ya"
 120,億,,人,15,4,,hundred million,オクoku
 121,憶,,心,16,S,,recollection,オクoku
@@ -154,7 +154,7 @@
 153,過,,辵,12,5,,go beyond,"カ、す-ぎる、す-ごす、あやま-つ、あやま-ちka, su-giru, su-gosu, ayama-tsu, ayama-chi"
 154,嫁,,女,13,S,,marry into,"カ、よめ、とつ-ぐka, yome, totsu-gu"
 155,暇,,日,13,S,,spare time,"カ、ひまka, hima"
-156,禍,禍 [4],示,13,S,,calamity,カka
+156,禍,禍 ,示,13,S,,calamity,カka
 157,靴,,革,13,S,1981,shoes,"カ、くつka, kutsu"
 158,寡,,宀,14,S,,widow,カka
 159,歌,,欠,14,2,,song,"カ、うた、うた-うka, uta, uta-u"
@@ -162,7 +162,7 @@
 161,稼,,禾,15,S,1981,earnings,"カ、かせ-ぐka, kase-gu"
 162,課,,言,15,4,,section,カka
 163,蚊,,虫,10,S,,mosquito,かka
-164,牙 [5],,牙,4,S,2010,tusk,"ガ、（ゲ）、きばga, (ge), kiba"
+164,牙 ,,牙,4,S,2010,tusk,"ガ、（ゲ）、きばga, (ge), kiba"
 165,瓦,,瓦,5,S,2010,tile,"ガ、かわらga, kawara"
 166,我,,戈,7,6,,ego,"ガ、われ、わga, ware, wa"
 167,画,畫,田,8,2,,tableau,"ガ、カクga, kaku"
@@ -179,8 +179,8 @@
 178,改,,攴,7,4,,reformation,"カイ、あらた-める、あらた-まるkai, arata-meru, arata-maru"
 179,怪,,心,8,S,,suspicious,"カイ、あや-しい、あや-しむkai, aya-shii, aya-shimu"
 180,拐,,手,8,S,1981,kidnap,カイkai
-181,悔,悔 [4],心,9,S,,repent,"カイ、く-いる、く-やむ、くや-しいkai, ku-iru, ku-yamu, kuya-shii"
-182,海,海 [4],水,9,2,,sea,"カイ、うみkai, umi"
+181,悔,悔 ,心,9,S,,repent,"カイ、く-いる、く-やむ、くや-しいkai, ku-iru, ku-yamu, kuya-shii"
+182,海,海 ,水,9,2,,sea,"カイ、うみkai, umi"
 183,界,,田,9,3,,world,カイkai
 184,皆,,白,9,S,,all,"カイ、みなkai, mina"
 185,械,,木,11,4,,contraption,カイkai
@@ -201,7 +201,7 @@
 200,崖,,山,11,S,2010,cliff,"ガイ、がけgai, gake"
 201,涯,,水,11,S,1981,horizon,ガイgai
 202,街,,行,12,4,,street,"ガイ、（カイ）、まちgai, (kai), machi"
-203,慨,慨 [4],心,13,S,,rue,ガイgai
+203,慨,慨 ,心,13,S,,rue,ガイgai
 204,蓋,,艸,13,S,2010,cover,"ガイ、ふたgai, futa"
 205,該,,言,13,S,,above-stated,ガイgai
 206,概,槪,木,14,S,,outline,ガイgai
@@ -233,12 +233,12 @@
 232,潟,,水,15,S,1981,lagoon,かたkata
 233,括,,手,9,S,,fasten,カツkatsu
 234,活,,水,9,2,,active,カツkatsu
-235,喝,喝 [4],口,11,S,1981,hoarse,カツkatsu
+235,喝,喝 ,口,11,S,1981,hoarse,カツkatsu
 236,渇,渴,水,11,S,,thirst,"カツ、かわ-くkatsu, kawa-ku"
 237,割,,刀,12,6,,divide,"カツ、わ-る、わり、わ-れる、さ-くkatsu, wa-ru, wari, wa-reru, sa-ku"
-238,葛 [7],,艸,12,S,2010,arrowroot,"カツ、くずkatsu, kuzu"
+238,葛 ,,艸,12,S,2010,arrowroot,"カツ、くずkatsu, kuzu"
 239,滑,,水,13,S,,slippery,"カツ、コツ、すべ-る、なめ-らかkatsu, kotsu, sube-ru, name-raka"
-240,褐,褐 [4],衣,13,S,1981,brown,カツkatsu
+240,褐,褐 ,衣,13,S,1981,brown,カツkatsu
 241,轄,,車,17,S,,control,カツkatsu
 242,且,,一,5,S,,moreover,か-つka-tsu
 243,株,,木,10,6,,stocks,かぶkabu
@@ -274,7 +274,7 @@
 273,寛,寬,宀,13,S,,tolerant,カンkan
 274,幹,,干,13,5,,tree-trunk,"カン、みきkan, miki"
 275,感,,心,13,3,,feeling,カンkan
-276,漢,漢 [4],水,13,3,,China,カンkan
+276,漢,漢 ,水,13,3,,China,カンkan
 277,慣,,心,14,5,,accustomed,"カン、な-れる、な-らすkan, na-reru, na-rasu"
 278,管,,竹,14,4,,pipe,"カン、くだkan, kuda"
 279,関,關,門,14,4,,related,"カン、せき、かか-わるkan, seki, kaka-waru"
@@ -287,7 +287,7 @@
 286,環,,玉,17,S,,ring,カンkan
 287,簡,,竹,18,6,,simplicity,カンkan
 288,観,觀,見,18,4,,observe,カンkan
-289,韓 [5],,韋,18,S,2010,Korea,カンkan
+289,韓 ,,韋,18,S,2010,Korea,カンkan
 290,艦,,舟,21,S,,warship,カンkan
 291,鑑,,金,23,S,,specimen,"カン、かんが-みるkan, kanga-miru"
 292,丸,,丶,3,2,,circle,"ガン、まる、まる-い、まる-めるgan, maru, maru-i, maru-meru"
@@ -309,11 +309,11 @@
 308,忌,,心,7,S,,mourning,"キ、い-む、い-まわしいki, i-mu, i-mawashii"
 309,汽,,水,7,2,,steam,キki
 310,奇,,大,8,S,,strange,キki
-311,祈,祈 [4],示,8,S,,pray,"キ、いの-るki, ino-ru"
+311,祈,祈 ,示,8,S,,pray,"キ、いの-るki, ino-ru"
 312,季,,子,8,4,,seasons,キki
 313,紀,,糸,9,4,,chronicle,キki
 314,軌,,車,9,S,,rut,キki
-315,既,既 [4],无,10,S,,previously,"キ、すで-にki, sude-ni"
+315,既,既 ,无,10,S,,previously,"キ、すで-にki, sude-ni"
 316,記,,言,10,2,,write down,"キ、しる-すki, shiru-su"
 317,起,,走,10,3,,wake up,"キ、お-きる、お-こる、お-こすki, o-kiru, o-koru, o-kosu"
 318,飢,,食,10,S,,hungry,"キ、う-えるki, u-eru"
@@ -332,7 +332,7 @@
 331,棄,,木,13,S,,abandon,キki
 332,毀,,殳,13,S,2010,destroy,キki
 333,旗,,方,14,4,,national flag,"キ、はたki, hata"
-334,器,器 [4],口,15,4,,container,"キ、うつわki, utsuwa"
+334,器,器 ,口,15,4,,container,"キ、うつわki, utsuwa"
 335,畿,,田,15,S,2010,capital,キki
 336,輝,,車,15,S,,radiance,"キ、かがや-くki, kagaya-ku"
 337,機,,木,16,4,,machine,"キ、はたki, hata"
@@ -416,7 +416,7 @@
 415,矯,,矢,17,S,1981,rectify,"キョウ、た-めるkyō, ta-meru"
 416,鏡,,金,19,4,,mirror,"キョウ、かがみkyō, kagami"
 417,競,,立,20,4,,compete,"キョウ、ケイ、きそ-う、せ-るkyō, kei, kiso-u, se-ru"
-418,響,響 [4],音,20,S,,echo,"キョウ、ひび-くkyō, hibi-ku"
+418,響,響 ,音,20,S,,echo,"キョウ、ひび-くkyō, hibi-ku"
 419,驚,,馬,22,S,,wonder,"キョウ、おどろ-く、おどろ-かすkyō, odoro-ku, odoro-kasu"
 420,仰,,人,6,S,,face-up,"ギョウ、（コウ）、あお-ぐ、おお-せgyō, (kō), ao-gu, oo-se"
 421,暁,曉,日,12,S,,daybreak,"ギョウ、あかつきgyō, akatsuki"
@@ -432,14 +432,14 @@
 431,近,,辵,7,2,,near,"キン、ちか-いkin, chika-i"
 432,金,,金,8,1,,gold,"キン、コン、かね、（かな）kin, kon, kane, (kana)"
 433,菌,,艸,11,S,,germ,キンkin
-434,勤,勤 [4],力,12,6,,diligence,"キン、（ゴン）、つと-める、つと-まるkin, (gon), tsuto-meru, tsuto-maru"
+434,勤,勤 ,力,12,6,,diligence,"キン、（ゴン）、つと-める、つと-まるkin, (gon), tsuto-meru, tsuto-maru"
 435,琴,,玉,12,S,,harp,"キン、ことkin, koto"
 436,筋,,竹,12,6,,muscle,"キン、すじkin, suji"
-437,僅 [7],,人,13,S,2010,a wee bit,"キン、わず-かkin, wazu-ka"
+437,僅 ,,人,13,S,2010,a wee bit,"キン、わず-かkin, wazu-ka"
 438,禁,,示,13,5,,prohibition,キンkin
 439,緊,,糸,15,S,,tense,キンkin
 440,錦,,金,16,S,2010,brocade,"キン、にしきkin, nishiki"
-441,謹,謹 [4],言,17,S,,discreet,"キン、つつし-むkin, tsutsushi-mu"
+441,謹,謹 ,言,17,S,,discreet,"キン、つつし-むkin, tsutsushi-mu"
 442,襟,,衣,18,S,1981,collar,"キン、えりkin, eri"
 443,吟,,口,7,S,,versify,ギンgin
 444,銀,,金,14,3,,silver,ギンgin
@@ -661,7 +661,7 @@
 660,刻,,刀,8,6,,engrave,"コク、きざ-むkoku, kiza-mu"
 661,国,國,囗,8,2,,country,"コク、くにkoku, kuni"
 662,黒,黑,黑,11,2,,black,"コク、くろ、くろ-いkoku, kuro, kuro-i"
-663,穀,穀 [4],禾,14,6,,cereals,コクkoku
+663,穀,穀 ,禾,14,6,,cereals,コクkoku
 664,酷,,酉,14,S,,cruel,コクkoku
 665,獄,,犬,14,S,,prison,ゴクgoku
 666,骨,,骨,10,6,,bone,"コツ、ほねkotsu, hone"
@@ -714,7 +714,7 @@
 713,歳,,止,13,S,,year-end,"サイ、（セイ）sai, (sei)"
 714,載,,車,13,S,,ride,"サイ、の-せる、の-るsai, no-seru, no-ru"
 715,際,,阜,14,5,,occasion,"サイ、きわsai, kiwa"
-716,埼,,土,11,S,2010,cape (geography),（さい）[6](sai)
+716,埼,,土,11,S,2010,cape (geography),（さい）(sai)
 717,在,,土,6,5,,exist,"ザイ、あ-るzai, a-ru"
 718,材,,木,7,4,,lumber,ザイzai
 719,剤,劑,刀,10,S,,dose,ザイzai
@@ -736,7 +736,7 @@
 735,刷,,刀,8,4,,printing,"サツ、す-るsatsu, su-ru"
 736,刹,,刀,8,S,2010,temple,"サツ、セツsatsu, setsu"
 737,拶,,手,9,S,2010,be imminent,サツsatsu
-738,殺,殺 [4],殳,10,4,,kill,"サツ、（サイ）、（セツ）、ころ-すsatsu, (sai), (setsu), koro-su"
+738,殺,殺 ,殳,10,4,,kill,"サツ、（サイ）、（セツ）、ころ-すsatsu, (sai), (setsu), koro-su"
 739,察,,宀,14,4,,guess,サツsatsu
 740,撮,,手,15,S,,snapshot,"サツ、と-るsatsu, to-ru"
 741,擦,,手,17,S,,grate,"サツ、す-る、す-れるsatsu, su-ru, su-reru"
@@ -780,7 +780,7 @@
 779,始,,女,8,3,,begin,"シ、はじ-める、はじ-まるshi, haji-meru, haji-maru"
 780,姉,,女,8,2,,older sister,"シ、あねshi, ane"
 781,枝,,木,8,5,,branch,"シ、えだshi, eda"
-782,祉,祉 [4],示,8,S,,welfare,シshi
+782,祉,祉 ,示,8,S,,welfare,シshi
 783,肢,,肉,8,S,1981,limb,シshi
 784,姿,,女,9,6,,figure,"シ、すがたshi, sugata"
 785,思,,心,9,2,,think,"シ、おも-うshi, omo-u"
@@ -790,7 +790,7 @@
 789,恣,,心,10,S,2010,selfish,シshi
 790,紙,,糸,10,2,,paper,"シ、かみshi, kami"
 791,脂,,肉,10,S,,fat,"シ、あぶらshi, abura"
-792,視,視 [4],見,11,6,,look at,シshi
+792,視,視 ,見,11,6,,look at,シshi
 793,紫,,糸,12,S,,purple,"シ、むらさきshi, murasaki"
 794,詞,,言,12,6,,poetry,シshi
 795,歯,齒,齒,12,3,,tooth,"シ、はshi, ha"
@@ -821,14 +821,14 @@
 820,慈,,心,13,S,,mercy,"ジ、いつく-しむji, itsuku-shimu"
 821,辞,辭,辛,13,4,,resign,"ジ、や-めるji, ya-meru"
 822,磁,,石,14,6,,magnet,ジji
-823,餌 [8],,食,15,S,2010,bait,"ジ、えさ、えji, esa, e"
+823,餌 ,,食,15,S,2010,bait,"ジ、えさ、えji, esa, e"
 824,璽,,玉,19,S,,emperor's seal,ジji
 825,鹿,,鹿,11,S,2010,deer,"しか、（か）、ロクshika, (ka), roku"
 826,式,,弋,6,3,,style,シキshiki
 827,識,,言,19,5,,discriminating,シキshiki
 828,軸,,車,12,S,,axis,ジクjiku
 829,七,,一,2,1,,seven,"シチ、なな、なな-つ、（なの）shichi, nana, nana-tsu, (nano)"
-830,𠮟 [5],,口,5,S,2010,scold,"シツ、しか-るshitsu, shika-ru"
+830,𠮟 ,,口,5,S,2010,scold,"シツ、しか-るshitsu, shika-ru"
 831,失,,大,5,4,,lose,"シツ、うしな-うshitsu, ushina-u"
 832,室,,宀,9,2,,room,"シツ、むろshitsu, muro"
 833,疾,,疒,10,S,,rapidly,シツshitsu
@@ -840,15 +840,15 @@
 839,実,實,宀,8,3,,truth,"ジツ、み、みの-るjitsu, mi, mino-ru"
 840,芝,,艸,6,S,,turf,しばshiba
 841,写,寫,宀,5,3,,copy,"シャ、うつ-す、うつ-るsha, utsu-su, utsu-ru"
-842,社,社 [4],示,7,2,,company,"シャ、やしろsha, yashiro"
+842,社,社 ,示,7,2,,company,"シャ、やしろsha, yashiro"
 843,車,,車,7,1,,car,"シャ、くるまsha, kuruma"
 844,舎,舍,舌,8,5,,cottage,シャsha
-845,者,者 [4],老,8,3,,someone,"シャ、ものsha, mono"
+845,者,者 ,老,8,3,,someone,"シャ、ものsha, mono"
 846,射,,寸,10,6,,shoot,"シャ、い-るsha, i-ru"
 847,捨,,手,11,6,,throw away,"シャ、す-てるsha, su-teru"
 848,赦,,赤,11,S,,pardon,シャsha
 849,斜,,斗,11,S,,diagonal,"シャ、なな-めsha, nana-me"
-850,煮,煮 [4],火,12,S,,boil,"シャ、に-る、に-える、に-やすsha, ni-ru, ni-eru, ni-yasu"
+850,煮,煮 ,火,12,S,,boil,"シャ、に-る、に-える、に-やすsha, ni-ru, ni-eru, ni-yasu"
 851,遮,,辵,14,S,1981,intercept,"シャ、さえぎ-るsha, saegi-ru"
 852,謝,,言,17,5,,apologize,"シャ、あやま-るsha, ayama-ru"
 853,邪,,邑,8,S,,wicked,ジャja
@@ -890,7 +890,7 @@
 889,宗,,宀,8,6,,religion,"シュウ、ソウshū, sō"
 890,拾,,手,9,3,,pick up,"シュウ、ジュウ、ひろ-うshū, jū, hiro-u"
 891,秋,,禾,9,2,,autumn,"シュウ、あきshū, aki"
-892,臭,臭 [4],自,9,S,,stinking,"シュウ、くさ-い、にお-うshū, kusa-i, nio-u"
+892,臭,臭 ,自,9,S,,stinking,"シュウ、くさ-い、にお-うshū, kusa-i, nio-u"
 893,修,,人,10,5,,discipline,"シュウ、（シュ）、おさ-める、おさ-まるshū, (shu), osa-meru, osa-maru"
 894,袖,,衣,10,S,2010,sleeve,"シュウ、そでshū, sode"
 895,終,,糸,11,3,,end,"シュウ、お-わる、お-えるshū, o-waru, o-eru"
@@ -917,7 +917,7 @@
 916,獣,獸,犬,16,S,,animal,"ジュウ、けものjū, kemono"
 917,縦,縱,糸,16,6,,vertical,"ジュウ、たてjū, tate"
 918,叔,,又,8,S,,uncle,シュクshuku
-919,祝,祝 [4],示,9,4,,celebrate,"シュク、（シュウ）、いわ-うshuku, (shū), iwa-u"
+919,祝,祝 ,示,9,4,,celebrate,"シュク、（シュウ）、いわ-うshuku, (shū), iwa-u"
 920,宿,,宀,11,3,,inn,"シュク、やど、やど-る、やど-すshuku, yado, yado-ru, yado-su"
 921,淑,,水,11,S,,graceful,シュクshuku
 922,粛,肅,聿,11,S,,solemn,シュクshuku
@@ -946,10 +946,10 @@
 945,所,,戶,8,3,,place,"ショ、ところsho, tokoro"
 946,書,,曰,10,2,,write,"ショ、か-くsho, ka-ku"
 947,庶,,广,11,S,,commoner,ショsho
-948,暑,暑 [4],日,12,3,,hot,"ショ、あつ-いsho, atsu-i"
-949,署,署 [4],网,13,6,,government office,ショsho
+948,暑,暑 ,日,12,3,,hot,"ショ、あつ-いsho, atsu-i"
+949,署,署 ,网,13,6,,government office,ショsho
 950,緒,緖,糸,14,S,,thong,"ショ、（チョ）、おsho, (cho), o"
-951,諸,諸 [4],言,15,6,,various,ショsho
+951,諸,諸 ,言,15,6,,various,ショsho
 952,女,,女,3,1,,woman,"ジョ、ニョ、（ニョウ）、おんな、めjo, nyo, (nyō), onna, me"
 953,如,,女,6,S,,likeness,"ジョ、ニョjo, nyo"
 954,助,,力,7,3,,help,"ジョ、たす-ける、たす-かる、すけjo, tasu-keru, tasu-karu, suke"
@@ -976,7 +976,7 @@
 975,将,將,寸,10,6,,leader,ショウshō
 976,消,,水,10,3,,extinguish,"ショウ、き-える、け-すshō, ki-eru, ke-su"
 977,症,,疒,10,S,,symptoms,ショウshō
-978,祥,祥 [4],示,10,S,,auspicious,ショウshō
+978,祥,祥 ,示,10,S,,auspicious,ショウshō
 979,称,稱,禾,10,S,,appellation,ショウshō
 980,笑,,竹,10,4,,laugh,"ショウ、わら-う、え-むshō, wara-u, e-mu"
 981,唱,,口,11,4,,chant,"ショウ、とな-えるshō, tona-eru"
@@ -1049,7 +1049,7 @@
 1048,侵,,人,9,S,,encroach,"シン、おか-すshin, oka-su"
 1049,信,,人,9,4,,trust,シンshin
 1050,津,,水,9,S,,haven,"シン、つshin, tsu"
-1051,神,神 [4],示,9,3,,god,"シン、ジン、かみ、（かん）、（こう）shin, jin, kami, (kan), (kō)"
+1051,神,神 ,示,9,3,,god,"シン、ジン、かみ、（かん）、（こう）shin, jin, kami, (kan), (kō)"
 1052,唇,,口,10,S,1981,lips,"シン、くちびるshin, kuchibiru"
 1053,娠,,女,10,S,,with child,シンshin
 1054,振,,手,10,S,,shake,"シン、ふ-る、ふ-るう、ふ-れるshin, fu-ru, fu-rū, fu-reru"
@@ -1160,7 +1160,7 @@
 1159,設,,言,11,5,,establish,"セツ、もう-けるsetsu, mō-keru"
 1160,雪,,雨,11,2,,snow,"セツ、ゆきsetsu, yuki"
 1161,摂,攝,手,13,S,,vicarious,セツsetsu
-1162,節,節 [4],竹,13,4,,node,"セツ、（セチ）、ふしsetsu, (sechi), fushi"
+1162,節,節 ,竹,13,4,,node,"セツ、（セチ）、ふしsetsu, (sechi), fushi"
 1163,説,,言,14,4,,theory,"セツ、（ゼイ）、と-くsetsu, (zei), to-ku"
 1164,舌,,舌,6,5,,tongue,"ゼツ、したzetsu, shita"
 1165,絶,絕,糸,12,5,,discontinue,"ゼツ、た-える、た-やす、た-つzetsu, ta-eru, ta-yasu, ta-tsu"
@@ -1180,10 +1180,10 @@
 1179,旋,,方,11,S,,rotation,センsen
 1180,船,,舟,11,2,,boat,"セン、ふね、（ふな）sen, fune, (funa)"
 1181,戦,戰,戈,13,4,,war,"セン、いくさ、たたか-うsen, ikusa, tataka-u"
-1182,煎 [7],,火,13,S,2010,broil,"セン、い-るsen, i-ru"
+1182,煎 ,,火,13,S,2010,broil,"セン、い-るsen, i-ru"
 1183,羨,,羊,13,S,2010,envy,"セン、うらや-む、うらや-ましいsen, uraya-mu, uraya-mashii"
 1184,腺,,肉,13,S,2010,gland,センsen
-1185,詮 [7],,言,13,S,2010,discussion,センsen
+1185,詮 ,,言,13,S,2010,discussion,センsen
 1186,践,踐,足,13,S,,tread,センsen
 1187,箋,,竹,14,S,2010,paper,センsen
 1188,銭,錢,金,14,5,,coin,"セン、ぜにsen, zeni"
@@ -1204,7 +1204,7 @@
 1203,繕,,糸,18,S,,darning,"ゼン、つくろ-うzen, tsukuro-u"
 1204,狙,,犬,8,S,2010,aim at,"ソ、ねら-うso, nera-u"
 1205,阻,,阜,8,S,,thwart,"ソ、はば-むso, haba-mu"
-1206,祖,祖 [4],示,9,5,,ancestor,ソso
+1206,祖,祖 ,示,9,5,,ancestor,ソso
 1207,租,,禾,10,S,,tariff,ソso
 1208,素,,糸,10,5,,elementary,"ソ、スso, su"
 1209,措,,手,11,S,,set aside,ソso
@@ -1213,7 +1213,7 @@
 1212,疎,,疋,12,S,,alienate,"ソ、うと-い、うと-むso, uto-i, uto-mu"
 1213,訴,,言,12,S,,sue,"ソ、うった-えるso, utta-eru"
 1214,塑,,土,13,S,,model,ソso
-1215,遡 [8],,辵,14,S,2010,go upstream,"ソ、さかのぼ-るso, sakanobo-ru"
+1215,遡 ,,辵,14,S,2010,go upstream,"ソ、さかのぼ-るso, sakanobo-ru"
 1216,礎,,石,18,S,,cornerstone,"ソ、いしずえso, ishizue"
 1217,双,雙,隹,4,S,,pair,"ソウ、ふたsō, futa"
 1218,壮,壯,士,6,S,,robust,ソウsō
@@ -1240,9 +1240,9 @@
 1239,痩,瘦,疒,12,S,2010,get thin,"ソウ、や-せるsō, ya-seru"
 1240,葬,,艸,12,S,,interment,"ソウ、ほうむ-るsō, hōmu-ru"
 1241,装,裝,衣,12,6,,attire,"ソウ、ショウ、よそお-うsō, shō, yosoo-u"
-1242,僧,僧 [4],人,13,S,,Buddhist priest,ソウsō
+1242,僧,僧 ,人,13,S,,Buddhist priest,ソウsō
 1243,想,,心,13,3,,concept,"ソウ、（ソ）sō, (so)"
-1244,層,層 [4],尸,14,6,,stratum,ソウsō
+1244,層,層 ,尸,14,6,,stratum,ソウsō
 1245,総,總,糸,14,5,,whole,ソウsō
 1246,遭,,辵,14,S,,encounter,"ソウ、あ-うsō, a-u"
 1247,槽,,木,15,S,1981,vat,ソウsō
@@ -1255,9 +1255,9 @@
 1254,造,,辵,10,5,,create,"ゾウ、つく-るzō, tsuku-ru"
 1255,像,,人,14,5,,statue,ゾウzō
 1256,増,增,土,14,5,,increase,"ゾウ、ま-す、ふ-える、ふ-やすzō, ma-su, fu-eru, fu-yasu"
-1257,憎,憎 [4],心,14,S,,hate,"ゾウ、にく-む、にく-い、にく-らしい、にく-しみzō, niku-mu, niku-i, niku-rashii, niku-shimi"
+1257,憎,憎 ,心,14,S,,hate,"ゾウ、にく-む、にく-い、にく-らしい、にく-しみzō, niku-mu, niku-i, niku-rashii, niku-shimi"
 1258,蔵,藏,艸,15,6,,warehouse,"ゾウ、くらzō, kura"
-1259,贈,贈 [4],貝,18,S,,presents,"ゾウ、（ソウ）、おく-るzō, (sō), oku-ru"
+1259,贈,贈 ,貝,18,S,,presents,"ゾウ、（ソウ）、おく-るzō, (sō), oku-ru"
 1260,臓,臟,肉,19,6,,entrails,ゾウzō
 1261,即,卽,卩,7,S,,instant,ソクsoku
 1262,束,,木,7,4,,bundle,"ソク、たばsoku, taba"
@@ -1281,7 +1281,7 @@
 1280,孫,,子,10,4,,grandchild,"ソン、まごson, mago"
 1281,尊,,寸,12,6,,revered,"ソン、たっと-い、とうと-い、たっと-ぶ、とうと-ぶson, tatto-i, tōto-i, tatto-bu, tōto-bu"
 1282,損,,手,13,5,,loss,"ソン、そこ-なう、そこ-ねるson, soko-nau, soko-neru"
-1283,遜 [8],,辵,14,S,2010,humble,ソンson
+1283,遜 ,,辵,14,S,2010,humble,ソンson
 1284,他,,人,5,3,,other,"タ、ほかta, hoka"
 1285,多,,夕,6,2,,many,"タ、おお-いta, oo-i"
 1286,汰,,水,7,S,2010,luxury,タta
@@ -1340,7 +1340,7 @@
 1339,探,,手,11,6,,grope,"タン、さぐ-る、さが-すtan, sagu-ru, saga-su"
 1340,淡,,水,11,S,,thin,"タン、あわ-いtan, awa-i"
 1341,短,,矢,12,3,,short,"タン、みじか-いtan, mijika-i"
-1342,嘆,嘆 [4],口,13,S,,sigh,"タン、なげ-く、なげ-かわしいtan, nage-ku, nage-kawashii"
+1342,嘆,嘆 ,口,13,S,,sigh,"タン、なげ-く、なげ-かわしいtan, nage-ku, nage-kawashii"
 1343,端,,立,14,S,,edge,"タン、はし、は、はたtan, hashi, ha, hata"
 1344,綻,,糸,14,S,2010,rip,"タン、ほころ-びるtan, hokoro-biru"
 1345,誕,,言,15,6,,nativity,タンtan
@@ -1388,7 +1388,7 @@
 1387,酎,,酉,10,S,2010,sake,チュウchū
 1388,鋳,鑄,金,15,S,,casting,"チュウ、い-るchū, i-ru"
 1389,駐,,馬,15,S,,stop-over,チュウchū
-1390,著,著 [4],艸,11,6,,renowned,"チョ、あらわ-す、いちじる-しいcho, arawa-su, ichijiru-shii"
+1390,著,著 ,艸,11,6,,renowned,"チョ、あらわ-す、いちじる-しいcho, arawa-su, ichijiru-shii"
 1391,貯,,貝,12,4,,savings,チョcho
 1392,丁,,一,2,3,,ward,"チョウ、テイchō, tei"
 1393,弔,,弓,4,S,,condolences,"チョウ、とむら-うchō, tomura-u"
@@ -1410,15 +1410,15 @@
 1409,腸,,肉,13,4,,intestines,チョウchō
 1410,跳,,足,13,S,,hop,"チョウ、は-ねる、と-ぶchō, ha-neru, to-bu"
 1411,徴,徵,彳,14,S,,indications,チョウchō
-1412,嘲 [7],,口,15,S,2010,ridicule,"チョウ、あざけ-るchō, azake-ru"
+1412,嘲 ,,口,15,S,2010,ridicule,"チョウ、あざけ-るchō, azake-ru"
 1413,潮,,水,15,6,,tide,"チョウ、しおchō, shio"
 1414,澄,,水,15,S,,lucidity,"チョウ、す-む、す-ますchō, su-mu, su-masu"
 1415,調,,言,15,3,,investigate,"チョウ、しら-べる、ととの-う、ととの-えるchō, shira-beru, totono-u, totono-eru"
 1416,聴,聽,耳,17,S,,listen,"チョウ、き-くchō, ki-ku"
-1417,懲,懲 [4],心,18,S,,penal,"チョウ、こ-りる、こ-らす、こ-らしめるchō, ko-riru, ko-rasu, ko-rashimeru"
+1417,懲,懲 ,心,18,S,,penal,"チョウ、こ-りる、こ-らす、こ-らしめるchō, ko-riru, ko-rasu, ko-rashimeru"
 1418,直,,目,8,2,,straight,"チョク、ジキ、ただ-ちに、なお-す、なお-るchoku, jiki, tada-chini, nao-su, nao-ru"
 1419,勅,敕,力,9,S,,imperial order,チョクchoku
-1420,捗 [7],,手,10,S,2010,make progress,チョクchoku
+1420,捗 ,,手,10,S,2010,make progress,チョクchoku
 1421,沈,,水,7,S,,sink,"チン、しず-む、しず-めるchin, shizu-mu, shizu-meru"
 1422,珍,,玉,9,S,,rare,"チン、めずら-しいchin, mezura-shii"
 1423,朕,,月,10,S,,majestic plural,チンchin
@@ -1430,7 +1430,7 @@
 1429,墜,,土,15,S,,crash,ツイtsui
 1430,通,,辵,10,2,,pass through,"ツウ、（ツ）、とお-る、とお-す、かよ-うtsū, (tsu), too-ru, too-su, kayo-u"
 1431,痛,,疒,12,6,,pain,"ツウ、いた-い、いた-む、いた-めるtsū, ita-i, ita-mu, ita-meru"
-1432,塚,塚 [4],土,12,S,1981,hillock,つかtsuka
+1432,塚,塚 ,土,12,S,1981,hillock,つかtsuka
 1433,漬,,水,14,S,1981,pickling,"つ-ける、つ-かるtsu-keru, tsu-karu"
 1434,坪,,土,8,S,,two-mat area,つぼtsubo
 1435,爪,,爪,4,S,2010,claw,"つめ、（つま）tsume, (tsuma)"
@@ -1464,7 +1464,7 @@
 1463,滴,,水,14,S,,drip,"テキ、しずく、したた-るteki, shizuku, shitata-ru"
 1464,適,,辵,14,5,,suitable,テキteki
 1465,敵,,攴,15,5,,enemy,"テキ、かたきteki, kataki"
-1466,溺 [7],,水,13,S,2010,drown,"デキ、おぼ-れるdeki, obo-reru"
+1466,溺 ,,水,13,S,2010,drown,"デキ、おぼ-れるdeki, obo-reru"
 1467,迭,,辵,8,S,,transfer,テツtetsu
 1468,哲,,口,10,S,,philosophy,テツtetsu
 1469,鉄,鐵,金,13,3,,iron,テツtetsu
@@ -1477,7 +1477,7 @@
 1476,展,,尸,10,6,,expand,テンten
 1477,添,,水,11,S,,annexed,"テン、そ-える、そ-うten, so-eru, so-u"
 1478,転,轉,車,11,3,,revolve,"テン、ころ-がる、ころ-げる、ころ-がす、ころ-ぶten, koro-garu, koro-geru, koro-gasu, koro-bu"
-1479,塡 [7],,土,13,S,2010,fill in,テンten
+1479,塡 ,,土,13,S,2010,fill in,テンten
 1480,田,,田,5,1,,rice paddy,"デン、たden, ta"
 1481,伝,傳,人,6,4,,transmit,"デン、つた-わる、つた-える、つた-うden, tsuta-waru, tsuta-eru, tsuta-u"
 1482,殿,,殳,13,S,,Mr.,"デン、テン、との、どのden, ten, tono, dono"
@@ -1487,10 +1487,10 @@
 1486,妬,,女,8,S,2010,jealousy,"ト、ねた-むto, neta-mu"
 1487,徒,,彳,10,4,,junior,トto
 1488,途,,辵,10,S,,route,トto
-1489,都,都 [4],邑,11,3,,metropolis,"ト、ツ、みやこto, tsu, miyako"
+1489,都,都 ,邑,11,3,,metropolis,"ト、ツ、みやこto, tsu, miyako"
 1490,渡,,水,12,S,,transit,"ト、わた-る、わた-すto, wata-ru, wata-su"
 1491,塗,,土,13,S,,paint,"ト、ぬ-るto, nu-ru"
-1492,賭 [7],,貝,16,S,2010,gamble,"ト、か-けるto, ka-keru"
+1492,賭 ,,貝,16,S,2010,gamble,"ト、か-けるto, ka-keru"
 1493,土,,土,3,1,,soil,"ド、ト、つちdo, to, tsuchi"
 1494,奴,,女,5,S,,guy,ドdo
 1495,努,,力,7,4,,toil,"ド、つと-めるdo, tsuto-meru"
@@ -1555,9 +1555,9 @@
 1554,毒,,毋,8,4,,poison,ドクdoku
 1555,独,獨,犬,9,5,,alone,"ドク、ひと-りdoku, hito-ri"
 1556,読,讀,言,14,2,,read,"ドク、トク、（トウ）、よ-むdoku, toku, (tō), yo-mu"
-1557,栃 [5],,木,9,S,2010,horse chestnut,（とち）[6](tochi)
+1557,栃 ,,木,9,S,2010,horse chestnut,（とち）(tochi)
 1558,凸,,凵,5,S,1981,convex,トツtotsu
-1559,突,突 [4],穴,8,S,,stab,"トツ、つ-くtotsu, tsu-ku"
+1559,突,突 ,穴,8,S,,stab,"トツ、つ-くtotsu, tsu-ku"
 1560,届,屆,尸,8,6,,deliver,"とど-ける、とど-くtodo-keru, todo-ku"
 1561,屯,,屮,4,S,1981,barracks,トンton
 1562,豚,,豕,11,S,,pork,"トン、ぶたton, buta"
@@ -1570,11 +1570,11 @@
 1569,奈,,大,8,S,2010,what,ナna
 1570,内,,入,4,2,,inside,"ナイ、（ダイ）、うちnai, (dai), uchi"
 1571,梨,,木,11,S,2010,pear tree,なしnashi
-1572,謎 [8],,言,17,S,2010,riddle,なぞnazo
+1572,謎 ,,言,17,S,2010,riddle,なぞnazo
 1573,鍋,,金,17,S,2010,pot,なべnabe
 1574,南,,十,9,2,,south,"ナン、（ナ）、みなみnan, (na), minami"
 1575,軟,,車,11,S,,soft,"ナン、やわ-らか、やわ-らかいnan, yawa-raka, yawa-rakai"
-1576,難,難 [4],隹,18,6,,difficult,"ナン、かた-い、むずか-しいnan, kata-i, muzuka-shii"
+1576,難,難 ,隹,18,6,,difficult,"ナン、かた-い、むずか-しいnan, kata-i, muzuka-shii"
 1577,二,,二,2,1,,two,"ニ、ふた、ふた-つni, futa, futa-tsu"
 1578,尼,,尸,5,S,,nun,"ニ、あまni, ama"
 1579,弐,貳,貝,6,S,,two (falsification prevention),ニni
@@ -1622,7 +1622,7 @@
 1621,輩,,車,15,S,,comrade,ハイhai
 1622,売,賣,貝,7,2,,sell,"バイ、う-る、う-れるbai, u-ru, u-reru"
 1623,倍,,人,10,3,,double,バイbai
-1624,梅,梅 [4],木,10,4,,ume (Japanese apricot),"バイ、うめbai, ume"
+1624,梅,梅 ,木,10,4,,ume (Japanese apricot),"バイ、うめbai, ume"
 1625,培,,土,11,S,,cultivate,"バイ、つちか-うbai, tsuchika-u"
 1626,陪,,阜,11,S,,obeisance,バイbai
 1627,媒,,女,12,S,,mediator,バイbai
@@ -1633,7 +1633,7 @@
 1632,拍,,手,8,S,,clap,"ハク、（ヒョウ）haku, (hyō)"
 1633,泊,,水,8,S,,overnight,"ハク、と-まる、と-めるhaku, to-maru, to-meru"
 1634,迫,,辵,8,S,,urge,"ハク、せま-るhaku, sema-ru"
-1635,剝 [7],,刀,10,S,2010,peel,"ハク、は-がす、は-ぐ、は-がれる、は-げるhaku, ha-gasu, ha-gu, ha-gareru, ha-geru"
+1635,剝 ,,刀,10,S,2010,peel,"ハク、は-がす、は-ぐ、は-がれる、は-げるhaku, ha-gasu, ha-gu, ha-gareru, ha-geru"
 1636,舶,,舟,11,S,,liner,ハクhaku
 1637,博,,十,12,4,,Dr.,"ハク、（バク）haku, (baku)"
 1638,薄,,艸,16,S,,dilute,"ハク、うす-い、うす-める、うす-まる、うす-らぐ、うす-れるhaku, usu-i, usu-meru, usu-maru, usu-ragu, usu-reru"
@@ -1642,7 +1642,7 @@
 1641,縛,,糸,16,S,,truss,"バク、しば-るbaku, shiba-ru"
 1642,爆,,火,19,S,,explode,バクbaku
 1643,箱,,竹,15,3,,box,はこhako
-1644,箸 [7],,竹,15,S,2010,chopsticks,はしhashi
+1644,箸 ,,竹,15,S,2010,chopsticks,はしhashi
 1645,畑,,田,9,3,,farm,"はた、はたけhata, hatake"
 1646,肌,,肉,6,S,1981,texture,はだhada
 1647,八,,八,2,1,,eight,"ハチ、や、や-つ、やっ-つ、（よう）hachi, ya, ya-tsu, ya'-tsu, (yō)"
@@ -1675,7 +1675,7 @@
 1674,煩,,火,13,S,,anxiety,"ハン、（ボン）、わずら-う、わずら-わすhan, (bon), wazura-u, wazura-wasu"
 1675,頒,,頁,13,S,,partition,ハンhan
 1676,範,,竹,15,S,,pattern,ハンhan
-1677,繁,繁 [4],糸,16,S,,luxuriant,ハンhan
+1677,繁,繁 ,糸,16,S,,luxuriant,ハンhan
 1678,藩,,艸,18,S,,clan,ハンhan
 1679,晩,晚,日,12,6,,nightfall,バンban
 1680,番,,田,12,2,,one's turn,バンban
@@ -1690,7 +1690,7 @@
 1689,披,,手,8,S,1981,expose,ヒhi
 1690,肥,,肉,8,5,,fertilizer,"ヒ、こ-える、こえ、こ-やす、こ-やしhi, ko-eru, koe, ko-yasu, ko-yashi"
 1691,非,,非,8,5,,negative,ヒhi
-1692,卑,卑 [4],十,9,S,,lowly,"ヒ、いや-しい、いや-しむ、いや-しめるhi, iya-shii, iya-shimu, iya-shimeru"
+1692,卑,卑 ,十,9,S,,lowly,"ヒ、いや-しい、いや-しむ、いや-しめるhi, iya-shii, iya-shimu, iya-shimeru"
 1693,飛,,飛,9,4,,fly,"ヒ、と-ぶ、と-ばすhi, to-bu, to-basu"
 1694,疲,,疒,10,S,,exhausted,"ヒ、つか-れるhi, tsuka-reru"
 1695,秘,祕,示,10,6,,secret,"ヒ、ひ-めるhi, hi-meru"
@@ -1698,7 +1698,7 @@
 1697,悲,,心,12,3,,sad,"ヒ、かな-しい、かな-しむhi, kana-shii, kana-shimu"
 1698,扉,,戶,12,S,1981,front door,"ヒ、とびらhi, tobira"
 1699,費,,貝,12,4,,expense,"ヒ、つい-やす、つい-えるhi, tsui-yasu, tsui-eru"
-1700,碑,碑 [4],石,14,S,,tombstone,ヒhi
+1700,碑,碑 ,石,14,S,,tombstone,ヒhi
 1701,罷,,网,15,S,,quit,ヒhi
 1702,避,,辵,16,S,,evade,"ヒ、さ-けるhi, sa-keru"
 1703,尾,,尸,7,S,,tail,"ビ、おbi, o"
@@ -1730,9 +1730,9 @@
 1729,品,,口,9,3,,article,"ヒン、しなhin, shina"
 1730,浜,濱,水,10,S,,seacoast,"ヒン、はまhin, hama"
 1731,貧,,貝,11,5,,poor,"ヒン、ビン、まず-しいhin, bin, mazu-shii"
-1732,賓,賓 [4],貝,15,S,,V.I.P.,ヒンhin
-1733,頻,頻 [4],頁,17,S,1981,repeatedly,ヒンhin
-1734,敏,敏 [4],攴,10,S,,cleverness,ビンbin
+1732,賓,賓 ,貝,15,S,,V.I.P.,ヒンhin
+1733,頻,頻 ,頁,17,S,1981,repeatedly,ヒンhin
+1734,敏,敏 ,攴,10,S,,cleverness,ビンbin
 1735,瓶,甁,瓦,11,S,1981,flower pot,ビンbin
 1736,不,,一,4,4,,non-,"フ、ブfu, bu"
 1737,夫,,大,4,4,,husband,"フ、（フウ）、おっとfu, (fū), otto"
@@ -1742,7 +1742,7 @@
 1741,扶,,手,7,S,,aid,フfu
 1742,府,,广,8,4,,urban prefecture,フfu
 1743,怖,,心,8,S,,dreadful,"フ、こわ-いfu, kowa-i"
-1744,阜,,阜,8,S,2010,mound,（フ）[6](fu)
+1744,阜,,阜,8,S,2010,mound,（フ）(fu)
 1745,附,,阜,8,S,,affixed,フfu
 1746,訃,,言,9,S,2010,obituary,フfu
 1747,負,,貝,9,3,,lose,"フ、ま-ける、ま-かす、お-うfu, ma-keru, ma-kasu, o-u"
@@ -1757,7 +1757,7 @@
 1756,膚,,肉,15,S,,skin,フfu
 1757,賦,,貝,15,S,,levy,フfu
 1758,譜,,言,19,S,,musical score,フfu
-1759,侮,侮 [4],人,8,S,,scorn,"ブ、あなど-るbu, anado-ru"
+1759,侮,侮 ,人,8,S,,scorn,"ブ、あなど-るbu, anado-ru"
 1760,武,,止,8,5,,military,"ブ、ムbu, mu"
 1761,部,,邑,11,3,,part,ブbu
 1762,舞,,舛,15,S,,dance,"ブ、ま-う、まいbu, ma-u, mai"
@@ -1768,7 +1768,7 @@
 1767,副,,刀,11,4,,vice,フクfuku
 1768,幅,,巾,12,S,,breadth,"フク、はばfuku, haba"
 1769,復,,彳,12,5,,again,フクfuku
-1770,福,福 [4],示,13,3,,luck,フクfuku
+1770,福,福 ,示,13,3,,luck,フクfuku
 1771,腹,,肉,13,6,,abdomen,"フク、はらfuku, hara"
 1772,複,,衣,14,5,,duplicate,フクfuku
 1773,覆,,襾,18,S,,capsize,"フク、おお-う、くつがえ-す、くつがえ-るfuku, oo-u, kutsugae-su, kutsugae-ru"
@@ -1794,11 +1794,11 @@
 1793,柄,,木,9,S,,design,"ヘイ、がら、えhei, gara, e"
 1794,陛,,阜,10,6,,highness,ヘイhei
 1795,閉,,門,11,6,,closed,"ヘイ、と-じる、と-ざす、し-める、し-まるhei, to-jiru, to-zasu, shi-meru, shi-maru"
-1796,塀,塀 [4],土,12,S,1981,fence,ヘイhei
+1796,塀,塀 ,土,12,S,1981,fence,ヘイhei
 1797,幣,,巾,15,S,,cash,ヘイhei
 1798,弊,,廾,15,S,,abuse,ヘイhei
-1799,蔽 [7],,艸,15,S,2010,cover,ヘイhei
-1800,餅 [8],餠,食,15,S,2010,mochi rice cake,"ヘイ、もちhei, mochi"
+1799,蔽 ,,艸,15,S,2010,cover,ヘイhei
+1800,餅 ,餠,食,15,S,2010,mochi rice cake,"ヘイ、もちhei, mochi"
 1801,米,,米,6,2,,rice,"ベイ、マイ、こめbei, mai, kome"
 1802,壁,,土,16,S,,wall,"ヘキ、かべheki, kabe"
 1803,璧,,玉,18,S,2010,sphere,ヘキheki
@@ -1814,7 +1814,7 @@
 1813,編,,糸,15,5,,compile,"ヘン、あ-むhen, a-mu"
 1814,弁,辨瓣辯,辛瓜辛,5,5,,valve,ベンben
 1815,便,,人,9,4,,convenience,"ベン、ビン、たよ-りben, bin, tayo-ri"
-1816,勉,勉 [4],力,10,3,,exertion,ベンben
+1816,勉,勉 ,力,10,3,,exertion,ベンben
 1817,歩,步,止,8,2,,walk,"ホ、ブ、（フ）、ある-く、あゆ-むho, bu, (fu), aru-ku, ayu-mu"
 1818,保,,人,9,5,,preserve,"ホ、たも-つho, tamo-tsu"
 1819,哺,,口,10,S,2010,suckle,ホho
@@ -1872,14 +1872,14 @@
 1871,暴,,日,15,5,,outburst,"ボウ、（バク）、あば-く、あば-れるbō, (baku), aba-ku, aba-reru"
 1872,膨,,肉,16,S,,swell,"ボウ、ふく-らむ、ふく-れるbō, fuku-ramu, fuku-reru"
 1873,謀,,言,16,S,,conspire,"ボウ、（ム）、はか-るbō, (mu), haka-ru"
-1874,頰 [7],,頁,16,S,2010,cheek,ほおhoo
+1874,頰 ,,頁,16,S,2010,cheek,ほおhoo
 1875,北,,匕,5,2,,north,"ホク、きたhoku, kita"
 1876,木,,木,4,1,,tree,"ボク、モク、き、（こ）boku, moku, ki, (ko)"
 1877,朴,,木,6,S,1981,crude,ボクboku
 1878,牧,,牛,8,4,,breed,"ボク、まきboku, maki"
 1879,睦,,目,13,S,2010,harmonious,ボクboku
 1880,僕,,人,14,S,1981,me,ボクboku
-1881,墨,墨 [4],土,14,S,,black ink,"ボク、すみboku, sumi"
+1881,墨,墨 ,土,14,S,,black ink,"ボク、すみboku, sumi"
 1882,撲,,手,15,S,,slap,ボクboku
 1883,没,沒,水,7,S,,drown,ボツbotsu
 1884,勃,,力,9,S,2010,rise,ボツbotsu
@@ -1933,7 +1933,7 @@
 1932,銘,,金,14,S,,inscription,メイmei
 1933,鳴,,鳥,14,2,,chirp,"メイ、な-く、な-る、な-らすmei, na-ku, na-ru, na-rasu"
 1934,滅,,水,13,S,,destroy,"メツ、ほろ-びる、ほろ-ぼすmetsu, horo-biru, horo-bosu"
-1935,免,免 [4],儿,8,S,,excuse,"メン、まぬか-れるmen, manuka-reru"
+1935,免,免 ,儿,8,S,,excuse,"メン、まぬか-れるmen, manuka-reru"
 1936,面,,面,9,3,,face,"メン、おも、おもて、つらmen, omo, omote, tsura"
 1937,綿,,糸,14,5,,cotton,"メン、わたmen, wata"
 1938,麺,麵,麥,16,S,2010,noodles,メンmen
@@ -2032,7 +2032,7 @@
 2031,覧,覽,見,17,6,,perusal,ランran
 2032,濫,,水,18,S,,excessive,ランran
 2033,藍,,艸,18,S,2010,indigo,"ラン、あいran, ai"
-2034,欄,欄 [4],木,20,S,,column,ランran
+2034,欄,欄 ,木,20,S,,column,ランran
 2035,吏,,口,6,S,,officer,リri
 2036,利,,刀,7,4,,profit,"リ、き-くri, ki-ku"
 2037,里,,里,7,2,,village,"リ、さとri, sato"
@@ -2052,11 +2052,11 @@
 2051,留,,田,10,5,,detain,"リュウ、（ル）、と-める、と-まるryū, (ru), to-meru, to-maru"
 2052,竜,龍,龍,10,S,1981,dragon,"リュウ、たつryū, tatsu"
 2053,粒,,米,11,S,,grains,"リュウ、つぶryū, tsubu"
-2054,隆,隆 [4],阜,11,S,,hump,リュウryū
+2054,隆,隆 ,阜,11,S,,hump,リュウryū
 2055,硫,,石,12,S,,sulphur,リュウryū
 2056,侶,,人,9,S,2010,companion,リョryo
 2057,旅,,方,10,3,,trip,"リョ、たびryo, tabi"
-2058,虜,虜 [4],虍,13,S,,captive,リョryo
+2058,虜,虜 ,虍,13,S,,captive,リョryo
 2059,慮,,心,15,S,,prudence,リョryo
 2060,了,,亅,2,S,,finish,リョウryō
 2061,両,兩,入,6,3,,both,リョウryō
@@ -2084,7 +2084,7 @@
 2083,涙,淚,水,10,S,,tears,"ルイ、なみだrui, namida"
 2084,累,,糸,11,S,,accumulate,ルイrui
 2085,塁,壘,土,12,S,,bases,ルイrui
-2086,類,類 [4],頁,18,4,,sort,"ルイ、たぐ-いrui, tagu-i"
+2086,類,類 ,頁,18,4,,sort,"ルイ、たぐ-いrui, tagu-i"
 2087,令,,人,5,4,,orders,レイrei
 2088,礼,禮,示,5,3,,thanks,"レイ、ライrei, rai"
 2089,冷,,冫,7,4,,cool,"レイ、つめ-たい、ひ-える、ひ-や、ひ-やす、ひ-やかす、さ-める、さ-ますrei, tsume-tai, hi-eru, hi-ya, hi-yasu, hi-yakasu, sa-meru, sa-masu"
@@ -2106,7 +2106,7 @@
 2105,恋,戀,心,10,S,,romance,"レン、こ-う、こい、こい-しいren, ko-u, koi, koi-shii"
 2106,連,,辵,10,4,,take along,"レン、つら-なる、つら-ねる、つ-れるren, tsura-naru, tsura-neru, tsu-reru"
 2107,廉,,广,13,S,,bargain,レンren
-2108,練,練 [4],糸,14,3,,practice,"レン、ね-るren, ne-ru"
+2108,練,練 ,糸,14,3,,practice,"レン、ね-るren, ne-ru"
 2109,錬,鍊,金,16,S,,tempering,レンren
 2110,呂,,口,7,S,2010,spine,ロro
 2111,炉,爐,火,8,S,,hearth,ロro
@@ -2117,9 +2117,9 @@
 2116,労,勞,力,7,4,,labour,ロウrō
 2117,弄,,廾,7,S,2010,tamper with,"ロウ、もてあそ-ぶrō, moteaso-bu"
 2118,郎,郞,邑,9,S,,son,ロウrō
-2119,朗,朗 [4],月,10,6,,melodious,"ロウ、ほが-らかrō, hoga-raka"
+2119,朗,朗 ,月,10,6,,melodious,"ロウ、ほが-らかrō, hoga-raka"
 2120,浪,,水,10,S,,wandering,ロウrō
-2121,廊,廊 [4],广,12,S,,corridor,ロウrō
+2121,廊,廊 ,广,12,S,,corridor,ロウrō
 2122,楼,樓,木,13,S,,watchtower,ロウrō
 2123,漏,,水,14,S,,leak,"ロウ、も-る、も-れる、も-らすrō, mo-ru, mo-reru, mo-rasu"
 2124,籠,,竹,22,S,2010,basket,"ロウ、かご、こ-もるrō, kago, ko-moru"
