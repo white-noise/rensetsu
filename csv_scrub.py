@@ -2,15 +2,15 @@ import csv
 import re
 import json
 
-with open('kanji.txt', "w") as write_file:
+with open('kanji.json', "w") as write_file:
     with open('joyo_kanji.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
-        json_data  = {}
+        json_data  = []
 
         for row in csv_reader:
             if line_count == 0:
-                print(f'Column names are {", ".join(row)}')
+                # print(f'Column names are {", ".join(row)}')
                 line_count += 1
             else:
                 regex_split = re.split('(?<=[^a-z,ō\s])(?=[a-z,ō\s])', row[-1], flags=re.IGNORECASE, maxsplit=1)
@@ -20,14 +20,14 @@ with open('kanji.txt', "w") as write_file:
                 jpn_split = (regex_split[0]).split("、")
 
                 # if (len(eng_split) != len(jpn_split)) or (len(eng_split) == 0):
-                print("")
+                # print("")
 
-                for i in range(8):
-                    row[i] = (row[i]).replace(" ", "")
-                    print(row[i])
+                # for i in range(8):
+                #     row[i] = (row[i]).replace(" ", "")
+                #     print(row[i])
 
-                print(eng_split)
-                print(jpn_split)
+                # print(eng_split)
+                # print(jpn_split)
 
                 line_count += 1
 
@@ -46,7 +46,7 @@ with open('kanji.txt', "w") as write_file:
                         },
                 }
 
-                json_data[row[1]] = new_row
+                json_data.append(new_row)
 
         json.dump(json_data, write_file, indent=4)
         
