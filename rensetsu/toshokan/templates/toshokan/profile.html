@@ -10,6 +10,33 @@
 	{{ userinfo.user.email }}
 </p>
 
+<h3>Interesting Kanji</h3>
+<p>
+	{% for kanji in userinfo.interesting_kanji.all %}
+		<li>
+			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
+		</li>
+	{% endfor %}
+</p>
+
+<h3>Difficult Kanji</h3>
+<p>
+	{% for kanji in userinfo.difficult_kanji.all %}
+		<li>
+			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
+		</li>
+	{% endfor %}
+</p>
+
+<h3>Mastered Kanji</h3>
+<p>
+	{% for kanji in userinfo.mastered_kanji.all %}
+		<li>
+			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
+		</li>
+	{% endfor %}
+</p>
+
 <p>
 	<a href="{% url 'logout' %}">logout</a>
 </p>

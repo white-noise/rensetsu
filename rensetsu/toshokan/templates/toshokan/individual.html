@@ -7,3 +7,24 @@
 <p>
 	{{kanji.meaning}}
 </p>
+<h3>Favorited by</h3>
+<p>
+	<h3>Interesting</h3>
+	{% for userprofile in kanji.interesting_kanji.all %}
+		<li>
+			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
+		</li>
+	{% endfor %}
+	<h3>Difficult</h3>
+	{% for userprofile in kanji.difficult_kanji.all %}
+		<li>
+			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
+		</li>
+	{% endfor %}
+	<h3>Mastered</h3>
+	{% for userprofile in kanji.mastered_kanji.all %}
+		<li>
+			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
+		</li>
+	{% endfor %}
+</p>

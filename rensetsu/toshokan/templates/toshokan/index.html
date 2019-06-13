@@ -4,6 +4,8 @@
 
 <ol>
 	{% for kanji in kanji_list %}
-	    <li><a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a></li>
+	    <li>
+	    	<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
+	    </li>
 	{% endfor %}
 </ol>
