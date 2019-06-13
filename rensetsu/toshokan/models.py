@@ -20,7 +20,7 @@ class UserProfile(models.Model):
 
     interesting_kanji = models.ManyToManyField(Kanji, related_name="interesting_kanji")
     difficult_kanji   = models.ManyToManyField(Kanji, related_name="difficult_kanji")
-    mastered_kanji    = models.ManyToManyField(Kanji, related_name="mastered_kanji")
+    known_kanji       = models.ManyToManyField(Kanji, related_name="known_kanji")
 
     def __str__(self):
         return self.user.username

@@ -21,8 +21,8 @@
 			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
 		</li>
 	{% endfor %}
-	<h3>Mastered</h3>
-	{% for userprofile in kanji.mastered_kanji.all %}
+	<h3>Known</h3>
+	{% for userprofile in kanji.known_kanji.all %}
 		<li>
 			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
 		</li>

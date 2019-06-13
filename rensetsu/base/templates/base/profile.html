@@ -29,9 +29,9 @@
 	{% endfor %}
 </p>
 
-<h3>Mastered Kanji</h3>
+<h3>Known Kanji</h3>
 <p>
-	{% for kanji in userinfo.mastered_kanji.all %}
+	{% for kanji in userinfo.known_kanji.all %}
 		<li>
 			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
 		</li>

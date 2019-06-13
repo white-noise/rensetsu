@@ -1,5 +1,11 @@
 ## rensetsu 連接 (a kanji collection app)
 
+### objective of this app
+- making language into collection, curation, curiosity
+- make use of what web-based format can provide in ease, connection
+- what is important is the link, the sort, the group
+- reminds you what you don't know, reminds you what you do, all with simple views, interface that eschews competition and games
+
 ### things to do
 - goal is quick, easily navigable, intuitive connections. collection of information rather than a game, competition, or motivational fervor. it should remind you of what you need to learn, but beautifully, and calmly.
 - individual accounts should hold reference to interesting, difficult, and mastered kanji, along with other personal data not yet determined.
@@ -24,3 +30,11 @@
 - alternate forms, kanji compounds
 - can we scrape decent example sentences
 - profile-specific notes and comments (dynamic, stacked below)
+
+### what should be displayed on an inline kanji window
+- possibility to display both glyph and reading, or for hidden meaning and reading
+- english and japanese reading, or just japanese (a variety of toggles in a settings page)
+- some buttons (disabled if not logged in) to select as interesting, difficult, known, or dropdown for custom groups.
+
+### what if any methods can be used for review
+- gentle quizes drawing from certain groups. results displayed at the end, with options to shift around group assignments.
