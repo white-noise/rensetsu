@@ -11,6 +11,7 @@
 </p>
 
 <h3>Interesting Kanji</h3>
+<!-- Note that the reverse of the ManyToMany uses the related_name attribute only -->
 <p>
 	{% for kanji in userinfo.interesting_kanji.all %}
 		<li>
