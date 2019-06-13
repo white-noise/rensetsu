@@ -1,4 +1,4 @@
-## rensetsu 連接　(a kanji collection app)
+## rensetsu 連接 (a kanji collection app)
 
 ### things to do
 - goal is quick, easily navigable, intuitive connections. collection of information rather than a game, competition, or motivational fervor. it should remind you of what you need to learn, but beautifully, and calmly.
