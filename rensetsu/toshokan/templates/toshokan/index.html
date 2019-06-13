@@ -1,6 +1,7 @@
 <h1>
 	Kanji List
 </h1>
+
 <ol>
 	{% for kanji in kanji_list %}
 	    <li><a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a></li>
