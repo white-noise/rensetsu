@@ -19,22 +19,20 @@
 
 <!-- adding the kanji to your preferred fields -->
 
+<h3>Already found this kanji interesting</h3>
+<ul>
+    {% for userprofile in kanji.interesting_kanji.all %}
+        <li>{{ userprofile.user.username }}</li>
+    {% endfor %}
+</ul>
+
+<p>
+	Add this kanji to 'interesting'
+</p>
+
 <form action="{% url 'add_user' kanji.id %}" method="POST">
     {% csrf_token %}
-
-    <h3>Already found this kanji interesting</h3>
-    <ul>
-	    {% for userprofile in kanji.interesting_kanji.all %}
-	        <li>{{ userprofile.user.username }}</li>
-	    {% endfor %}
-    </ul>
-
-    <p>
-    	Add this kanji to 'interesting'
-    </p>
-    {{ form.as_p }}
     <button>Add</button>
-
 </form>
 
 
