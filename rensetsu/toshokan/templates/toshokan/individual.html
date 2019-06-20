@@ -1,30 +1,48 @@
 <h1>
 	{{ kanji.character }}
 </h1>
+
 <p>
-	{{kanji.reading_jpn}}
+	{% for reading in reading_jpn %}
+		<li>
+			{{ reading }}
+		</li>
+	{% endfor %}
 </p>
+
+<h3>
+	Meaning
+</h3>
 <p>
 	{{kanji.meaning}}
 </p>
-<h3>Favorited by</h3>
-<p>
+
+<!-- adding the kanji to your preferred fields -->
+
+<form action="{% url 'add_user' kanji.id %}" method="POST">
+    {% csrf_token %}
+
+    <h3>Already found this kanji interesting</h3>
+    <ul>
+	    {% for userprofile in kanji.interesting_kanji.all %}
+	        <li>{{ userprofile.user.username }}</li>
+	    {% endfor %}
+    </ul>
+
+    <p>
+    	Add this kanji to 'interesting'
+    </p>
+    {{ form.as_p }}
+    <button>Add</button>
+
+</form>
+
+
+<!-- <p>
 	<h3>Interesting</h3>
 	{% for userprofile in kanji.interesting_kanji.all %}
 		<li>
 			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
 		</li>
 	{% endfor %}
-	<h3>Difficult</h3>
-	{% for userprofile in kanji.difficult_kanji.all %}
-		<li>
-			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
-		</li>
-	{% endfor %}
-	<h3>Known</h3>
-	{% for userprofile in kanji.known_kanji.all %}
-		<li>
-			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
-		</li>
-	{% endfor %}
-</p>
+</p> -->

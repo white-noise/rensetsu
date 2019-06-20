@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from .models import UserProfile
+from toshokan.models import Kanji
+
 def index(request):
     context = {}
     return render(request, 'base/index.html', context)

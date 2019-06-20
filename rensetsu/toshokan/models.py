@@ -14,19 +14,3 @@ class Kanji(models.Model):
 
     def __str__(self):
         return self.character
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
-
-    interesting_kanji = models.ManyToManyField(Kanji, related_name="interesting_kanji")
-    difficult_kanji   = models.ManyToManyField(Kanji, related_name="difficult_kanji")
-    known_kanji       = models.ManyToManyField(Kanji, related_name="known_kanji")
-
-    def __str__(self):
-        return self.user.username
-
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-
-post_save.connect(create_user_profile, sender=User)

@@ -6,12 +6,28 @@
 - what is important is the link, the sort, the group
 - reminds you what you don't know, reminds you what you do, all with simple views, interface that eschews competition and games
 
-### things to do
+### immediate to do
+- login page customization
+- format kanji card format, and splitting of reading, scrubbing parens
+- format for login and logout pages
+- email signup support
+- plug in some bootstrap
+- kanji compound model (can create object composed of multiple kanji with new reading, definition, etc. can select constituent kanji)
+
+### points of caution
+- redirects from long lists, paginations, and updates of many-to-many fields
+
+### things to implement
 - goal is quick, easily navigable, intuitive connections. collection of information rather than a game, competition, or motivational fervor. it should remind you of what you need to learn, but beautifully, and calmly.
 - individual accounts should hold reference to interesting, difficult, and mastered kanji, along with other personal data not yet determined.
 - user should be able to comment for a given kanji, i.e. store plain text notes about its use, as well as example sentences, in clean, minimal boxes directly accessible with the kanji.
 - simple themes, almost entirely text based. lightweight is emphasis. light and dark mode.
 - on the backend, post-saves should be handled outside of the model file before deployment.
+
+### design questions
+- do we go down the bootstrap hole? with some customization, floating and columns could be nice. nothing else is really required
+- we might want to use something like ajax, or rather, we need to answer the question of dynamically updating the db within a pagelet
+- login throttling and email verification, though email presence seems unecessary
 
 ### what is displayed on a profile
 - standard user data: name, username, password, email.
