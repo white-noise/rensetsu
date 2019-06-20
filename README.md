@@ -1,56 +1,52 @@
 ## rensetsu 連接 (a kanji collection app)
 
 ### objective of this app
-- making language into collection, curation, curiosity
-- make use of what web-based format can provide in ease, connection
-- what is important is the link, the sort, the group
-- reminds you what you don't know, reminds you what you do, all with simple views, interface that eschews competition and games
+- language as collection
+- focus on the hyperlink, on navigability within referential net
+- reminded of what you don't know, reminded of you what you do know, with simple views
 
 ### immediate to do
-- login page customization
-- format kanji card format, and splitting of reading, scrubbing parens
-- format for login and logout pages
-- email signup support
-- plug in some bootstrap
-- kanji compound model (can create object composed of multiple kanji with new reading, definition, etc. can select constituent kanji)
+- distinction between account views and generic views
+- kanji card format, scrubbing kanji json
+- basic styling for ease of testing
+- kanji compound model (additional option to update when constituent kanji added to the database, if alternate kanji are used)
+- AJAX for adding and deleting kanji from groups quietly and inline
 
 ### points of caution
-- redirects from long lists, paginations, and updates of many-to-many fields
+- redirects from long lists, pagination
 
 ### things to implement
-- goal is quick, easily navigable, intuitive connections. collection of information rather than a game, competition, or motivational fervor. it should remind you of what you need to learn, but beautifully, and calmly.
-- individual accounts should hold reference to interesting, difficult, and mastered kanji, along with other personal data not yet determined.
-- user should be able to comment for a given kanji, i.e. store plain text notes about its use, as well as example sentences, in clean, minimal boxes directly accessible with the kanji.
-- simple themes, almost entirely text based. lightweight is emphasis. light and dark mode.
-- on the backend, post-saves should be handled outside of the model file before deployment.
-
-### design questions
-- do we go down the bootstrap hole? with some customization, floating and columns could be nice. nothing else is really required
-- we might want to use something like ajax, or rather, we need to answer the question of dynamically updating the db within a pagelet
-- login throttling and email verification, though email presence seems unecessary
+- user should be able to comment for a given kanji, i.e. store plain-text notes about its use, as well as example sentences, in clean, minimal boxes directly accessible with the kanji, based on logged in user.
+- simple themes, almost entirely text based. lightweight. light and dark mode.
+- post-saves should be handled outside of the model file.
+- custom groups beyond the three provided (description, date created, name, etc.)
+- groups can be used to quiz, results of quiz shown, and permit reshuffling of groups
+- do we go down the bootstrap hole? hardly anything besides centering is needed
 
 ### what is displayed on a profile
-- standard user data: name, username, password, email.
-- kanji found intersting (either memorable, strange, useful)
+- standard user data: name, username
+- kanji found interesting (either memorable, strange, useful)
 - kanji found particularly difficult and particularly easy
-- possible ability to create custom groups (with ability to override the above on one's home page)
-- link to review, scroll through these groups
-- something to identify a user (eventually people should be able to see other profiles). the goal is placid communication, not competition
+- custom groups (with ability to override the groups shown on one's home page)
+- link to pre-made quizzes based around these groups
+- link to discovery modes, which troll though example sentences
+- something to identify a user (minimal, like an emoji, or glyph, or color, or something)
 
 ### what is displayed on the landing page
-- the name of the app, or a random kanji
+- the name of the app
 - choice to go to profile
+- chance to float through kanji
 
 ### what is displayed on a kanji's individual page
 - glyph, short-form meaning, pronounciations
 - alternate forms, kanji compounds
-- can we scrape decent example sentences
+- a couple decent example sentences
 - profile-specific notes and comments (dynamic, stacked below)
 
-### what should be displayed on an inline kanji window
-- possibility to display both glyph and reading, or for hidden meaning and reading
-- english and japanese reading, or just japanese (a variety of toggles in a settings page)
-- some buttons (disabled if not logged in) to select as interesting, difficult, known, or dropdown for custom groups.
+### what should be displayed in an inline kanji window
+- both glyph and reading, meaning hidden based on settings
+- some toggle buttons to select as interesting, difficult, known, or dropdown for custom groups
 
-### what if any methods can be used for review
-- gentle quizes drawing from certain groups. results displayed at the end, with options to shift around group assignments.
+### any additional pages
+- hiragana and katakana chart, static, with reference to reading. a fun project for javascript fanatics to make this look nice on any screen (grouped by consonant)
+- kanji compounds will have to exist somewhere, probably for a given kanji in a many-to-many relationship (paging through this might be tough).
