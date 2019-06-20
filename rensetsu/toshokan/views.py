@@ -22,8 +22,36 @@ def individual(request, kanji_id):
      })
 
 @login_required
-def add_user(request, kanji_id):
+def toggle_interesting(request, kanji_id):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
     if request.method == 'POST':
-        kanji.interesting_kanji.add(request.user.profile)
+        # big question is what to do if this is None
+        # no idea what the break cases are
+        userprofile = request.user.profile
+        if kanji.interesting_kanji.all().filter(pk=userprofile.pk).exists():
+            kanji.interesting_kanji.remove(userprofile)
+        else:
+            kanji.interesting_kanji.add(userprofile)
+    return redirect('individual', kanji_id)
+
+@login_required
+def toggle_difficult(request, kanji_id):
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    if request.method == 'POST':
+        userprofile = request.user.profile
+        if kanji.difficult_kanji.all().filter(pk=userprofile.pk).exists():
+            kanji.difficult_kanji.remove(userprofile)
+        else:
+            kanji.difficult_kanji.add(userprofile)
+    return redirect('individual', kanji_id)
+
+@login_required
+def toggle_known(request, kanji_id):
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    if request.method == 'POST':
+        userprofile = request.user.profile
+        if kanji.known_kanji.all().filter(pk=userprofile.pk).exists():
+            kanji.known_kanji.remove(userprofile)
+        else:
+            kanji.known_kanji.add(userprofile)
     return redirect('individual', kanji_id)

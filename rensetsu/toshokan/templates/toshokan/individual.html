@@ -17,30 +17,38 @@
 	{{kanji.meaning}}
 </p>
 
-<!-- adding the kanji to your preferred fields -->
+<!-- toggling the kanji to defined fields -->
 
-<h3>Already found this kanji interesting</h3>
+<h3>interesting</h3>
 <ul>
     {% for userprofile in kanji.interesting_kanji.all %}
         <li>{{ userprofile.user.username }}</li>
     {% endfor %}
 </ul>
+<h3>difficult</h3>
+<ul>
+    {% for userprofile in kanji.difficult_kanji.all %}
+        <li>{{ userprofile.user.username }}</li>
+    {% endfor %}
+</ul>
+<h3>known</h3>
+<ul>
+    {% for userprofile in kanji.known_kanji.all %}
+        <li>{{ userprofile.user.username }}</li>
+    {% endfor %}
+</ul>
 
-<p>
-	Add this kanji to 'interesting'
-</p>
-
-<form action="{% url 'add_user' kanji.id %}" method="POST">
+<form action="{% url 'toggle_interesting' kanji.id %}" method="POST">
     {% csrf_token %}
-    <button>Add</button>
+    <button>interesting</button>
 </form>
 
+<form action="{% url 'toggle_difficult' kanji.id %}" method="POST">
+    {% csrf_token %}
+    <button>difficult</button>
+</form>
 
-<!-- <p>
-	<h3>Interesting</h3>
-	{% for userprofile in kanji.interesting_kanji.all %}
-		<li>
-			<a href="{% url 'profile' %}">{{ userprofile.user.username }}</a>
-		</li>
-	{% endfor %}
-</p> -->
+<form action="{% url 'toggle_known' kanji.id %}" method="POST">
+    {% csrf_token %}
+    <button>known</button>
+</form>
