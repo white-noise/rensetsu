@@ -7,9 +7,5 @@
 	    <li>
 	    	<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
 	    </li>
-	    <form action="{% url 'toggle_interesting' kanji.id %}" method="POST">
-		    {% csrf_token %}
-		    <button>interesting</button>
-		</form>
 	{% endfor %}
 </ol>

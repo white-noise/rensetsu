@@ -23,4 +23,4 @@ class KanjiCompound(models.Model):
         related_name="constituent_kanji")
 
     def __str__(self):
-        return self.characters
+        return self.characters 

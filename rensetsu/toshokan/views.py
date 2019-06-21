@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from .models import Kanji
+from base.forms import KanjiCommentForm
 
 @login_required
 def index(request):
@@ -15,10 +16,14 @@ def individual(request, kanji_id):
     reading_eng = (kanji.reading_eng).split(",")
     reading_jpn = (kanji.reading_jpn).split(",")
 
+    comments = kanji.kanji_comment.all().filter(user=request.user.profile)
+
     return render(request, 'toshokan/individual.html',
      {'kanji': kanji,
      'reading_eng': reading_eng,
-     'reading_jpn': reading_jpn
+     'reading_jpn': reading_jpn,
+     'comments': comments,
+     'form': KanjiCommentForm(),
      })
 
 @login_required
@@ -54,4 +59,17 @@ def toggle_known(request, kanji_id):
             kanji.known_kanji.remove(userprofile)
         else:
             kanji.known_kanji.add(userprofile)
+    return redirect('individual', kanji_id)
+
+@login_required
+def add_comment(request, kanji_id):
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    if request.method == 'POST':
+        form = KanjiCommentForm(request.POST)
+        new_comment       = form.save(commit=False)
+        new_comment.kanji = kanji
+        new_comment.user  = request.user.profile
+        new_comment.save()
+        form.save_m2m()
+
     return redirect('individual', kanji_id)

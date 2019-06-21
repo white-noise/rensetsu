@@ -52,3 +52,18 @@
     {% csrf_token %}
     <button>known</button>
 </form>
+
+<form action="{% url 'add_comment' kanji.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>comment</button>
+</form>
+<h3>comments</h3>
+<ul>
+    {% for comment in comments %}
+        {{ comment }}
+        <br>
+        {{ comment.date_time }}
+        <br>
+    {% endfor %}
+</ul>

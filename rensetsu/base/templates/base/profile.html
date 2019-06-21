@@ -3,38 +3,37 @@
 </h1>
 
 <p>
-	{{ userinfo.user.username }}
+	{{ userinfo.user.first_name }} {{ userinfo.user.last_name }}
 </p>
 
 <p>
 	{{ userinfo.user.email }}
 </p>
 
-<h3>Interesting Kanji</h3>
-<!-- Note that the reverse of the ManyToMany uses the related_name attribute only -->
+<h2>interesting kanji</h2>
 <p>
 	{% for kanji in userinfo.interesting_kanji.all %}
-		<li>
+		<h2>
 			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-		</li>
+		</h2>
 	{% endfor %}
 </p>
 
-<h3>Difficult Kanji</h3>
+<h2>difficult kanji</h2>
 <p>
 	{% for kanji in userinfo.difficult_kanji.all %}
-		<li>
+		<h2>
 			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-		</li>
+		</h2>
 	{% endfor %}
 </p>
 
-<h3>Known Kanji</h3>
+<h2>known kanji</h2>
 <p>
 	{% for kanji in userinfo.known_kanji.all %}
-		<li>
+		<h2>
 			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-		</li>
+		</h2>
 	{% endfor %}
 </p>
 

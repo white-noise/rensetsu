@@ -6,10 +6,9 @@
 - reminded of what you don't know, reminded of you what you do know, with simple views
 
 ### immediate to do
-- distinction between account views and generic views
+- change to generic group toggle for kanji
 - kanji card format, scrubbing kanji json
-- basic styling for ease of testing
-- kanji compound model (additional option to update when constituent kanji added to the database, if alternate kanji are used)
+- basic styling
 - AJAX for adding and deleting kanji from groups quietly and inline
 
 ### points of caution

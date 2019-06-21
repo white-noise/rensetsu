@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:kanji_id>/interesting/', views.toggle_interesting, name='toggle_interesting'),
     path('<int:kanji_id>/difficult/', views.toggle_difficult, name='toggle_difficult'),
     path('<int:kanji_id>/known/', views.toggle_known, name='toggle_known'),
+    path('<int:kanji_id>/comment/', views.add_comment, name='add_comment')
 ]
