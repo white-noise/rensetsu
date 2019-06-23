@@ -1,42 +1,33 @@
-<h1>
-	Profile
-</h1>
+{% extends 'base/base.html' %}
 
-<p>
-	{{ userinfo.user.first_name }} {{ userinfo.user.last_name }}
-</p>
+{% block content %}
 
-<p>
-	{{ userinfo.user.email }}
-</p>
-
-<h2>interesting kanji</h2>
-<p>
-	{% for kanji in userinfo.interesting_kanji.all %}
-		<h2>
-			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-		</h2>
-	{% endfor %}
-</p>
-
-<h2>difficult kanji</h2>
-<p>
-	{% for kanji in userinfo.difficult_kanji.all %}
-		<h2>
-			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-		</h2>
-	{% endfor %}
-</p>
-
-<h2>known kanji</h2>
-<p>
-	{% for kanji in userinfo.known_kanji.all %}
-		<h2>
-			<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-		</h2>
-	{% endfor %}
-</p>
-
-<p>
+	<a href="{% url 'base:index' %}">homepage</a>
+	<a href="{% url 'toshokan:index' %}">library</a>
 	<a href="{% url 'logout' %}">logout</a>
-</p>
+
+	<p>
+		{{ userinfo.user.first_name }} {{ userinfo.user.last_name }} ({{userinfo.user.username}})
+	</p>
+
+	<p>
+		interesting kanji:
+		{% for kanji in userinfo.interesting_kanji.all %}
+			<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+		{% endfor %}
+	</p>
+	<p>
+		difficult kanji:
+		{% for kanji in userinfo.difficult_kanji.all %}
+			<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+		{% endfor %}
+	</p>
+
+	<p>
+		known kanji:
+		{% for kanji in userinfo.known_kanji.all %}
+			<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+		{% endfor %}
+	</p>
+
+{% endblock %}

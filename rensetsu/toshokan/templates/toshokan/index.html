@@ -1,11 +1,21 @@
-<h1>
-	Kanji List
-</h1>
+{% extends 'base/base.html' %}
 
-<ol>
-	{% for kanji in kanji_list %}
-	    <li>
-	    	<a href="{% url 'individual' kanji.id %}">{{ kanji.character }}</a>
-	    </li>
-	{% endfor %}
-</ol>
+{% block content %}
+
+	<a href="{% url 'base:index' %}">homepage</a>
+	<a href="{% url 'toshokan:index' %}">library</a>
+	<a href="{% url 'base:profile' %}">profile</a>
+
+	<p>
+		joyo kanji list
+	</p>
+
+	<ol>
+		{% for kanji in kanji_list %}
+		    <li>
+		    	<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+		    </li>
+		{% endfor %}
+	</ol>
+
+{% endblock %}
