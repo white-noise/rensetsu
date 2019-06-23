@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+	<p>
+		for user {{userinfo.user.username}}
+	</p>
+
+	<p>
+		add a group with the name:
+		<form action="{% url 'base:add_group'%}" method="POST">
+		    {% csrf_token %}
+		    {{ form.as_p }}
+		    <button>add group</button>
+		</form>
+	</p>
+
+{% endblock %}

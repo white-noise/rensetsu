@@ -12,4 +12,6 @@ urlpatterns = [
     path('<int:kanji_id>/known/', views.toggle_known, name='toggle_known'),
     path('<int:kanji_id>/comment/', views.comment, name='comment'),
     path('<int:kanji_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('<int:kanji_id>/groups/', views.kanji_group_view, name='kanji_group_view'),
+    path('<int:kanji_id>/groups/<int:group_id>/', views.add_kanji_to_group, name='add_kanji_to_group'),
 ]

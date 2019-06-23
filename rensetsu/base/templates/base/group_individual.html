@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <p>
+        group name: {{group.name}}
+    </p>
+
+    <p>
+        group elements:
+        {% for group_elem in group.group_kanji.all %}
+            {{ group_elem.kanji }}
+        {% endfor %}
+    </p>
+
+{% endblock %}

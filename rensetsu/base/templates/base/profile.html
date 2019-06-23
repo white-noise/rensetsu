@@ -30,4 +30,19 @@
 		{% endfor %}
 	</p>
 
+	<p>
+		add a <a href="{% url 'base:group' %}">group</a>
+	</p>
+
+	<p>
+		groups currently:
+		<ul>
+			{% for group in userinfo.group_profile.all %}
+				<li>
+					<a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</p>
+
 {% endblock %}

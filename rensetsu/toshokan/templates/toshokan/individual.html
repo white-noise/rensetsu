@@ -53,4 +53,15 @@
         {% endfor %}
     </ul>
 
+    <a href="{% url 'toshokan:kanji_group_view' kanji.id %}">add this kanji to a group</a>
+
+    <h3>groups</h3>
+    <ul>
+        {% for group in groups %}
+        <li>
+            {{ group.name }} added at {{ group. }}
+        </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

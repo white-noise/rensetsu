@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+	<a href="{% url 'base:index' %}">homepage</a>
+	<a href="{% url 'toshokan:index' %}">library</a>
+	<a href="{% url 'logout' %}">logout</a>
+
+	<p>
+		for user ({{userprofile.user.username}})
+	</p>
+
+	<p>
+		add to which group:
+		<ul>
+			{% for group in userprofile.group_profile.all %}
+				<li>
+					{{ group.name }}
+					<form action="{% url 'toshokan:add_kanji_to_group' kanji_id=kanji.id group_id=group.id %}" method="POST">
+					    {% csrf_token %}
+					    <button>add</button>
+					</form>
+				</li>
+			{% endfor %}
+		</ul>
+	</p>
+
+{% endblock %}
