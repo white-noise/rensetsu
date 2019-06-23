@@ -2,25 +2,24 @@
 
 ### objective of this app
 - language as collection
-- focus on the hyperlink, on navigability within referential net
+- focus on hyperlink, navigability within referential net
 - reminded of what you don't know, reminded of you what you do know, with simple views
 
 ### immediate to do
-- change to generic group toggle for kanji
-- kanji card format, scrubbing kanji json
-- basic styling
-- AJAX for adding and deleting kanji from groups quietly and inline
+- scrubbing kanji json
+- AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
+- css framework
+- generic groups
+- post-saves should be handled outside of the model file
+
+### long term implementation
+- simple themes, almost entirely text based. lightweight. light and dark mode.
+- custom groups beyond the three provided
+- groups can be used to quiz, results of quiz shown after, permiting reshuffling of groups
+- accounts communicate via friendships, sharing of comments and groups?
 
 ### points of caution
 - redirects from long lists, pagination
-
-### things to implement
-- user should be able to comment for a given kanji, i.e. store plain-text notes about its use, as well as example sentences, in clean, minimal boxes directly accessible with the kanji, based on logged in user.
-- simple themes, almost entirely text based. lightweight. light and dark mode.
-- post-saves should be handled outside of the model file.
-- custom groups beyond the three provided (description, date created, name, etc.)
-- groups can be used to quiz, results of quiz shown, and permit reshuffling of groups
-- do we go down the bootstrap hole? hardly anything besides centering is needed
 
 ### what is displayed on a profile
 - standard user data: name, username

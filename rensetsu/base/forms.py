@@ -7,6 +7,7 @@ class KanjiCommentForm(ModelForm):
         model = KanjiComment
         fields = ('comment',)
 
+    # in general this will define the look of the form
     def __init__(self, *args, **kwargs): 
         super(ModelForm, self).__init__(*args, **kwargs)
         self.fields['comment'].label = ''
