@@ -2,20 +2,36 @@
 
 {% block content %}
 
-	<a href="{% url 'base:index' %}">homepage</a>
-	<a href="{% url 'toshokan:index' %}">library</a>
-	<a href="{% url 'base:profile' %}">profile</a>
+    <a href="{% url 'base:index' %}">homepage</a>
+    <a href="{% url 'toshokan:index' %}">library</a>
+    <a href="{% url 'base:profile' %}">profile</a>
 
-	<p>
-		joyo kanji list
-	</p>
+    <p>
+        joyo kanji list
+    </p>
 
-	<ol>
-		{% for kanji in kanji_list %}
-		    <li>
-		    	<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-		    </li>
-		{% endfor %}
-	</ol>
+    <div class="container">
+        {% for kanji in kanji_list %}
+        <div class="p-1">
+            <div class="row border rounded p-3 mx-auto align-items-center">
+                <div class="col-sm-1">
+                    <h1>
+                        <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+                    </h1>
+                </div>
+                <div class="col-sm-11">
+                    <div class="row p-1">
+                        {{ kanji.reading_jpn }}
+                    </div>
+                    <div class="row p-1">
+                        {{ kanji.meaning }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
 
 {% endblock %}

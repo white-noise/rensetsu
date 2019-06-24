@@ -7,7 +7,7 @@ from base.forms import KanjiCommentForm
 
 @login_required
 def index(request):
-    kanji_list = Kanji.objects.all() # .order_by('strokes') # for example
+    kanji_list = Kanji.objects.all()[:10]#.order_by('radical') # for example
     context    = {'kanji_list': kanji_list}
     return render(request, 'toshokan/index.html', context)
 
