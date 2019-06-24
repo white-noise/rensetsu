@@ -19,7 +19,7 @@ def individual(request, kanji_id):
     reading_eng    = (kanji.reading_eng).split(",")
     reading_jpn    = (kanji.reading_jpn).split(",")
     comments       = kanji.kanji_comment.all().filter(user=request.user.profile)
-    groups         = kanji.group_kanji.all().filter(user=request.user.profile)
+    groups         = kanji.kanjigroupelement_set.all()
     is_interesting = kanji.interesting_kanji.all().filter(pk=userprofile.pk).exists()
     is_difficult   = kanji.difficult_kanji.all().filter(pk=userprofile.pk).exists()
     is_known       = kanji.known_kanji.all().filter(pk=userprofile.pk).exists()

@@ -3,13 +3,13 @@
 {% block content %}
 
     <p>
-        group name: {{group.name}}
+        group name: {{group.name}} created at {{group.date_time}}
     </p>
 
     <p>
         group elements:
-        {% for group_elem in group.group_kanji.all %}
-            {{ group_elem.kanji }}
+        {% for group_element in group.kanjigroupelement_set.all %}
+            <br><a href="{% url 'toshokan:individual' group_element.kanji.id %}">{{ group_element.kanji }}</a> added at {{ group_element.date_time }}
         {% endfor %}
     </p>
 

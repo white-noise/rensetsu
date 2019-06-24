@@ -57,10 +57,13 @@
 
     <h3>groups</h3>
     <ul>
-        {% for group in groups %}
-        <li>
-            {{ group.name }} added at {{ group. }}
-        </li>
+        {% for group_element in groups %}
+            {% ifequal group_element.group.user request.user.profile %}
+                <li>
+                    {{ group_element.group.name }} added at {{ group_element.date_time }}
+                </li>
+            {% else %}
+            {% endifequal %}
         {% endfor %}
     </ul>
 
