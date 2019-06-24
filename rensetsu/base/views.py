@@ -23,8 +23,8 @@ def group(request):
 
 @login_required
 def group_individual(request, group_id):
-    group   = get_object_or_404(KanjiGroup, pk=group_id)
-    context = {'group': group,}
+    group_object   = get_object_or_404(KanjiGroup, pk=group_id)
+    context = {'group': group_object}
     return render(request, 'base/group_individual.html', context)
 
 @login_required

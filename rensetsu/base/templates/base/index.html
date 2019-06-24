@@ -2,24 +2,22 @@
 
 {% block content %}
 
-    <a href="{% url 'base:index' %}">homepage</a>
-    <a href="{% url 'toshokan:index' %}">library</a>
-    <a href="{% url 'base:profile' %}">profile</a>
-
     {% if user.is_authenticated %}
-        <p>
-            welcome {{ user.username }}
-        </p>
-        <p>
-            <a href="{% url 'logout' %}">logout</a>
-        </p>
+        <div class="row p-3 align-items-center">
+            <div class="col-sm-12 text-center">
+                <h1>
+                   welcome, {{user.username}}
+                </h1>
+            </div>
+        </div>
     {% else %}
-        <p>
-            you are not logged in
-        </p>
-        <p>
-            <a href="{% url 'login' %}">login</a>
-        </p>
+        <div class="row p-3 align-items-center">
+            <div class="col-sm-12 text-center">
+                <h1>
+                   you are not logged in
+                </h1>
+            </div>
+        </div>
     {% endif %}
 
 {% endblock %}

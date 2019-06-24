@@ -2,58 +2,65 @@
 
 {% block content %}
 
-    <a href="{% url 'base:index' %}">homepage</a>
-    <a href="{% url 'toshokan:index' %}">library</a>
-    <a href="{% url 'base:profile' %}">profile</a>
-
-    <h1>
-    	{{ kanji.character }}
-    </h1>
-
-    <p>
-        reading: {% for reading in reading_jpn %}{{ reading }},{% endfor %}
-        <br>
-        meaning: {{kanji.meaning}}
-    </p>
-
-    <ul>
-        <li>
-            interesting: {% if is_interesting %}yes{% else %}no{% endif %}
-            <form action="{% url 'toshokan:toggle_interesting' kanji.id %}" method="POST">
+    <div class="row py-5"></div>
+    <div class="row border rounded py-5">
+        <div class="col-sm-1">
+            <h1>
+                <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+            </h1>
+        </div>
+        <div class="col-sm-7">
+            <div>
+                {{ kanji.reading_jpn }}
+            </div>
+            <div>
+                {{ kanji.meaning }}
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <form action="{% url 'toshokan:toggle_interesting' kanji.id %}" method="POST">
                 {% csrf_token %}
-                <button>toggle interesting</button>
-            </form>
-        </li>
-        <li>
-            difficult: {% if is_difficult %}yes{% else %}no{% endif %}
-            <form action="{% url 'toshokan:toggle_difficult' kanji.id %}" method="POST">
-                {% csrf_token %}
-                <button>toggle difficult</button>
-            </form>
-        </li>
-        <li>
-            known: {% if is_known %}yes{% else %}no{% endif %}
-            <form action="{% url 'toshokan:toggle_known' kanji.id %}" method="POST">
-                {% csrf_token %}
-                <button>toggle known</button>
-            </form>
-        </li>
-    </ul>
+                <button></button> 
+                interesting: {% if is_interesting %}yes{% else %}no{% endif %}
+                </form>
+            </div>
+            <div>
+                <form action="{% url 'toshokan:toggle_difficult' kanji.id %}" method="POST">
+                    {% csrf_token %}
+                    <button></button> 
+                    difficult: {% if is_difficult %}yes{% else %}no{% endif %}
+                </form>
+            </div>
+            <div>
+                <form action="{% url 'toshokan:toggle_known' kanji.id %}" method="POST">
+                    {% csrf_token %}
+                    <button></button> 
+                    known: {% if is_known %}yes{% else %}no{% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <a href="{% url 'toshokan:comment' kanji.id %}">make a new comment</a>
+    {% for comment in comments %}
+    <div class="pt-2">
+        <div class="row border rounded py-2">
+            <div class="col-sm-8">
+                {{ comment }}
+            </div>
+            <div class="col-sm-4 text-right">
+                {{ comment.date_time }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row pt-5">
+        <div class="col-sm-12">
+            <a href="{% url 'toshokan:comment' kanji.id %}">make a new comment</a>
+        </div>
+    </div>
 
-    <h3>comments</h3>
-    <ul>
-        {% for comment in comments %}
-        <li>
-            {{ comment.date_time }}
-            <br>
-            {{ comment }}
-        </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'toshokan:kanji_group_view' kanji.id %}">add this kanji to a group</a>
+<!--     <a href="{% url 'toshokan:kanji_group_view' kanji.id %}">add this kanji to a group</a>
 
     <h3>groups</h3>
     <ul>
@@ -65,6 +72,6 @@
             {% else %}
             {% endifequal %}
         {% endfor %}
-    </ul>
+    </ul> -->
 
 {% endblock %}

@@ -21,6 +21,8 @@
 ### points of caution
 - redirects from long lists, pagination
 - make sure various textfields don't have null=True (redundant, see docs)
+- groups are many to many, but should be kept private to a user
+- always keep kanji in common, but do so helpfully
 
 ### what is displayed on a profile
 - standard user data: name, username

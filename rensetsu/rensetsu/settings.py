@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'toshokan.apps.ToshokanConfig',
     'base.apps.BaseConfig',
+    'toshokan.apps.ToshokanConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
