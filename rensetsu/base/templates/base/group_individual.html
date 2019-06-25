@@ -3,39 +3,13 @@
 {% block content %}
 
     <p>
-        <!-- group name: {{group.name}} created at {{group.date_time}} -->
         test {{ group }}
     </p>
 
     <p>
-        <!-- group elements:
-        {% for group_element in group.kanjigroupelement_set.all %}
-            {{ group_element.kanji }} added at {{ group_element.date_time }}
-        {% endfor %} -->
+        {% for kanji in group.group_kanji.all %}
+            <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji }}</a>
+        {% endfor %}
     </p>
-
-<!--     <div class="row py-3">
-        <div class="col-sm-12">
-            <h1>
-               {{ group.name }}
-            </h1>
-        </div>
-    </div>
-    {% for group_element in group.kanjigroupelement_set.all %}
-        <div class="py-1">
-            <div class="row border rounded p-3 mx-auto align-items-center">
-                <div class="col-sm-1">
-                    <h1>
-                        <a href="{% url 'toshokan:individual' kanji.id %}">{{ group_element.kanji }}</a>
-                    </h1>
-                </div>
-                <div class="col-sm-11">
-                    <div>
-                        {{ group_element.kanji }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endfor %} -->
 
 {% endblock %}

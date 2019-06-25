@@ -8,9 +8,8 @@
 ### immediate to do
 - scrubbing kanji json
 - AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
-- css framework
-- generic groups
 - post-saves should be handled outside of the model file
+- ability to delete groups, change their names, etc
 
 ### long term implementation
 - simple themes, almost entirely text based. lightweight. light and dark mode.
