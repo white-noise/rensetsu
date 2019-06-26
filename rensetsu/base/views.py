@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile, KanjiGroup
@@ -18,14 +19,21 @@ def profile(request):
 
 @login_required
 def group(request):
-    context = {'form': KanjiGroupForm()}
+    userinfo = request.user.profile
+    context = {'form': KanjiGroupForm(), 'userinfo': userinfo}
     return render(request, 'base/group.html', context)
 
 @login_required
 def group_individual(request, group_id):
+    userprofile = request.user.profile
     group   = get_object_or_404(KanjiGroup, pk=group_id)
     context = {'group': group}
-    return render(request, 'base/group_individual.html', context)
+
+    # forbidding users from seeing each-other's groups
+    if not (group.user.id == userprofile.id):
+        return HttpResponseForbidden()
+    else:
+        return render(request, 'base/group_individual.html', context)
 
 @login_required
 def add_group(request):

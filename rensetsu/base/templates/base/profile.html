@@ -2,14 +2,14 @@
 
 {% block content %}
 
-    <div class="row p-3 align-items-center">
+    <div class="row p-3">
         <div class="col-sm-12">
         	<div class="row">
             	{{ userinfo.user.first_name }} {{ userinfo.user.last_name }} ({{userinfo.user.username}})
             </div>
         </div>
     </div>
-    <div class="row p-3 align-items-center">
+    <div class="row p-3">
         <div class="col-sm-6">
         	<div class="row">
         		special:
@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-6">
         	<div class="row">
-        		groups:
+        		<a href="{% url 'base:group' %}">add a new group</a>
         	</div>
         	{% for group in userinfo.group_profile.all %}
 				<div class="row">
