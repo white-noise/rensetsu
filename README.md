@@ -10,6 +10,7 @@
 - AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
 - post-saves should be handled outside of the model file
 - ability to delete groups, change their names, etc
+- simple user interaction (friends, short messages, sharing groups?)
 
 ### long term implementation
 - simple themes, almost entirely text based. lightweight. light and dark mode.
