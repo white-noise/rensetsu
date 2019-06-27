@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+	<h2>
+		{{kanji}}
+	</h2>
+	<p>
+		previous comment: {{ comment }}
+	</p>
+	<form action="{% url 'toshokan:modify_comment' kanji.id comment.id %}" method="POST">
+	    {% csrf_token %}
+	    {{ form.as_p }}
+	    <button>edit comment</button>
+	</form>
+
+{% endblock %}

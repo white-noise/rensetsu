@@ -6,6 +6,8 @@ from .models import Kanji
 from base.models import KanjiGroup, KanjiComment
 from base.forms import KanjiCommentForm
 
+from django.utils import timezone
+
 @login_required
 def index(request):
     kanji_list = Kanji.objects.all()[:50]#.order_by('radical') # for example
@@ -19,7 +21,7 @@ def individual(request, kanji_id):
 
     reading_eng    = (kanji.reading_eng).split(",")
     reading_jpn    = (kanji.reading_jpn).split(",")
-    comments       = kanji.kanji_comment.filter(user__id=userprofile.id)
+    comments       = kanji.kanji_comment.filter(user__id=userprofile.id).order_by('-date_time')
     groups         = kanji.kanjigroupelement_set.filter(group__user__id=userprofile.id)
     is_interesting = kanji.interesting_kanji.filter(pk=userprofile.pk).exists()
     is_difficult   = kanji.difficult_kanji.filter(pk=userprofile.pk).exists()
@@ -113,16 +115,26 @@ def delete_comment(request, kanji_id, comment_id):
     return redirect('toshokan:individual', kanji_id)
 
 @login_required
+def edit_comment(request, kanji_id, comment_id):
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    comment = get_object_or_404(KanjiComment, pk=comment_id)
+    context = {'kanji': kanji, 'comment': comment, 'form': KanjiCommentForm(),}
+
+    return render(request, 'toshokan/edit_comment.html', context)
+
+@login_required
 def modify_comment(request, kanji_id, comment_id):
     comment = get_object_or_404(KanjiComment, pk=comment_id)
     userprofile = request.user.profile
     
-    # next goal is to make this safe and build a page to it
     if request.method == 'POST':
         form = KanjiCommentForm(request.POST)
         new_comment = form['comment'].value()
-        date_time = form['date_time'].value()
+        print(new_comment)
+        date_time = timezone.now()
         comment.comment = new_comment
+        comment.date_time = date_time
+        comment.save()
 
     return redirect('toshokan:individual', kanji_id)
 
