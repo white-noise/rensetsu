@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 
 from .models import Kanji
-from base.models import KanjiGroup
+from base.models import KanjiGroup, KanjiComment
 from base.forms import KanjiCommentForm
 
 @login_required
 def index(request):
-    kanji_list = Kanji.objects.all()[:10]#.order_by('radical') # for example
+    kanji_list = Kanji.objects.all()[:50]#.order_by('radical') # for example
     context    = {'kanji_list': kanji_list}
     return render(request, 'toshokan/index.html', context)
 
@@ -18,11 +19,11 @@ def individual(request, kanji_id):
 
     reading_eng    = (kanji.reading_eng).split(",")
     reading_jpn    = (kanji.reading_jpn).split(",")
-    comments       = kanji.kanji_comment.all().filter(user=request.user.profile)
-    groups         = kanji.kanjigroupelement_set.all()
-    is_interesting = kanji.interesting_kanji.all().filter(pk=userprofile.pk).exists()
-    is_difficult   = kanji.difficult_kanji.all().filter(pk=userprofile.pk).exists()
-    is_known       = kanji.known_kanji.all().filter(pk=userprofile.pk).exists()
+    comments       = kanji.kanji_comment.filter(user__id=userprofile.id)
+    groups         = kanji.kanjigroupelement_set.filter(group__user__id=userprofile.id)
+    is_interesting = kanji.interesting_kanji.filter(pk=userprofile.pk).exists()
+    is_difficult   = kanji.difficult_kanji.filter(pk=userprofile.pk).exists()
+    is_known       = kanji.known_kanji.filter(pk=userprofile.pk).exists()
 
     return render(request, 'toshokan/individual.html',
      {'kanji': kanji,
@@ -38,10 +39,9 @@ def individual(request, kanji_id):
 @login_required
 def toggle_interesting(request, kanji_id):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
+    userprofile = request.user.profile
+
     if request.method == 'POST':
-        # big question is what to do if this is None
-        # no idea what the break cases are
-        userprofile = request.user.profile
         if kanji.interesting_kanji.all().filter(pk=userprofile.pk).exists():
             kanji.interesting_kanji.remove(userprofile)
         else:
@@ -51,8 +51,9 @@ def toggle_interesting(request, kanji_id):
 @login_required
 def toggle_difficult(request, kanji_id):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
+    userprofile = request.user.profile
+
     if request.method == 'POST':
-        userprofile = request.user.profile
         if kanji.difficult_kanji.all().filter(pk=userprofile.pk).exists():
             kanji.difficult_kanji.remove(userprofile)
         else:
@@ -62,8 +63,9 @@ def toggle_difficult(request, kanji_id):
 @login_required
 def toggle_known(request, kanji_id):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
+    userprofile = request.user.profile
+
     if request.method == 'POST':
-        userprofile = request.user.profile
         if kanji.known_kanji.all().filter(pk=userprofile.pk).exists():
             kanji.known_kanji.remove(userprofile)
         else:
@@ -86,6 +88,7 @@ def comment(request, kanji_id):
 @login_required
 def add_comment(request, kanji_id):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
+    
     if request.method == 'POST':
         form = KanjiCommentForm(request.POST)
         new_comment       = form.save(commit=False)
@@ -93,6 +96,33 @@ def add_comment(request, kanji_id):
         new_comment.user  = request.user.profile
         new_comment.save()
         form.save_m2m()
+
+    return redirect('toshokan:individual', kanji_id)
+
+@login_required
+def delete_comment(request, kanji_id, comment_id):
+    comment = get_object_or_404(KanjiComment, pk=comment_id)
+    userprofile = request.user.profile
+    
+    if request.method == 'POST':
+        if comment.user == userprofile:  
+            comment.delete()
+        else:
+            return HttpResponseNotFound()
+
+    return redirect('toshokan:individual', kanji_id)
+
+@login_required
+def modify_comment(request, kanji_id, comment_id):
+    comment = get_object_or_404(KanjiComment, pk=comment_id)
+    userprofile = request.user.profile
+    
+    # next goal is to make this safe and build a page to it
+    if request.method == 'POST':
+        form = KanjiCommentForm(request.POST)
+        new_comment = form['comment'].value()
+        date_time = form['date_time'].value()
+        comment.comment = new_comment
 
     return redirect('toshokan:individual', kanji_id)
 
@@ -108,8 +138,29 @@ def kanji_group_view(request, kanji_id):
 def add_kanji_to_group(request, kanji_id, group_id):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
     group = get_object_or_404(KanjiGroup, pk=group_id)
+    userprofile = request.user.profile
     
     if request.method == 'POST':
-        kanji.group_kanji.add(group)
+        if group.user == userprofile:
+            kanji.group_kanji.add(group)
+        else:
+            return HttpResponseNotFound()
 
+    return redirect('toshokan:individual', kanji_id)
+
+@login_required
+def remove_kanji_from_group(request, kanji_id, group_id):
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    group = get_object_or_404(KanjiGroup, pk=group_id)
+    userprofile = request.user.profile
+    
+    if request.method == 'POST':
+        if group.user == userprofile:  
+            if kanji.group_kanji.filter(id=group.id).exists():
+                kanji.group_kanji.remove(group)
+            else:
+                return HttpResponseNotFound()
+        else:
+            return HttpResponseNotFound()
+    
     return redirect('toshokan:individual', kanji_id)

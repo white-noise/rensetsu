@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile, KanjiGroup
@@ -31,7 +31,7 @@ def group_individual(request, group_id):
 
     # forbidding users from seeing each-other's groups
     if not (group.user.id == userprofile.id):
-        return HttpResponseForbidden()
+        return HttpResponseNotFound()
     else:
         return render(request, 'base/group_individual.html', context)
 
@@ -47,3 +47,13 @@ def add_group(request):
         form.save_m2m()
 
     return redirect('base:profile')
+
+@login_required
+def delete_group(request, group_id):
+
+    return redirect('base:index')
+
+@login_required
+def modify_group_name(request, group_id):
+
+    return redirect('base:index')

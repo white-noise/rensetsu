@@ -41,37 +41,47 @@
             </div>
         </div>
     </div>
-
     {% for comment in comments %}
-    <div class="pt-2">
-        <div class="row border rounded py-2">
-            <div class="col-sm-8">
-                {{ comment }}
-            </div>
-            <div class="col-sm-4 text-right">
-                {{ comment.date_time }}
+        <div class="pt-2">
+            <div class="row border rounded py-2">
+                <div class="col-sm-7">
+                    {{ comment }}
+                </div>
+                <div class="col-sm-4 text-right">
+                    {{ comment.date_time }}
+                </div>
+                <div class="col-sm-1 text-right">
+                    <form action="{% url 'toshokan:delete_comment' kanji.id comment.id %}" method="POST">
+                        {% csrf_token %}
+                        <button>remove</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     {% endfor %}
     <div class="row pt-5">
         <div class="col-sm-12">
             <a href="{% url 'toshokan:comment' kanji.id %}">make a new comment</a>
         </div>
     </div>
-
-<!--     <a href="{% url 'toshokan:kanji_group_view' kanji.id %}">add this kanji to a group</a>
-
-    <h3>groups</h3>
-    <ul>
-        {% for group_element in groups %}
-            {% ifequal group_element.group.user request.user.profile %}
+    <div class="row pt-5">
+        <div class="col-sm-12">
+            <a href="{% url 'toshokan:kanji_group_view' kanji.id %}">add this kanji to a group</a>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col-sm-12">
+            this kanji is in the groups:
+            {% for group_element in groups %}
                 <li>
-                    {{ group_element.group.name }} added at {{ group_element.date_time }}
+                    {{ group_element.group.name }} owned by {{ group_element.group.user }}
+                    <form action="{% url 'toshokan:remove_kanji_from_group' kanji.id group_element.group.id %}" method="POST">
+                        {% csrf_token %}
+                        <button>remove</button>
+                    </form>
                 </li>
-            {% else %}
-            {% endifequal %}
-        {% endfor %}
-    </ul> -->
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}
