@@ -2,13 +2,28 @@
 
 {% block content %}
 
-	<h2>
-		{{kanji}}
-	</h2>
+	<div class="row py-2">
+		<div class="col-sm-12">
+			<h2>
+				{{kanji}}のコメント
+			</h2>	
+		</div>
+	</div>
 	<form action="{% url 'toshokan:add_comment' kanji.id %}" method="POST">
 	    {% csrf_token %}
-	    {{ form.as_p }}
-	    <button>comment</button>
+	    <div class="row py-2">
+            <div class="col-sm-12">
+                <textarea id="id_comment" name="comment" 
+                           type="text" class="form-control" rows='5'></textarea>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-sm-12">
+                <input type="submit" value="comment" 
+               class="btn btn-primary btn-block" />
+                <input type="hidden" name="next" value="{{ next }}" /> 
+            </div>
+        </div>
 	</form>
 
 {% endblock %}

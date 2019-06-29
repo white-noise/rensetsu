@@ -1,14 +1,48 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+    
+<div class="col-sm-12">
+    <form id="login-form" method="POST" 
+        action="{% url 'login' %}">
+        {% csrf_token %}
 
-	<p>
-		login
-	</p>
-	<form method="post">
-	    {% csrf_token %}
-	    {{ form.as_p }}
-	    <button type="submit">login</button>
-	</form>
+        {% if form.errors %}
+            <div class="row pt-2">
+                <div class="col-sm-12">
+                    Your username or password is incorrect.
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row py-2">
+            <div class="col-sm-4">
+                <label for="id_username">Username</label>
+            </div>
+            <div class="col-sm-8">
+                <input id="id_username" name="username" 
+                           type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-sm-4">
+                <label for="id_password">Password</label>
+            </div>
+            <div class="col-sm-8">
+                <input id="id_password" name="password" 
+                           type="password" class="form-control">
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-8">
+                <input type="submit" value="login" 
+               class="btn btn-primary btn-block" />
+                <input type="hidden" name="next" value="{{ next }}" />  
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
