@@ -10,7 +10,7 @@ from django.utils import timezone
 
 @login_required
 def index(request):
-    kanji_list = Kanji.objects.all()[:50]#.order_by('radical') # for example
+    kanji_list = Kanji.objects.all().order_by('grade')
     context    = {'kanji_list': kanji_list}
     return render(request, 'toshokan/index.html', context)
 

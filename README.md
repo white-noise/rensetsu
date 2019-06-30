@@ -1,6 +1,6 @@
 ## rensetsu 連接 (a kanji collection app)
 
-### objective of this app
+### objective of app
 - language as collection
 - focus on hyperlink, navigability within referential net
 - reminded of what you don't know, reminded of you what you do know, with simple views
@@ -23,6 +23,12 @@
 - make sure various textfields don't have null=True (redundant, see docs)
 - groups are many to many, but should be kept private to a user
 - always keep kanji in common, but do so helpfully
+
+### things to do with kanji database
+- provide japanese reading for jukugo
+- create reasonable database structure for jukugo objects
+- determine if jukugo contain only joyo kanji
+- supplement definitions, and separate on- and kun-yomi
 
 ### what is displayed on a profile
 - standard user data: name, username
