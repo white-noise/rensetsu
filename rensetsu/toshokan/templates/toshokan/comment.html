@@ -2,13 +2,6 @@
 
 {% block content %}
 
-	<div class="row py-2">
-		<div class="col-sm-12">
-			<h2>
-				{{kanji}}のコメント
-			</h2>	
-		</div>
-	</div>
 	<form action="{% url 'toshokan:add_comment' kanji.id %}" method="POST">
 	    {% csrf_token %}
 	    <div class="row py-2">

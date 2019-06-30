@@ -10,61 +10,47 @@
         </div>
     </div>
     <div class="row pb-2">
-        <div class="col-sm-6">
-            <div class="row pb-2">
-                special kanji
-            </div>
+        <div class="col-sm-8">
             <div class="row pb-2">
                 interesting
             </div>
             <div class="row">
-                <ul>
                 {% for kanji in userinfo.interesting_kanji.all %}
-                    <li>
-                        <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                    </li>
+                <h2>
+                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+                </h2>
                 {% endfor %}
-                </ul>
             </div>
             <div class="row pb-2">
                 difficult
             </div>
             <div class="row">
-                <ul>
                 {% for kanji in userinfo.difficult_kanji.all %}
-                    <li>
-                        <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                    </li>
+                <h2>
+                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+                </h2>
                 {% endfor %}
-                </ul>
             </div>
             <div class="row pb-2">
                 known
             </div>
             <div class="row">
-                <ul>
                 {% for kanji in userinfo.known_kanji.all %}
-                    <li>
-                        <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                    </li>
+                <h2>
+                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+                </h2>
                 {% endfor %}
-                </ul>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="row pb-2">
-                groups                
-            </div>
-            <div class="row pb-2">
-                <a href="{% url 'base:group' %}">add a new group</a>
-            </div>
+        <div class="col-sm-4">
             <div class="row">
-                <ul>
+                <ul class="list-group list-group-flush w-100">
                 {% for group in userinfo.group_profile.all %}
-                    <li>
+                    <li class="list-group-item">
                         <a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>
                     </li>
                 {% endfor %}
+                <a class="list-group-item list-group-item-action active" href="{% url 'base:group' %}">add a new group</a>
                 </ul>
             </div>
         </div>

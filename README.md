@@ -6,10 +6,10 @@
 - reminded of what you don't know, reminded of you what you do know, with simple views
 
 ### immediate to do
+- form validation (e.g., exceeded character length)
 - scrubbing kanji json
 - AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
 - post-saves should be handled outside of the model file
-- ability to delete groups, change their names, etc
 - simple user interaction (friends, short messages, sharing groups?)
 
 ### long term implementation

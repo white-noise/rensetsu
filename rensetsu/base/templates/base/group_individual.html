@@ -2,14 +2,16 @@
 
 {% block content %}
 
-    <p>
-        {{ group }} of user {{ group.user }}
-    </p>
-
-    <p>
-        {% for kanji in group.group_kanji.all %}
-            <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji }}</a>
-        {% endfor %}
-    </p>
+    <div class="row">
+    	<ul class="list-group list-group-flush w-100">
+    		{% for kanji in group.group_kanji.all %}
+    			<li class="list-group-item text-center">
+    				<h2>
+	            	<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+	        		</h2>
+    			</li>
+	        {% endfor %}
+    	</ul>
+    </div>
 
 {% endblock %}
