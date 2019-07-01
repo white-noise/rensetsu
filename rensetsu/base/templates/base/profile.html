@@ -2,63 +2,34 @@
 
 {% block content %}
 
+    <nav class="navbar fixed-bottom navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="{% url 'base:index' %}">連接</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavBottom" aria-controls="navbarNavBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavBottom">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'base:group' %}">add a new group</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="row py-2">
         <div class="col-sm-2">
-            <div class="row">
-                {{ userinfo.user.first_name }} {{ userinfo.user.last_name }} 
-            </div>
+            {{ userinfo.user.first_name }} {{ userinfo.user.last_name }} 
         </div>
         <div class="col-sm-10">
-            <div class="row">
-                ({{userinfo.user.username}})
-            </div>
+            ({{userinfo.user.username}})
         </div>
     </div>
-    <div class="row pb-2">
-        <div class="col-sm-9">
-            <div class="row pb-2">
-                interesting
+    <div class="row">
+        {% for group in userinfo.group_profile.all %}
+            <div class="col-sm-12 pb-2">
+                <a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>
             </div>
-            <div class="row">
-                {% for kanji in userinfo.interesting_kanji.all %}
-                <h2>
-                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                </h2>
-                {% endfor %}
-            </div>
-            <div class="row pb-2">
-                difficult
-            </div>
-            <div class="row">
-                {% for kanji in userinfo.difficult_kanji.all %}
-                <h2>
-                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                </h2>
-                {% endfor %}
-            </div>
-            <div class="row pb-2">
-                known
-            </div>
-            <div class="row">
-                {% for kanji in userinfo.known_kanji.all %}
-                <h2>
-                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                </h2>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="row">
-                <ul class="list-group list-group-flush">
-                {% for group in userinfo.group_profile.all %}
-                    <li class="list-group-item">
-                        <a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>
-                    </li>
-                {% endfor %}
-                <a class="list-group-item list-group-item-action active" href="{% url 'base:group' %}">add a new group</a>
-                </ul>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
 {% endblock %}
