@@ -3,14 +3,19 @@
 {% block content %}
 
     <div class="row py-2">
-        <div class="col-sm-12">
+        <div class="col-sm-2">
             <div class="row">
-                {{ userinfo.user.first_name }} {{ userinfo.user.last_name }} ({{userinfo.user.username}})
+                {{ userinfo.user.first_name }} {{ userinfo.user.last_name }} 
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                ({{userinfo.user.username}})
             </div>
         </div>
     </div>
     <div class="row pb-2">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="row pb-2">
                 interesting
             </div>
@@ -42,9 +47,9 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="row">
-                <ul class="list-group list-group-flush w-100">
+                <ul class="list-group list-group-flush">
                 {% for group in userinfo.group_profile.all %}
                     <li class="list-group-item">
                         <a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>

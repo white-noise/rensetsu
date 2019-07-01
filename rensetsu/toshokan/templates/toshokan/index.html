@@ -3,7 +3,7 @@
 {% block content %}
 
     {% for kanji in kanji_list %}
-        <div class="row pt-2">
+        <div class="row pt-2 align-items-center">
             <div class="col-sm-1 pr-4">
                 <h1>
                     <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
