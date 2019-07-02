@@ -15,12 +15,19 @@ class Kanji(models.Model):
         return self.character
 
 class KanjiCompound(models.Model):
-    characters     = models.CharField(max_length=20)
-    meaning        = models.TextField()
-    reading_jpn    = models.CharField(max_length=100)   
-    reading_eng    = models.CharField(max_length=100)
-    references     = models.ManyToManyField(Kanji, blank=True, 
-        related_name="constituent_kanji")
+    characters        = models.CharField(max_length=20)
+    meaning           = models.TextField()
+    # reading_jpn       = models.CharField(max_length=100)   
+    reading_eng       = models.CharField(max_length=100)
+    constituent_kanji = models.ManyToManyField(Kanji, 
+        blank=True, 
+        related_name="constituent_kanji", 
+        through="KanjiCompoundElement")
 
     def __str__(self):
-        return self.characters 
+        return self.characters
+
+class KanjiCompoundElement(models.Model):
+    kanji_compound = models.ForeignKey(KanjiCompound, on_delete=models.CASCADE)
+    kanji          = models.ForeignKey(Kanji, on_delete=models.CASCADE)
+    position       = models.IntegerField()

@@ -18,14 +18,14 @@
 
     <div class="row py-2">
         <div class="col-sm-2">
-            {{ userinfo.user.first_name }} {{ userinfo.user.last_name }} 
+            {{ userprofile.user.first_name }} {{ userprofile.user.last_name }} 
         </div>
         <div class="col-sm-10">
-            ({{userinfo.user.username}})
+            ({{userprofile.user.username}})
         </div>
     </div>
     <div class="row">
-        {% for group in userinfo.group_profile.all %}
+        {% for group in userprofile.group_profile.all %}
             <div class="col-sm-12 pb-2">
                 <a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>
             </div>

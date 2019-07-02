@@ -3,6 +3,13 @@
 {% block content %}
 
     <form action="{% url 'base:add_group'%}" method="POST">
+        {% if form.errors %}
+            {% for error, error_val in form.errors.items %}
+            <div class="col-sm-12 alert alert-danger text-center">
+                {{ error_val|first }}
+            </div>
+            {% endfor %}
+        {% endif %}
         {% csrf_token %}
         <div class="row py-2">
             <div class="col-sm-12">

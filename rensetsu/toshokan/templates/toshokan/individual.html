@@ -2,12 +2,12 @@
 
 {% block content %}
     
-    <nav class="navbar fixed-bottom navbar-expand-lg">
+    <nav class="navbar fixed-bottom navbar-light navbar-expand-lg">
         <a class="navbar-brand" href="{% url 'base:index' %}">連接</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavBottom" aria-controls="navbarNavBottom" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNavBottom">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'toshokan:comment' kanji.id %}">comment</a>
@@ -16,11 +16,32 @@
                     <a class="nav-link" href="{% url 'toshokan:kanji_group_view' kanji.id %}">add to group</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">remove from group</a>
+                    <a class="nav-link" href="{% url 'toshokan:kanji_delete_group_view' kanji.id %}">remove from group</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form action="{% url 'toshokan:toggle_interesting' kanji.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-link nav-link">favorite</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{% url 'toshokan:toggle_difficult' kanji.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-link nav-link">difficult</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{% url 'toshokan:toggle_known' kanji.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-link nav-link">known</button>
+                    </form>
                 </li>
             </ul>
         </div>
     </nav>
+
     <div class="row align-items-center py-2">
         <div class="col-sm-2">
             <h1>
@@ -28,58 +49,35 @@
             </h1>
         </div>
         <div class="col-sm-6">
-            {{ kanji.reading_jpn }}
+            <div>
+                reading: {{ kanji.reading_jpn }}
+            </div>
+            <div>
+                meaning: {{ kanji.meaning }}
+            </div>
         </div>
         <div class="col-sm-4">
-            {{ kanji.meaning }}
+            <div>
+                strokes: {{ kanji.strokes }}
+            </div>
+            <div>
+                grade: {{ kanji.grade }}
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-1 pt-2">
-            <form action="{% url 'toshokan:toggle_interesting' kanji.id %}" method="POST">
-                {% csrf_token %}
-                {% if is_interesting %}
-                    <button class="btn btn-link">favorite</button>
-                {% else %}
-                    <button class="btn btn-link">favorite</button> 
-                {% endif %}
-            </form>
-        </div>
-        <div class="col-sm-1 pt-2">
-            <form action="{% url 'toshokan:toggle_difficult' kanji.id %}" method="POST">
-                {% csrf_token %}
-                {% if is_difficult %}
-                    <button class="btn btn-link">difficult</button>
-                {% else %}
-                    <button class="btn btn-link">difficult</button> 
-                {% endif %}
-            </form>
-        </div>
-        <div class="col-sm-1 pt-2">
-            <form action="{% url 'toshokan:toggle_known' kanji.id %}" method="POST">
-                {% csrf_token %}
-                {% if is_known %}
-                    <button class="btn btn-link">known</button>
-                {% else %}
-                    <button class="btn btn-link">known</button> 
-                {% endif %}
-            </form>
-        </div>
-        <div class="col-sm-9 pt-2">
-        </div>
-    </div>
+
     {% for comment in comments %}
         <div class="row pt-2">
-            <div class="col-sm-10">
+            <div class="col-sm-6 offset-2">
                 {{ comment }}
             </div>
-            <div class="col-sm-1 text-right">
+            <div class="col-sm-2">
                 <form action="{% url 'toshokan:delete_comment' kanji.id comment.id %}" method="POST">
                     {% csrf_token %}
                     <button class="btn btn-link">delete</button>
                 </form>
             </div>
-            <div class="col-sm-1 text-right">
+            <div class="col-sm-2">
                 <form action="{% url 'toshokan:edit_comment' kanji.id comment.id %}" method="POST">
                     {% csrf_token %}
                     <button class="btn btn-link">edit</button>
@@ -88,11 +86,5 @@
         </div>
     {% endfor %}
 
-    {% for group_element in groups %}
-        <form action="{% url 'toshokan:remove_kanji_from_group' kanji.id group_element.group.id %}" method="POST">
-            {% csrf_token %}
-            <button class="btn btn-link">{{ group_element.group.name }}</button>
-        </form>
-    {% endfor %}
 
 {% endblock %}

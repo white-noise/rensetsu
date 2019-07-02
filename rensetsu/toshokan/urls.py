@@ -16,6 +16,7 @@ urlpatterns = [
     path('<int:kanji_id>/edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
     path('<int:kanji_id>/modify_comment/<int:comment_id>/', views.modify_comment, name='modify_comment'),
     path('<int:kanji_id>/groups/', views.kanji_group_view, name='kanji_group_view'),
+    path('<int:kanji_id>/delete_from_group/', views.kanji_delete_group_view, name='kanji_delete_group_view'),
     path('<int:kanji_id>/groups/<int:group_id>/', views.add_kanji_to_group, name='add_kanji_to_group'),
     path('<int:kanji_id>/remove_group/<int:group_id>/', views.remove_kanji_from_group, name='remove_kanji_from_group'),
 ]

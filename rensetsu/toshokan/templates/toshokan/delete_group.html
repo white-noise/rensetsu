@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    
+    <div class="row">
+        {% for group_element in groups %}
+        <div class="col-sm-12 pt-2">
+            <form action="{% url 'toshokan:remove_kanji_from_group' kanji_id=kanji.id group_id=group_element.group.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-link">{{ group_element.group.name }}</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

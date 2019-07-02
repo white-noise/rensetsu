@@ -98,7 +98,7 @@ def add_comment(request, kanji_id):
         new_comment.user  = request.user.profile
         new_comment.save()
         form.save_m2m()
-
+        
     return redirect('toshokan:individual', kanji_id)
 
 @login_required
@@ -145,6 +145,15 @@ def kanji_group_view(request, kanji_id):
     context = {'kanji': kanji, 'userprofile': userprofile}
 
     return render(request, 'toshokan/group_view.html', context)
+
+@login_required
+def kanji_delete_group_view(request, kanji_id):
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    userprofile = request.user.profile
+    groups  = kanji.kanjigroupelement_set.filter(group__user__id=userprofile.id)
+    context = {'kanji': kanji, 'userprofile': userprofile, 'groups': groups}
+
+    return render(request, 'toshokan/delete_group.html', context)
 
 @login_required
 def add_kanji_to_group(request, kanji_id, group_id):

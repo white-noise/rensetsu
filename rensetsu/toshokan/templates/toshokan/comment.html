@@ -3,11 +3,11 @@
 {% block content %}
 
 	<form action="{% url 'toshokan:add_comment' kanji.id %}" method="POST">
+        {{ form.errors }}
 	    {% csrf_token %}
 	    <div class="row py-2">
             <div class="col-sm-12">
-                <textarea id="id_comment" name="comment" 
-                           type="text" class="form-control" rows='5'></textarea>
+                <textarea id="id_comment" name="comment" type="text" class="form-control" rows='5'></textarea>
             </div>
         </div>
         <div class="row pb-2">
