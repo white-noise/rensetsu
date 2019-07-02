@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from toshokan.models import Kanji, KanjiCompound
+from toshokan.models import Kanji, KanjiCompound, KanjiCompoundElement
 from django.utils import timezone
 
 import json
@@ -23,7 +23,6 @@ class Command(BaseCommand):
 
 		count = 0
 		invalid_count = 0
-		problem_kanji = set()
 
 		# provisional value parse
 		for elem in json_obj:
@@ -39,9 +38,13 @@ class Command(BaseCommand):
 		    # "kanji": "\u4e9c",
 		    # "kanji_id": "1"
 
-		    # one of the problems is like \u6eba\u00a0
-		    # which is the kanji we want followed by a non-breaking space
+		    # the troubling 2010 revision kanji: ['叱', '剥', '頬', '填']
+		    # 53f1 versus 20bdf
+		    # 5265 versus 525d
+		    # 9830 versus 982c
+		    # 586b versus 5861
 			
+			jukugo_raw     = elem["jukugo"]
 			jukugo         = list(elem["jukugo"])
 			frequency      = elem["frequency"]
 			pronunciation  = elem["pronunciation"]
@@ -49,15 +52,43 @@ class Command(BaseCommand):
 			kanji          = elem["kanji"]
 			kanji_id       = elem["kanji_id"]
 
-			kanji_list = list(Kanji.objects.filter(character=kanji))
-
-			if len(kanji_list) == 0:
-				print("%s contains the non-joyo kanji: %s"%(str(jukugo), kanji))
-				invalid_count = invalid_count + 1
-				problem_kanji.add(kanji)
+			len_jukugo = len(jukugo)
+			valid_jukugo = False
+			
+			if len_jukugo != 2:
+				continue
 			else:
-				count = count + 1
-				# print("%s contains %s"%(str(jukugo), str(kanji_list)))
+				valid_jukugo = True
+				for elem in jukugo:
+					if Kanji.objects.filter(character=elem).exists():
+						continue
+					else:
+						valid_jukugo = False
+						break
+
+			if valid_jukugo:
+				if KanjiCompound.objects.filter(characters=jukugo_raw).exists():
+					continue
+				else:
+
+					kanji_compound = KanjiCompound(characters=jukugo_raw,
+						meaning=meaning,
+						reading_eng=pronunciation)
+					kanji_compound.save()
+
+					print("populated jukugo: %s"%(jukugo_raw))
+
+					for index in range(len_jukugo):
+						position = index
+						component = jukugo[index]
+
+						jukugo_element = KanjiCompoundElement(kanji_compound=kanji_compound,
+							kanji=Kanji.objects.filter(character=component)[0:1].get(),
+							position=position)
+						jukugo_element.save()
+
+					count = count + 1
+
 
 			# check that jukugo hasn't been created before
 			# check, for each kanji in jukugo, whether it is a db kanji
@@ -65,8 +96,7 @@ class Command(BaseCommand):
 			# if no then, for now, we disallow jukugo entirely (could have concurrent dictionary)
 			# reading in romanji for now, but it probably can be parsed
 
-		print("populated %d good jukugo and %d bad"%(count, invalid_count))
-		print(list(problem_kanji))
+		print("populated %d good jukugo"%(count))
 
 	def handle(self, *args, **options):
 	 	self._populate()

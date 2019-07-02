@@ -31,3 +31,6 @@ class KanjiCompoundElement(models.Model):
     kanji_compound = models.ForeignKey(KanjiCompound, on_delete=models.CASCADE)
     kanji          = models.ForeignKey(Kanji, on_delete=models.CASCADE)
     position       = models.IntegerField()
+
+    def __str__(self):
+        return self.kanji_compound.characters

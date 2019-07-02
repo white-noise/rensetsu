@@ -86,5 +86,13 @@
         </div>
     {% endfor %}
 
+    <ul>
+    {% for jukugo in kanji.kanjicompoundelement_set.all %}
+        <li>
+            {{ jukugo }} : {{ jukugo.kanji_compound.meaning }}
+        </li>
+    {% endfor %}
+    </ul>
+
 
 {% endblock %}
