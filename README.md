@@ -7,10 +7,17 @@
 
 ### immediate to do
 - form validation (e.g., exceeded character length)
-- scrubbing kanji json
 - AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
 - post-saves should be handled outside of the model file
 - simple user interaction (friends, short messages, sharing groups?)
+- add frequency, separate readings, and additional parameters to kanji and jukugo
+- create model for a kanji quiz based on a group, and method for displaying quiz results
+- enable email verification and sign-up for user accounts (latter before former)
+- rank jukugo based on frequency and list the most frequent with options for seeing all
+- basic search for kanji (using either hashtag system, kanji only, with related jukugo)
+- figure out basic parsing of the stroke order database with pleasant small style (png gif?)
+- start keeping track of file sizes
+- for the love of god write unit tests before adding any more views or bootstrap
 
 ### long term implementation
 - simple themes, almost entirely text based. lightweight. light and dark mode.
