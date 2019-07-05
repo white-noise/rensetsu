@@ -26,6 +26,7 @@ def individual(request, kanji_id):
     is_interesting = kanji.interesting_kanji.filter(pk=userprofile.pk).exists()
     is_difficult   = kanji.difficult_kanji.filter(pk=userprofile.pk).exists()
     is_known       = kanji.known_kanji.filter(pk=userprofile.pk).exists()
+    jukugo         = kanji.constituent_kanji.order_by('-frequency')
 
     return render(request, 'toshokan/individual.html',
      {'kanji': kanji,
@@ -36,6 +37,7 @@ def individual(request, kanji_id):
      'is_known': is_known,
      'comments': comments,
      'groups': groups,
+     'jukugo': jukugo,
      })
 
 @login_required

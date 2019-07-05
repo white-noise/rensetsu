@@ -23,19 +23,13 @@
                 <li class="nav-item">
                     <form action="{% url 'toshokan:toggle_interesting' kanji.id %}" method="POST">
                         {% csrf_token %}
-                        <button class="btn btn-link nav-link">favorite</button>
+                        <button class="btn btn-link nav-link">mark as favorite</button>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form action="{% url 'toshokan:toggle_difficult' kanji.id %}" method="POST">
                         {% csrf_token %}
-                        <button class="btn btn-link nav-link">difficult</button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form action="{% url 'toshokan:toggle_known' kanji.id %}" method="POST">
-                        {% csrf_token %}
-                        <button class="btn btn-link nav-link">known</button>
+                        <button class="btn btn-link nav-link">mark as difficult</button>
                     </form>
                 </li>
             </ul>
@@ -67,32 +61,30 @@
     </div>
 
     {% for comment in comments %}
-        <div class="row pt-2">
+        <div class="row py-2">
             <div class="col-sm-6 offset-2">
                 {{ comment }}
             </div>
             <div class="col-sm-2">
                 <form action="{% url 'toshokan:delete_comment' kanji.id comment.id %}" method="POST">
                     {% csrf_token %}
-                    <button class="btn btn-link">delete</button>
+                    <input class="btn btn-link p-0" type="submit" value="delete" name="delete">
                 </form>
             </div>
             <div class="col-sm-2">
                 <form action="{% url 'toshokan:edit_comment' kanji.id comment.id %}" method="POST">
                     {% csrf_token %}
-                    <button class="btn btn-link">edit</button>
+                    <input class="btn btn-link p-0" type="submit" value="edit" name="edit">
                 </form>
             </div>
         </div>
     {% endfor %}
 
-    <ul>
-    {% for jukugo in kanji.kanjicompoundelement_set.all %}
+    {% for compound in jukugo %}
         <li>
-            {{ jukugo }} : {{ jukugo.kanji_compound.reading_eng }} : {{ jukugo.kanji_compound.meaning }}
+            {{ compound.characters }} - {{ compound.reading_eng }} - {{ compound.meaning }}
         </li>
     {% endfor %}
-    </ul>
 
 
 {% endblock %}

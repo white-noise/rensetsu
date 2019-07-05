@@ -4,6 +4,8 @@
 - language as collection
 - focus on hyperlink, navigability within referential net
 - reminded of what you don't know, reminded of you what you do know, with simple views
+- non competitive, but reminder/review based study. not quizzes but assessments with some edge of adaptability and some metric of progress
+- question: how can this app gain a sense of what you know and do not know over time? duolingo, e.g., does not always address this well (with apparent over-repetition). this case may be easier given discrete kanji/jukugo set.
 
 ### immediate to do
 - form validation (e.g., exceeded character length)

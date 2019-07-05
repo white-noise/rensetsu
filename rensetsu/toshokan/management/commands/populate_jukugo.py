@@ -46,7 +46,7 @@ class Command(BaseCommand):
 			
 			jukugo_raw     = elem["jukugo"]
 			jukugo         = list(elem["jukugo"])
-			frequency      = elem["frequency"]
+			frequency      = int(elem["frequency"])
 			pronunciation  = elem["pronunciation"]
 			meaning        = elem["meaning"]
 			kanji          = elem["kanji"]
@@ -73,7 +73,8 @@ class Command(BaseCommand):
 
 					kanji_compound = KanjiCompound(characters=jukugo_raw,
 						meaning=meaning,
-						reading_eng=pronunciation)
+						reading_eng=pronunciation,
+						frequency=frequency)
 					kanji_compound.save()
 
 					print("populated jukugo: %s"%(jukugo_raw))

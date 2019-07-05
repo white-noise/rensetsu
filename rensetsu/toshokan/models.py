@@ -17,6 +17,7 @@ class Kanji(models.Model):
 class KanjiCompound(models.Model):
     characters        = models.CharField(max_length=20)
     meaning           = models.TextField()
+    frequency         = models.IntegerField(default=0, blank=True)
     # reading_jpn       = models.CharField(max_length=100)   
     reading_eng       = models.CharField(max_length=100)
     constituent_kanji = models.ManyToManyField(Kanji, 
@@ -31,6 +32,7 @@ class KanjiCompoundElement(models.Model):
     kanji_compound = models.ForeignKey(KanjiCompound, on_delete=models.CASCADE)
     kanji          = models.ForeignKey(Kanji, on_delete=models.CASCADE)
     position       = models.IntegerField()
+    # shared frequency for this particular jukugo to reference in sorting
 
     def __str__(self):
         return self.kanji_compound.characters
