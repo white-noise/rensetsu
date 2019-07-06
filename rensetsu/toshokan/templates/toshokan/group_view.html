@@ -7,7 +7,7 @@
         <div class="col-sm-12 pt-2">
             <form action="{% url 'toshokan:add_kanji_to_group' kanji_id=kanji.id group_id=group.id %}" method="POST">
 				{% csrf_token %}
-				<button class="btn btn-link">{{ group.name }}</button>
+				<button class="btn btn-link p-0">{{ group.name }}</button>
 			</form>
         </div>
         {% endfor %}

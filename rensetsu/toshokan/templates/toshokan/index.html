@@ -2,22 +2,22 @@
 
 {% block content %}
 
+    <div class="row pt-2 align-items-center">
     {% for kanji in kanji_list %}
-        <div class="row pt-2 align-items-center">
-            <div class="col-sm-1 offset-3">
-                <h1>
-                    <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-                </h1>
-            </div>
-            <div class="col-sm-8">
-                <div>
-                    {{ kanji.reading_jpn }}
-                </div>
-                <div>
-                    {{ kanji.meaning }}
-                </div>
-            </div>
+        <div class="col-sm-1 pb-2">
+            <h1>
+                <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+            </h1>
         </div>
+        <div class="col-sm-5 pb-2">
+            <div>
+                {{ kanji.reading_jpn }}
+            </div>
+            <div>
+                {{ kanji.meaning }}
+            </div>
+        </div>  
     {% endfor %}
+    </div>
 
 {% endblock %}

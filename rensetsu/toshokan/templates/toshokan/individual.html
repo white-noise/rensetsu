@@ -2,7 +2,7 @@
 
 {% block content %}
     
-    <nav class="navbar fixed-bottom navbar-light navbar-expand-lg">
+    <nav class="navbar fixed-bottom navbar-light navbar-expand-lg bg-light">
         <a class="navbar-brand" href="{% url 'base:index' %}">連接</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavBottom" aria-controls="navbarNavBottom" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -60,31 +60,33 @@
         </div>
     </div>
 
-    {% for comment in comments %}
-        <div class="row py-2">
-            <div class="col-sm-6 offset-2">
-                {{ comment }}
-            </div>
-            <div class="col-sm-2">
-                <form action="{% url 'toshokan:delete_comment' kanji.id comment.id %}" method="POST">
-                    {% csrf_token %}
-                    <input class="btn btn-link p-0" type="submit" value="delete" name="delete">
-                </form>
-            </div>
-            <div class="col-sm-2">
-                <form action="{% url 'toshokan:edit_comment' kanji.id comment.id %}" method="POST">
-                    {% csrf_token %}
-                    <input class="btn btn-link p-0" type="submit" value="edit" name="edit">
-                </form>
-            </div>
+    <div class="row">
+    {% for compound in jukugo %}
+        <div class="col-sm-10 offset-2 pb-2">
+            {{ compound.characters }} - {{ compound.reading_eng }} - {{ compound.meaning }}
         </div>
     {% endfor %}
+    </div>
 
-    {% for compound in jukugo %}
-        <li>
-            {{ compound.characters }} - {{ compound.reading_eng }} - {{ compound.meaning }}
-        </li>
+    <div class="row py-2">
+    {% for comment in comments %}
+        <div class="col-sm-6 offset-2 pb-2">
+            {{ comment }}
+        </div>
+        <div class="col-sm-2 pb-2">
+            <form action="{% url 'toshokan:delete_comment' kanji.id comment.id %}" method="POST">
+                {% csrf_token %}
+                <input class="btn btn-link p-0" type="submit" value="delete" name="delete">
+            </form>
+        </div>
+        <div class="col-sm-2 pb-2">
+            <form action="{% url 'toshokan:edit_comment' kanji.id comment.id %}" method="POST">
+                {% csrf_token %}
+                <input class="btn btn-link p-0" type="submit" value="edit" name="edit">
+            </form>
+        </div> 
     {% endfor %}
+    </div>
 
 
 {% endblock %}
