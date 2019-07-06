@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    
+    <div class="row">
+        {% for group in groups %}
+        <div class="col-sm-12 pt-2">
+            <form action="{% url 'base:delete_group' group.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-link">{{ group.name }}</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

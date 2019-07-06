@@ -3,15 +3,13 @@
 {% block content %}
 
     <div class="row">
-    	<ul class="list-group list-group-flush w-100">
-    		{% for kanji in group.group_kanji.all %}
-    			<li class="list-group-item text-center">
-    				<h2>
-	            	<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-	        		</h2>
-    			</li>
-	        {% endfor %}
-    	</ul>
+		{% for kanji in group.group_kanji.all %}
+			<div class="col-sm-12 pt-2">
+				<h2>
+            	<a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
+        		</h2>
+			</div>
+        {% endfor %}
     </div>
 
 {% endblock %}

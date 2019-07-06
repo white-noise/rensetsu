@@ -32,7 +32,7 @@ def individual(request, kanji_id):
     is_difficult   = kanji.difficult_kanji.filter(pk=userprofile.pk).exists()
     is_known       = kanji.known_kanji.filter(pk=userprofile.pk).exists()
     # order kanji compounds by most common first
-    jukugo         = kanji.constituent_kanji.order_by('-frequency')
+    jukugo         = kanji.constituent_kanji.order_by('-frequency')[:4]
 
     context = {'kanji': kanji,
      'reading_eng': reading_eng,
