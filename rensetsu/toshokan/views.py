@@ -11,7 +11,7 @@ from django.utils import timezone
 @login_required
 def index(request):
     """ placeholder list of all kanji (eventually searchable) """
-    kanji_list = Kanji.objects.all().order_by('grade')[0:25]
+    kanji_list = Kanji.objects.all().order_by('grade')[0:100]
     context    = {'kanji_list': kanji_list}
     
     return render(request, 'toshokan/index.html', context)
@@ -32,7 +32,7 @@ def individual(request, kanji_id):
     is_difficult   = kanji.difficult_kanji.filter(pk=userprofile.pk).exists()
     is_known       = kanji.known_kanji.filter(pk=userprofile.pk).exists()
     # order kanji compounds by most common first
-    jukugo         = kanji.constituent_kanji.order_by('-frequency')[:4]
+    jukugo         = kanji.constituent_kanji.order_by('-frequency')[:10]
 
     context = {'kanji': kanji,
      'reading_eng': reading_eng,
