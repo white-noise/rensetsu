@@ -86,7 +86,7 @@ char_dict = {
 	's_yo': 'ょ',
 	's_tu': 'っ',
 
-	'n': '',
+	'n': 'ん',
 }
 
 # for regex matching, ideally we want syllables
@@ -95,7 +95,7 @@ char_dict = {
 # edge cases like 'n', etc.
 
 sample_text = ['kawabata', 'teikan', 'reiken', 'ryuuzi', 
-				'zyooo', 'soozi', 'oote', 'tairyoo', 'zyotto']
+				'zyoo', 'soozi', 'oote', 'tairyoo', 'tyotto']
 
 # for replacing, e.g., 'ryo' with 'ri' 's_yo' 'o'
 def small_character(syllable):
@@ -144,6 +144,10 @@ for word in sample_text:
 	# small tu etc. words like 'zyotto'
 
 	print("\n\ttotal decomposition: %s\n"%final_decomposition)
+
+	translated_string = ''.join(map(lambda x: char_dict[x], final_decomposition))
+
+	print("\n\ttranslates to: %s\n"%translated_string)
 
 # for o versus u there should be some sort of check for a lone 'o' following
 # either another 'o'-terminated block. 'u' is always 'u' but not the inverse.

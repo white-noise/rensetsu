@@ -2,67 +2,59 @@
 
 ### objective of app
 - language as collection
-- focus on hyperlink, navigability within referential net
+- focus on navigability within referential net
 - reminded of what you don't know, reminded of you what you do know, with simple views
 - non competitive, but reminder/review based study. not quizzes but assessments with some edge of adaptability and some metric of progress
-- question: how can this app gain a sense of what you know and do not know over time? duolingo, e.g., does not always address this well (with apparent over-repetition). this case may be easier given discrete kanji/jukugo set.
+- question: how can this app gain a sense of what you know and do not know over time? duolingo, e.g., does not always address this well (with apparent over-repetition?). this project may be easier given discrete kanji/jukugo set.
 
 ### immediate to do
-- form validation (e.g., exceeded character length)
 - AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
 - post-saves should be handled outside of the model file
-- simple user interaction (friends, short messages, sharing groups?)
-- add frequency, separate readings, and additional parameters to kanji and jukugo
-- create model for a kanji quiz based on a group, and method for displaying quiz results
-- enable email verification and sign-up for user accounts (latter before former)
-- rank jukugo based on frequency and list the most frequent with options for seeing all
-- basic search for kanji (using either hashtag system, kanji only, with related jukugo)
-- figure out basic parsing of the stroke order database with pleasant small style (png gif?)
-- start keeping track of file sizes
-- for the love of god write unit tests before adding any more views or bootstrap
+- new reading format for kanji, and kana for jukugo (needs careful scrub)
+- create model for a quiz based on a group, method for displaying quiz results
+- email verification and sign-up for user accounts (latter before former)
+- basic search for kanji (using either hashtag system, kanji only, with related jukugo), or search by reading, meaning, etc. this is a long term project.
+- figure out basic parsing of the stroke order database with pleasant small style (png, gif?)
+- for the love of god write unit tests
 
-### long term implementation
-- simple themes, almost entirely text based. lightweight. light and dark mode.
-- custom groups beyond the three provided
-- groups can be used to quiz, results of quiz shown after, permiting reshuffling of groups
-- accounts communicate via friendships, sharing of comments and groups?
+### jukugo processing to do
+- organize into a series of passes, non-nested, handled by functions with names
+- (1) initial generous syllable break, (2) obvious dipthong break, (3) small character break, (4) retroactive insertion of long vowels with option for user correction, (5) non-standard characters and invalid romanizations
 
 ### points of caution
-- redirects from long lists, pagination
-- make sure various textfields don't have null=True (redundant, see docs)
-- groups are many to many, but should be kept private to a user
-- always keep kanji in common, but do so helpfully
+- redirects from long lists, pagination (can be handled with slugs and GETs and default cases)
+- format errors well and give all forms error display
+- gaurantee user only sees their own content; okay to be redundant in this
 
 ### things to do with kanji database
-- provide japanese reading for jukugo
-- create reasonable database structure for jukugo objects
-- determine if jukugo contain only joyo kanji
-- supplement definitions, and separate on- and kun-yomi
+- kana reading for jukugo
+- jukugo should contain only joyo kanji (or eventually jinmeio extension)
+- supplement definitions, separate on- and kun-yomi
 
 ### what is displayed on a profile
 - standard user data: name, username
-- kanji found interesting (either memorable, strange, useful)
-- kanji found particularly difficult and particularly easy
-- custom groups (with ability to override the groups shown on one's home page)
-- link to pre-made quizzes based around these groups
-- link to discovery modes, which troll though example sentences
-- something to identify a user (minimal, like an emoji, or glyph, or color, or something)
+- custom groups (able to reorder, change names, change content; eventually taken to search page where one can load up kanji to add in one session?)
+- link to pre-made quizzes of these groups, plus other mixing quizzes of a couple varying styles
+- link to discovery modes, reference to example sentences
+- something to identify a user (minimal, like a glyph, or color, or something)
 
 ### what is displayed on the landing page
 - the name of the app
 - choice to go to profile
-- chance to float through kanji
+- chance to 'float' through kanji; some pretentious javascript
 
 ### what is displayed on a kanji's individual page
-- glyph, short-form meaning, pronounciations
-- alternate forms, kanji compounds
-- a couple decent example sentences
-- profile-specific notes and comments (dynamic, stacked below)
+- glyph, short-form meaning, pronunciations
+- alternate forms, a few jukugo
+- a couple of example sentences
+- profile-specific comments (stacked below)
+- nothing should really be collapsible
 
 ### what should be displayed in an inline kanji window
-- both glyph and reading, meaning hidden based on settings
-- some toggle buttons to select as interesting, difficult, known, or dropdown for custom groups
+- both glyph and reading, meaning hidden based on settings? question on where settings are normally stored? cached? sent to database later?
+- possible inline toggle to add to a group, or favorite, or something?
+- question: should favorite and unknown markers be group specific? eh, no.
+- bigger question: all of these requests seem to demand either repetitive views or AJAXy things.
 
-### any additional pages
-- hiragana and katakana chart, static, with reference to reading. a fun project for javascript fanatics to make this look nice on any screen (grouped by consonant)
-- kanji compounds will have to exist somewhere, probably for a given kanji in a many-to-many relationship (paging through this might be tough).
+### any additional apps?
+- hiragana and katakana into as a fun sub-project for the javascript hankerers
