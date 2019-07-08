@@ -79,7 +79,33 @@ def delete_group(request, group_id):
     return redirect('base:profile')
 
 @login_required
-def modify_group_name(request, group_id):
+def modify_group_name_view(request, group_id):
+    """ view for modifying a group name """
+    group = get_object_or_404(KanjiGroup, pk=group_id)
+    context = {'group': group, 'form': KanjiGroupForm(initial={'name': group.name})}
+    
+    return render(request, 'base/modify_group.html', context)
+
+@login_required
+def modify_group_name_submit(request, group_id):
     """ modify group name for current user given group """
 
-    return redirect('base:profile')
+    group = get_object_or_404(KanjiGroup, pk=group_id)
+    userprofile = request.user.profile
+
+    if request.method == 'POST':
+        
+        form = KanjiGroupForm(request.POST)
+        
+        if form.is_valid():
+            if group.user == userprofile:
+                name = form.cleaned_data['name']
+                group.name = name
+                group.save()
+            else:
+                return HttpResponseNotFound()
+        else:
+            context = {'group': group, 'form': form}
+            return render(request, 'base/modify_group.html', context)
+
+    return redirect('base:group_individual', group.id)

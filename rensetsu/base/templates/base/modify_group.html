@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+	<form action="{% url 'base:modify_group_name_submit' group.id %}" method="POST">
+        {{ form.errors }}
+	    {% csrf_token %}
+	    <div class="row py-2">
+            <div class="col-sm-12">
+                <input id="id_name" name="name" 
+                type="text" class="form-control" value="{{ form.initial.name }}">
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-sm-12">
+                <input type="submit" value="comment" 
+               class="btn btn-primary btn-block" />
+                <input type="hidden" name="next" value="{{ next }}" /> 
+            </div>
+        </div>
+	</form>
+
+{% endblock %}
