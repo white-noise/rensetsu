@@ -22,8 +22,6 @@ def individual(request, kanji_id):
     kanji          = get_object_or_404(Kanji, pk=kanji_id)
     userprofile    = request.user.profile
 
-    reading_eng    = (kanji.reading_eng).split(",")
-    reading_jpn    = (kanji.reading_jpn).split(",")
     # order comments with newest at the top
     comments       = kanji.kanji_comment.filter(user__id=userprofile.id).order_by('-date_time')
     groups         = kanji.kanjigroupelement_set.filter(group__user__id=userprofile.id)
@@ -35,8 +33,6 @@ def individual(request, kanji_id):
     jukugo         = kanji.constituent_kanji.order_by('-frequency')[:4]
 
     context = {'kanji': kanji,
-     'reading_eng': reading_eng,
-     'reading_jpn': reading_jpn,
      'is_interesting': is_interesting,
      'is_difficult': is_difficult,
      'is_known': is_known,
