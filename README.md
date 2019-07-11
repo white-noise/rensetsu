@@ -21,6 +21,18 @@
 - organize into a series of passes, non-nested, handled by functions with names
 - (1) initial generous syllable break, (2) obvious dipthong break, (3) small character break, (4) retroactive insertion of long vowels with option for user correction, (5) non-standard characters and invalid romanizations
 
+### ideas for new review model
+- associated with a given user (possible sharing later)
+- time of creation
+- review contains kanji-score objects
+- kanji and associated level of recognition (an integer)
+- when a group is created, it has to be associated with a user group, from which it will draw all of the constituent kanji and create the objects above
+- when a review is happening, options to draw answers from quiz set, globally, and split between on- and kun-yomi, meaning, etc.
+- kanji to reading/meaning, making sure answers are distinct?
+- reading/meaning to kanji, once again making answers distinct.
+- maybe someday allowing user input answers. But MC is almost as good with enough options, for this type of thing
+- one session with ability to come back, updates each page, saved progress?
+
 ### points of caution
 - redirects from long lists, pagination (can be handled with slugs and GETs and default cases)
 - format errors well and give all forms error display

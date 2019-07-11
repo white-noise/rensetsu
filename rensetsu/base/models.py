@@ -31,15 +31,34 @@ class KanjiGroup(models.Model):
         return str(self.name)
 
 class KanjiGroupElement(models.Model):
-    kanji      = models.ForeignKey(Kanji, on_delete=models.CASCADE)
-    group      = models.ForeignKey(KanjiGroup, on_delete=models.CASCADE)
-    date_time  = models.DateTimeField(default=timezone.now)
+    kanji     = models.ForeignKey(Kanji, on_delete=models.CASCADE)
+    group     = models.ForeignKey(KanjiGroup, on_delete=models.CASCADE)
+    date_time = models.DateTimeField(default=timezone.now)
 
 class KanjiComment(models.Model):
-    kanji          = models.ForeignKey(Kanji, related_name="kanji_comment", on_delete=models.CASCADE)
-    user           = models.ForeignKey(UserProfile, related_name="comment_profile", on_delete=models.CASCADE)
-    comment        = models.TextField()
-    date_time      = models.DateTimeField(default=timezone.now)
+    kanji     = models.ForeignKey(Kanji, related_name="kanji_comment", on_delete=models.CASCADE)
+    user      = models.ForeignKey(UserProfile, related_name="comment_profile", on_delete=models.CASCADE)
+    comment   = models.TextField()
+    date_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return str(self.comment)
+
+class KanjiReview(models.Model):
+    user      = models.ForeignKey(UserProfile, related_name="review_user", on_delete=models.CASCADE)
+    group     = models.ForeignKey(KanjiGroup, related_name="review_group", on_delete=models.CASCADE)
+    date_time = models.DateTimeField(default=timezone.now)
+    # how to store current state of review
+    # current question?
+    # user and group's user can be different, for eventual sharing of quizzes
+
+    def __str__(self):
+        return ("review_%s"%(self.group.name))
+
+class KanjiReviewObject(models.Model):
+    kanji  = models.ForeignKey(Kanji, related_name="kanji", on_delete=models.CASCADE)
+    review = models.ForeignKey(KanjiReview, related_name="review", on_delete=models.CASCADE)
+    score  = models.IntegerField(default=0)
+
+    def __str__(self):
+        return ("review_kanji_%s"%(self.kanji.character))
