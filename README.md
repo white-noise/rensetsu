@@ -36,6 +36,7 @@
 
 ### points of caution
 - redirects from long lists, pagination (can be handled with slugs and GETs and default cases)
+- or can quick reverse plus redirect if that fails
 - format errors well and give all forms error display
 - gaurantee user only sees their own content; okay to be redundant in this
 

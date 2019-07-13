@@ -113,8 +113,15 @@ def modify_group_name_submit(request, group_id):
     return redirect('base:group_individual', group.id)
 
 @login_required
-def group_review(request, group_id, position):
+def group_review(request, group_id):
     """ show multiple choice kanji quiz groups """
+
+    """ one concept is to use this to create a review
+    object, and then send the user to the first page of that
+    review object. then deal with garbage collection, as we
+    want one quiz per group at all times? so a session, and
+    then a score for each user corresponding to each kanji?
+    """
 
     group = get_object_or_404(KanjiGroup, pk=group_id)
     userprofile = request.user.profile
@@ -134,8 +141,15 @@ def group_review(request, group_id, position):
         option_indices = list(option_indices)
         option_choices = random.sample(option_indices, option_number)
 
-        correct_option = {'option': kanji.on_meaning, 'result': True}
-        options = [{'option': ordered_group[index].on_meaning, 'result': False} for index in option_choices]
+        correct_meaning = ','.join(((((kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
+        correct_option = {'option': correct_meaning, 'result': True}
+        
+        wrong_options = []
+        for index in option_choices:
+            wrong_meaning = ','.join((((ordered_group[index].on_meaning.split(";"))[0]).split(','))[0:3])
+            wrong_options.append({'option': wrong_meaning})
+
+        options = wrong_options
         options.append(correct_option)
         random.shuffle(options)
         
@@ -144,14 +158,10 @@ def group_review(request, group_id, position):
 
         count = count + 1
     
-    if position >= group_size:
-        return HttpResponseNotFound()
-    else:
-        context = {
-                    'ordered_group': ordered_group, 
-                    'questions': questions
-                    }
-        return render(request, 'base/review.html', context)
 
-
+    context = {
+                'ordered_group': ordered_group, 
+                'questions': questions
+                }
+    return render(request, 'base/review.html', context)
 
