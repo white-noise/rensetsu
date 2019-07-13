@@ -11,6 +11,7 @@
 - AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
 - post-saves should be handled outside of the model file
 - new reading format for kanji, and kana for jukugo (needs careful scrub)
+- kanji-type agnostic search (eventual hashtag system?)
 - create model for a quiz based on a group, method for displaying quiz results
 - email verification and sign-up for user accounts (latter before former)
 - basic search for kanji (using either hashtag system, kanji only, with related jukugo), or search by reading, meaning, etc. this is a long term project.

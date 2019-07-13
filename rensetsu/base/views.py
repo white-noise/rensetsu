@@ -7,6 +7,8 @@ from toshokan.models import Kanji
 
 from base.forms import KanjiGroupForm
 
+import random
+
 def index(request):
     """ whatever should be seen by landing, generic user """
     context = {}
@@ -109,3 +111,47 @@ def modify_group_name_submit(request, group_id):
             return render(request, 'base/modify_group.html', context)
 
     return redirect('base:group_individual', group.id)
+
+@login_required
+def group_review(request, group_id, position):
+    """ show multiple choice kanji quiz groups """
+
+    group = get_object_or_404(KanjiGroup, pk=group_id)
+    userprofile = request.user.profile
+
+    ordered_group = group.group_kanji.order_by('strokes')
+    group_size = group.group_kanji.count()
+
+    questions = []
+    max_option_number = 3
+    option_number = min([max_option_number, group_size])
+    count = 0
+
+    for kanji in ordered_group:
+
+        option_indices = set(range(0, group_size))
+        option_indices.remove(count)
+        option_indices = list(option_indices)
+        option_choices = random.sample(option_indices, option_number)
+
+        correct_option = {'option': kanji.on_meaning, 'result': True}
+        options = [{'option': ordered_group[index].on_meaning, 'result': False} for index in option_choices]
+        options.append(correct_option)
+        random.shuffle(options)
+        
+        question = {'kanji': kanji, 'options': options}
+        questions.append(question)
+
+        count = count + 1
+    
+    if position >= group_size:
+        return HttpResponseNotFound()
+    else:
+        context = {
+                    'ordered_group': ordered_group, 
+                    'questions': questions
+                    }
+        return render(request, 'base/review.html', context)
+
+
+
