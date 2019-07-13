@@ -6,6 +6,7 @@ app_name = 'toshokan'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('search/', views.index_search, name='index_search'),
     path('<int:kanji_id>/', views.individual, name='individual'),
     path('<int:kanji_id>/interesting/', views.toggle_interesting, name='toggle_interesting'),
     path('<int:kanji_id>/difficult/', views.toggle_difficult, name='toggle_difficult'),

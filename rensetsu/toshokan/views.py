@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .models import Kanji
 from base.models import KanjiGroup, KanjiComment
@@ -11,10 +12,33 @@ from django.utils import timezone
 @login_required
 def index(request):
     """ placeholder list of all kanji (eventually searchable) """
-    kanji_list = Kanji.objects.all().order_by('grade')[0:100]
+    kanji_list = Kanji.objects.all().order_by('-strokes')[0:20]
     context    = {'kanji_list': kanji_list}
     
     return render(request, 'toshokan/index.html', context)
+
+@login_required
+def index_search(request):
+
+    if request.method == 'GET':
+        
+        search_term = request.GET.get('term', None)
+
+        print("method accessed")
+        print(search_term)
+        
+        if search_term:    
+            query_set = Kanji.objects.filter(
+                Q(character__icontains=search_term) | 
+                Q(reading__icontains=search_term) |
+                Q(on_meaning__icontains=search_term) |
+                Q(kun_meaning__icontains=search_term)
+                ).order_by('grade')
+            context = {'kanji_list' : query_set}
+            
+            return render(request, 'toshokan/index.html', context)
+
+    return redirect('toshokan:index')
 
 @login_required
 def individual(request, kanji_id):
