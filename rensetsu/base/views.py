@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, JsonResponse
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile, KanjiGroup
@@ -8,6 +8,7 @@ from toshokan.models import Kanji
 from base.forms import KanjiGroupForm
 
 import random
+
 
 def index(request):
     """ whatever should be seen by landing, generic user """
@@ -111,6 +112,14 @@ def modify_group_name_submit(request, group_id):
             return render(request, 'base/modify_group.html', context)
 
     return redirect('base:group_individual', group.id)
+
+@login_required
+def button_submit(request):
+    character = request.GET.get('character', None)
+    data = {
+        'is_kanji': Kanji.objects.filter(character=character).exists()
+    }
+    return JsonResponse(data)
 
 @login_required
 def group_review(request, group_id):

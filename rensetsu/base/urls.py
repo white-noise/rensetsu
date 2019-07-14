@@ -15,4 +15,5 @@ urlpatterns = [
     path('modify_group_name_view/<int:group_id>/', views.modify_group_name_view, name='modify_group_name_view'),
     path('modify_group_name_submit/<int:group_id>/', views.modify_group_name_submit, name='modify_group_name_submit'),
     path('review/<int:group_id>/', views.group_review, name='group_review'),
+    path('ajax/validate_kanji/', views.button_submit, name='button_submit'),
 ]

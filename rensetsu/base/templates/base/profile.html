@@ -1,5 +1,34 @@
 {% extends 'base/base.html' %}
 
+{% block javascript %}
+    <script>
+        $("#ajax-button").click(function (e) {
+            var character = $("#id-username").val();
+
+            $.ajax({
+                url: "{% url 'base:button_submit' %}",
+                data: {
+                    'character': character
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.is_kanji) {
+                        // alert("This kanji is in the database.");
+                        $('#ajax-button').html("Accepted");
+                        document.getElementById("id-username").value = "";
+                    } else {
+                        $('#ajax-button').html("Nope");
+                        document.getElementById("id-username").value = "";
+                    }
+                }
+            });
+            
+            e.preventDefault();
+            return false;
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
     <nav class="navbar fixed-bottom navbar-light navbar-expand-lg bg-light">
@@ -19,7 +48,7 @@
         </div>
     </nav>
 
-    <div class="row py-2">
+    <div class="row pt-2">
         <div class="col-sm-2">
             {{ userprofile.user.first_name }} {{ userprofile.user.last_name }} 
         </div>
@@ -27,7 +56,7 @@
             ({{userprofile.user.username}})
         </div>
     </div>
-    <div class="row">
+    <div class="row pt-2">
         {% for group in userprofile.group_profile.all %}
             <div class="col-sm-11 pb-2">
                 <a href="{% url 'base:group_individual' group.id %}">{{ group.name }}</a>
@@ -36,6 +65,15 @@
                 <a href="{% url 'base:group_review' group.id %}">review</a>
             </div>
         {% endfor %}
+    </div>
+
+    <div class="row pt-2">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" maxlength="150" id="id-username">
+            <button type="submit" id="ajax-button" class="btn btn-primary btn-block">AJAX</button>    
+        </form>
+        
     </div>
 
 {% endblock %}
