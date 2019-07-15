@@ -33,6 +33,9 @@
 - reading/meaning to kanji, once again making answers distinct.
 - maybe someday allowing user input answers. But MC is almost as good with enough options, for this type of thing
 - one session with ability to come back, updates each page, saved progress?
+- when the user clicks to review a group, a new review object is created, or a previous review object is searched for (whereupon the user can begin where they left off). They're then taken to a page that always fetches this object. When the user answers a question, it is flagged as completed, and disabled. When they have answered all questions (all kanji), then the review is removed
+- eventually each of these reviews will contribute to a m2m relationship between user and kanji, whereby the comprehension level of the kanji is tracked
+- would be nice to eventually have a visualization of this network
 
 ### points of caution
 - redirects from long lists, pagination (can be handled with slugs and GETs and default cases)

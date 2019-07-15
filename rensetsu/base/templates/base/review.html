@@ -21,9 +21,13 @@
             //         }
             //     }
             // });
-            $(this).prop("disabled", true);
 
-            console.log("hello");
+            var id_str = $(this).attr('id').split("_");
+            var kanji = id_str.slice(0,2);
+            var kanji_select = kanji.join("_")
+            $("button[id^=" + kanji_select + "]").prop("disabled", true);
+
+            $(this).prop("disabled", true);
             
             e.preventDefault();
             return false;
@@ -48,7 +52,7 @@
     </nav>
 
     {% for question in questions %}
-    <div class="row py-2 align-items-center pb-4">
+    <div id="question_{{ question.kanji }}" class="row py-2 align-items-center pb-4">
         <div class="col-sm-1 pt-2">
             <h1>
                 {{ question.kanji }}  
