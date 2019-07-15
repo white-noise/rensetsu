@@ -115,6 +115,7 @@ def modify_group_name_submit(request, group_id):
 
 @login_required
 def button_submit(request):
+    """ test ajax function call """
     character = request.GET.get('character', None)
     data = {
         'is_kanji': Kanji.objects.filter(character=character).exists()
@@ -172,5 +173,6 @@ def group_review(request, group_id):
                 'ordered_group': ordered_group, 
                 'questions': questions
                 }
+    
     return render(request, 'base/review.html', context)
 

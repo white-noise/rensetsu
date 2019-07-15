@@ -1,5 +1,36 @@
 {% extends 'base/base.html' %}
 
+{% block javascript %}
+    <script>
+        $("button[id^='option_']").click(function (e) {
+
+            // $.ajax({
+            //     url: "{% url 'base:button_submit' %}",
+            //     data: {
+            //         'character': character
+            //     },
+            //     dataType: 'json',
+            //     success: function (data) {
+            //         if (data.is_kanji) {
+            //             // alert("This kanji is in the database.");
+            //             $('#ajax-button').html("Accepted");
+            //             document.getElementById("id-username").value = "";
+            //         } else {
+            //             $('#ajax-button').html("Nope");
+            //             document.getElementById("id-username").value = "";
+            //         }
+            //     }
+            // });
+            $(this).prop("disabled", true);
+
+            console.log("hello");
+            
+            e.preventDefault();
+            return false;
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
     <nav class="navbar fixed-bottom navbar-light navbar-expand-lg bg-light">
@@ -26,9 +57,9 @@
         <div class="col-sm-11 pt-2">
                 {% for option in question.options %}
                     {% if option.result %}
-                        <button class="btn btn-primary btn-block text-left w-50">{{ option.option }}</button>
+                        <button type="submit" id="option_{{ question.kanji }}_y_{{ option.option }}" class="btn btn-link btn-block text-primary text-left">{{ option.option }}</button>
                     {% else %}
-                        <button class="btn btn-secondary btn-block text-left w-50">{{ option.option }}</button>
+                        <button type="submit" id="option_{{ question.kanji }}_n_{{ option.option }}" class="btn btn-link btn-block text-danger text-left">{{ option.option }}</button>
                     {% endif %}
                 {% endfor %}
             </ul>
