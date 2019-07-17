@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseNotFound, JsonResponse
 from django.contrib.auth.decorators import login_required
 
-from .models import UserProfile, KanjiGroup
+from .models import *
 from toshokan.models import Kanji
 
 from base.forms import KanjiGroupForm
@@ -121,6 +121,78 @@ def button_submit(request):
         'is_kanji': Kanji.objects.filter(character=character).exists()
     }
     return JsonResponse(data)
+
+@login_required
+def review_view(request, group_id):
+    """ creation and redirect to new review """
+    group = get_object_or_404(KanjiGroup, pk=group_id)
+    userprofile = request.user.profile
+
+    is_review = group.reviews.all().exists()
+
+    if not is_review:
+        print("creating review")
+
+        # create the new review
+
+        new_review = KanjiReview(user=userprofile, group=group)
+        new_review.save()
+
+        # populate it with sample objects
+
+        kanji = Kanji.objects.filter(character="楽").first()
+        new_object = KanjiReviewObject(kanji=kanji, review=new_review)
+        new_object.save()
+
+        response_1 = KanjiReviewObjectOption(
+            review_object=new_object,
+            possible_response="Option 1",
+            response_correct=True,
+            )
+        response_1.save()
+        response_2 = KanjiReviewObjectOption(
+            review_object=new_object,
+            possible_response="Option 2",
+            response_correct=False,
+            )
+        response_2.save()
+
+    else:
+        
+        print("review_already_created")
+
+        # group.reviews.all().first().delete()
+
+    reviews = group.reviews.all()
+    objects = reviews.first().review_objects.all()
+    options = objects.first().options.all()
+
+    # check if group has review associated with it
+    # if more than one review, remove all but the most recent
+
+    # if the review exists, then route to the review id
+
+    """
+    if not, then build a review, where the model includes
+    questions and answer options, then save, and reroute
+    to said review once it's been initialized. this is where
+    all of the random choices are made. then it can just be
+    read from in the next view, and routed around via navs.
+    """
+
+    """
+    in theory all of these reviews can be saved, and deleted with
+    the delete of the group. on group modification there is no
+    issue unless a review is incomplete during said addition.
+    so really it is best to just create and delete as needed, with
+    logistics being stored later.
+    """
+
+    context = {"is_review": is_review, 
+                "reviews": reviews,
+                "objects": objects,
+                "options": options,}
+    return render(request, 'base/review_view.html', context)
 
 @login_required
 def group_review(request, group_id):

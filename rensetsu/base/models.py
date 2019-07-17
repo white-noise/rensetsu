@@ -45,20 +45,27 @@ class KanjiComment(models.Model):
         return str(self.comment)
 
 class KanjiReview(models.Model):
-    user      = models.ForeignKey(UserProfile, related_name="review_user", on_delete=models.CASCADE)
-    group     = models.ForeignKey(KanjiGroup, related_name="review_group", on_delete=models.CASCADE)
+    user      = models.ForeignKey(UserProfile, related_name="reviews", on_delete=models.CASCADE)
+    group     = models.ForeignKey(KanjiGroup, related_name="reviews", on_delete=models.CASCADE)
     date_time = models.DateTimeField(default=timezone.now)
-    # how to store current state of review
-    # current question?
-    # user and group's user can be different, for eventual sharing of quizzes
 
     def __str__(self):
         return ("review_%s"%(self.group.name))
 
 class KanjiReviewObject(models.Model):
-    kanji  = models.ForeignKey(Kanji, related_name="kanji", on_delete=models.CASCADE)
-    review = models.ForeignKey(KanjiReview, related_name="review", on_delete=models.CASCADE)
+    kanji  = models.ForeignKey(Kanji, related_name="review_objects", on_delete=models.CASCADE)
+    review = models.ForeignKey(KanjiReview, related_name="review_objects", on_delete=models.CASCADE)
     score  = models.IntegerField(default=0)
 
     def __str__(self):
         return ("review_kanji_%s"%(self.kanji.character))
+
+class KanjiReviewObjectOption(models.Model):
+
+    review_object = models.ForeignKey(KanjiReviewObject, related_name="options", on_delete=models.CASCADE, null=True)
+    possible_response = models.CharField(max_length=500)
+    response_correct = models.BooleanField(default=False)
+
+    def __str__(self):
+        return ("review_option_%s"%(self.possible_response))
+

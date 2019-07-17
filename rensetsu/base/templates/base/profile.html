@@ -63,6 +63,7 @@
             </div>
             <div class="col-sm-1 pb-2">
                 <a href="{% url 'base:group_review' group.id %}">review</a>
+                <a href="{% url 'base:review_view' group.id %}">new_review_function</a>
             </div>
         {% endfor %}
     </div>
@@ -73,7 +74,6 @@
             <input type="text" name="username" maxlength="150" id="id-username">
             <button type="submit" id="ajax-button" class="btn btn-primary btn-block">AJAX</button>    
         </form>
-        
     </div>
 
 {% endblock %}
