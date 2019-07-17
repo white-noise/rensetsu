@@ -116,6 +116,9 @@ def modify_group_name_submit(request, group_id):
 @login_required
 def button_submit(request):
     """ test ajax function call """
+
+    """ this is useless and due for deletion """
+
     character = request.GET.get('character', None)
     data = {
         'is_kanji': Kanji.objects.filter(character=character).exists()
@@ -167,25 +170,27 @@ def review_view(request, group_id):
     objects = reviews.first().review_objects.all()
     options = objects.first().options.all()
 
-    # check if group has review associated with it
-    # if more than one review, remove all but the most recent
-
-    # if the review exists, then route to the review id
-
-    """
-    if not, then build a review, where the model includes
-    questions and answer options, then save, and reroute
-    to said review once it's been initialized. this is where
-    all of the random choices are made. then it can just be
-    read from in the next view, and routed around via navs.
-    """
-
     """
     in theory all of these reviews can be saved, and deleted with
     the delete of the group. on group modification there is no
     issue unless a review is incomplete during said addition.
     so really it is best to just create and delete as needed, with
     logistics being stored later.
+    """
+
+    """
+    if review found, just link to that. otherwise
+        (0) can check if the group has been modified since and
+            can prompt the user to take a new quiz
+        (1) create a new, bare review
+        (2) for each kanji in the group, create a review object
+            with that kanji and no options
+        (3) for each of these objects, create a selection of
+            options, one or many of which is correct, with
+            answers drawn at random from answers which are not
+            the correct answer (set num options set to a given default)
+        (4) 
+
     """
 
     context = {"is_review": is_review, 
@@ -195,15 +200,31 @@ def review_view(request, group_id):
     return render(request, 'base/review_view.html', context)
 
 @login_required
+def review_process(request, review_id):
+    """ where the user is taken when a review exists """
+
+    """ 
+    within this function we will render the quiz, either all
+    at once or step by step. each of the elements will in turn
+    call another view via ajax (or fetch) that will silently mark
+    the answer as correct or incorrect, and the question as marked
+    or no (saved for display/deactivation on return)
+
+    on submit, this should take us to a review page, which takes us
+    to a review that checks for the review, deletes it, and redirects us
+    home.
+
+    there should also be a flag for whether a review is finished or
+    not, which tells us when it should be deleted.
+    """
+
+    return HttpResponseNotFound()
+
+@login_required
 def group_review(request, group_id):
     """ show multiple choice kanji quiz groups """
 
-    """ one concept is to use this to create a review
-    object, and then send the user to the first page of that
-    review object. then deal with garbage collection, as we
-    want one quiz per group at all times? so a session, and
-    then a score for each user corresponding to each kanji?
-    """
+    """ this is the naive method, see above method """
 
     group = get_object_or_404(KanjiGroup, pk=group_id)
     userprofile = request.user.profile
@@ -247,4 +268,3 @@ def group_review(request, group_id):
                 }
     
     return render(request, 'base/review.html', context)
-
