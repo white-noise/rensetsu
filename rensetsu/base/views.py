@@ -132,43 +132,62 @@ def review_view(request, group_id):
     userprofile = request.user.profile
 
     is_review = group.reviews.all().exists()
+    group_size = group.group_kanji.count()
+    max_option_number = 3
+    option_number = min([max_option_number, group_size])
 
     if not is_review:
-        print("creating review")
-
-        # create the new review
-
+        # create new review
         new_review = KanjiReview(user=userprofile, group=group)
         new_review.save()
 
-        # populate it with sample objects
+        # get kanji set from group
+        kanji_set = group.group_kanji.all()
 
-        kanji = Kanji.objects.filter(character="楽").first()
-        new_object = KanjiReviewObject(kanji=kanji, review=new_review)
-        new_object.save()
+        # for each kanji, construct a blank review object
+        for kanji in kanji_set:
+            new_object = KanjiReviewObject(kanji=kanji, review=new_review)
+            new_object.save()
 
-        response_1 = KanjiReviewObjectOption(
-            review_object=new_object,
-            possible_response="Option 1",
-            response_correct=True,
-            )
-        response_1.save()
-        response_2 = KanjiReviewObjectOption(
-            review_object=new_object,
-            possible_response="Option 2",
-            response_correct=False,
-            )
-        response_2.save()
+            # for each object, create a list of answers
+            for count in range(option_number):
+
+                if count == 0:
+                    # construct the proper answer 
+                    correct_meaning = ','.join(((((kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
+                    # eventually delegate above to other function that takes a kanji 
+                    # and spits out answers in dictionary
+                    new_response = KanjiReviewObjectOption(
+                            review_object=new_object,
+                            possible_response=correct_meaning,
+                            response_correct=True,
+                            )
+                    new_response.save()
+                else:
+                    # construct a plausible but wrong answer
+
+                    restricted_kanji_set = group.group_kanji.exclude(character=kanji.character)
+
+                    # note there is no protection for one-kanji groups
+                    random_distinct_kanji = random.choice(restricted_kanji_set)
+                    incorrect_meaning = ','.join(((((random_distinct_kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
+
+                    new_response = KanjiReviewObjectOption(
+                                review_object=new_object,
+                                possible_response=incorrect_meaning,
+                                response_correct=False,
+                                )
+                    new_response.save()
 
     else:
         
         print("review_already_created")
+        # group.reviews.all().delete()
 
-        # group.reviews.all().first().delete()
+        # and then of course rebuild from scratch
+        # or in our case serve the old group
 
     reviews = group.reviews.all()
-    objects = reviews.first().review_objects.all()
-    options = objects.first().options.all()
 
     """
     in theory all of these reviews can be saved, and deleted with
@@ -193,10 +212,8 @@ def review_view(request, group_id):
 
     """
 
-    context = {"is_review": is_review, 
-                "reviews": reviews,
-                "objects": objects,
-                "options": options,}
+    context = {"reviews": reviews}
+    
     return render(request, 'base/review_view.html', context)
 
 @login_required
