@@ -179,15 +179,13 @@ def review_view(request, group_id):
                                 )
                     new_response.save()
 
+        return redirect('base:review_process', new_review.id)
+
     else:
         
-        print("review_already_created")
-        # group.reviews.all().delete()
+        review = group.reviews.all().first()
 
-        # and then of course rebuild from scratch
-        # or in our case serve the old group
-
-    reviews = group.reviews.all()
+        return redirect('base:review_process', review.id)
 
     """
     in theory all of these reviews can be saved, and deleted with
@@ -212,10 +210,6 @@ def review_view(request, group_id):
 
     """
 
-    context = {"reviews": reviews}
-    
-    return render(request, 'base/review_view.html', context)
-
 @login_required
 def review_process(request, review_id):
     """ where the user is taken when a review exists """
@@ -234,54 +228,8 @@ def review_process(request, review_id):
     there should also be a flag for whether a review is finished or
     not, which tells us when it should be deleted.
     """
+    review = get_object_or_404(KanjiReview, pk=review_id)
 
-    return HttpResponseNotFound()
-
-@login_required
-def group_review(request, group_id):
-    """ show multiple choice kanji quiz groups """
-
-    """ this is the naive method, see above method """
-
-    group = get_object_or_404(KanjiGroup, pk=group_id)
-    userprofile = request.user.profile
-
-    ordered_group = group.group_kanji.order_by('strokes')
-    group_size = group.group_kanji.count()
-
-    questions = []
-    max_option_number = 3
-    option_number = min([max_option_number, group_size])
-    count = 0
-
-    for kanji in ordered_group:
-
-        option_indices = set(range(0, group_size))
-        option_indices.remove(count)
-        option_indices = list(option_indices)
-        option_choices = random.sample(option_indices, option_number)
-
-        correct_meaning = ','.join(((((kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
-        correct_option = {'option': correct_meaning, 'result': True}
-        
-        wrong_options = []
-        for index in option_choices:
-            wrong_meaning = ','.join((((ordered_group[index].on_meaning.split(";"))[0]).split(','))[0:3])
-            wrong_options.append({'option': wrong_meaning})
-
-        options = wrong_options
-        options.append(correct_option)
-        random.shuffle(options)
-        
-        question = {'kanji': kanji, 'options': options}
-        questions.append(question)
-
-        count = count + 1
+    context = {"review": review}
     
-
-    context = {
-                'ordered_group': ordered_group, 
-                'questions': questions
-                }
-    
-    return render(request, 'base/review.html', context)
+    return render(request, 'base/review_view.html', context)

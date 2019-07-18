@@ -4,19 +4,17 @@
 
     test page.
 
-    {% for review in reviews %}
-        <div class="sm-col-12">
-            {{ review.user }}'s review for the group '{{ review.group }}'
+    <div class="sm-col-12">
+        {{ review.user }}'s review for the group '{{ review.group }}'
+    </div>
+    {% for object in review.review_objects.all %}
+        <div class="sm-col-11 offset-1">
+            {{ object.kanji }}
         </div>
-        {% for object in review.review_objects.all %}
-            <div class="sm-col-11 offset-1">
-                {{ object.kanji }}
+        {% for option in object.options.all %}
+            <div class="sm-col-10 offset-2">
+                {{ option.possible_response }} – {{ option.response_correct }}
             </div>
-            {% for option in object.options.all %}
-                <div class="sm-col-10 offset-2">
-                    {{ option.possible_response }} – {{ option.response_correct }}
-                </div>
-            {% endfor %}
         {% endfor %}
     {% endfor %}
 
