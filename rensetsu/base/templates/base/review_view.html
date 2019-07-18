@@ -11,9 +11,10 @@
         <div class="sm-col-11 offset-1">
             {{ object.kanji }}
         </div>
-        {% for option in object.options.all %}
+        {% load shuffle %}
+        {% for option in object.options.all|shuffle %}
             <div class="sm-col-10 offset-2">
-                {{ option.possible_response }} – {{ option.response_correct }}
+                {{ option.response_correct }} - {{ option.possible_response }}
             </div>
         {% endfor %}
     {% endfor %}

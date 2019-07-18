@@ -165,10 +165,11 @@ def review_view(request, group_id):
                     new_response.save()
                 else:
                     # construct a plausible but wrong answer
-
                     restricted_kanji_set = group.group_kanji.exclude(character=kanji.character)
 
                     # note there is no protection for one-kanji groups
+                    # in that case, one should populate from random selection
+                    # of other kanji, or direct to error page
                     random_distinct_kanji = random.choice(restricted_kanji_set)
                     incorrect_meaning = ','.join(((((random_distinct_kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
 
@@ -183,32 +184,9 @@ def review_view(request, group_id):
 
     else:
         
+        # ideally there should only ever be one
         review = group.reviews.all().first()
-
         return redirect('base:review_process', review.id)
-
-    """
-    in theory all of these reviews can be saved, and deleted with
-    the delete of the group. on group modification there is no
-    issue unless a review is incomplete during said addition.
-    so really it is best to just create and delete as needed, with
-    logistics being stored later.
-    """
-
-    """
-    if review found, just link to that. otherwise
-        (0) can check if the group has been modified since and
-            can prompt the user to take a new quiz
-        (1) create a new, bare review
-        (2) for each kanji in the group, create a review object
-            with that kanji and no options
-        (3) for each of these objects, create a selection of
-            options, one or many of which is correct, with
-            answers drawn at random from answers which are not
-            the correct answer (set num options set to a given default)
-        (4) 
-
-    """
 
 @login_required
 def review_process(request, review_id):
@@ -221,12 +199,13 @@ def review_process(request, review_id):
     the answer as correct or incorrect, and the question as marked
     or no (saved for display/deactivation on return)
 
-    on submit, this should take us to a review page, which takes us
-    to a review that checks for the review, deletes it, and redirects us
+    on submit, this should take us to a review page, which gives
+    us a summary on the review, then deletes it, and redirects us
     home.
 
     there should also be a flag for whether a review is finished or
-    not, which tells us when it should be deleted.
+    not, which tells us when it should be deleted. add this to the model,
+    maintaining concurrency, and display it on the link to the review
     """
     review = get_object_or_404(KanjiReview, pk=review_id)
 
