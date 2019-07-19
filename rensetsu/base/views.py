@@ -174,7 +174,15 @@ def review_view(request, group_id):
         
         # ideally there should only ever be one
         review = group.reviews.all().first()
-        return redirect('base:review_process', review.id)
+
+        # if review has been completed, delete group and start again
+        if review.is_complete:
+            # eventually this should be gatekept by another flag
+            # that determines if review has been reviewed or not
+            group.reviews.all().delete()
+            return redirect('base:review_view', group_id)
+        else:
+            return redirect('base:review_process', review.id)
 
 @login_required
 def review_process(request, review_id):

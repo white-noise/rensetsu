@@ -8,15 +8,17 @@
 - question: how can this app gain a sense of what you know and do not know over time? duolingo, e.g., does not always address this well (with apparent over-repetition?). this project may be easier given discrete kanji/jukugo set.
 
 ### immediate to do
-- AJAX for comments, kanji group toggling (note that AJAX and CSRF tokens don't mix, requiring a hack)
 - post-saves should be handled outside of the model file
 - new reading format for kanji, and kana for jukugo (needs careful scrub)
-- kanji-type agnostic search (eventual hashtag system?)
-- create model for a quiz based on a group, method for displaying quiz results
 - email verification and sign-up for user accounts (latter before former)
-- basic search for kanji (using either hashtag system, kanji only, with related jukugo), or search by reading, meaning, etc. this is a long term project.
 - figure out basic parsing of the stroke order database with pleasant small style (png, gif?)
-- for the love of god write unit tests
+- for the love of god write tests
+- review model answers not always distinct?
+- right now review model update when group updates is not reasonable (post-save hook?)
+- make the format better looking and more mobile friendly
+- AJAX everything relating to adding and deleting from groups, posting comments, etc
+- include slugs and reverses with defaults for getting around menus and searches; see model apps for ideas on this
+- iron out some ambiguous and probably superfluous POSTS
 
 ### jukugo processing to do
 - organize into a series of passes, non-nested, handled by functions with names
