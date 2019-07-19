@@ -212,8 +212,19 @@ def review_submit(request):
     review_object = get_object_or_404(KanjiReviewObject, pk=object_id)
     option = get_object_or_404(KanjiReviewObjectOption, pk=option_id)
 
-    # return whether the answer was correct or not
-    # as well as any other important metadata
+    # mark that question has been answered
+    review_object.is_complete = True
+    review_object.save()
+
+    # mark which option was chosen
+    option.response_chosen = True
+    option.save()
+
+    # check if the whole quiz is complete
+    responses = list(KanjiReviewObject.objects.values_list('is_complete', flat=True))
+    if all(responses):
+        review.is_complete = True
+        review.save()
 
     data = {'correct': option.response_correct}
 

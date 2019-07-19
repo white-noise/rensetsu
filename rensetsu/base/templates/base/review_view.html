@@ -50,9 +50,27 @@
             {% load shuffle %}
             {% for option in object.options.all|shuffle %}
                 <div class="col-sm-10 offset-2 pt-1">
-                    <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-secondary">
-                        {{ option.possible_response }}
-                    </button>
+                    {% if object.is_complete %}
+                        {% if option.response_chosen %}
+                            {% if option.response_correct %}
+                                <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-success" disabled>
+                                    {{ option.possible_response }}
+                                </button>
+                            {% else %}
+                                <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-danger" disabled>
+                                    {{ option.possible_response }}
+                                </button>
+                            {% endif %}
+                        {% else %}
+                            <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-secondary" disabled>
+                                {{ option.possible_response }}
+                            </button>
+                        {% endif %}
+                    {% else %}
+                        <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-secondary">
+                            {{ option.possible_response }}
+                        </button>
+                    {% endif %}
                 </div>
             {% endfor %}
         {% endfor %}

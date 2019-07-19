@@ -54,18 +54,20 @@ class KanjiReview(models.Model):
         return ("review_%s"%(self.group.name))
 
 class KanjiReviewObject(models.Model):
-    kanji  = models.ForeignKey(Kanji, related_name="review_objects", on_delete=models.CASCADE)
-    review = models.ForeignKey(KanjiReview, related_name="review_objects", on_delete=models.CASCADE)
-    score  = models.IntegerField(default=0)
+    kanji       = models.ForeignKey(Kanji, related_name="review_objects", on_delete=models.CASCADE)
+    review      = models.ForeignKey(KanjiReview, related_name="review_objects", on_delete=models.CASCADE)
+    score       = models.IntegerField(default=0)
+    is_complete = models.BooleanField(default=False)
 
     def __str__(self):
         return ("review_kanji_%s"%(self.kanji.character))
 
 class KanjiReviewObjectOption(models.Model):
 
-    review_object = models.ForeignKey(KanjiReviewObject, related_name="options", on_delete=models.CASCADE, null=True)
+    review_object     = models.ForeignKey(KanjiReviewObject, related_name="options", on_delete=models.CASCADE, null=True)
     possible_response = models.CharField(max_length=500)
-    response_correct = models.BooleanField(default=False)
+    response_correct  = models.BooleanField(default=False)
+    response_chosen   = models.BooleanField(default=False)
 
     def __str__(self):
         return ("review_option_%s"%(self.possible_response))
