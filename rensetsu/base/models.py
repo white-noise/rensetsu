@@ -45,9 +45,10 @@ class KanjiComment(models.Model):
         return str(self.comment)
 
 class KanjiReview(models.Model):
-    user      = models.ForeignKey(UserProfile, related_name="reviews", on_delete=models.CASCADE)
-    group     = models.ForeignKey(KanjiGroup, related_name="reviews", on_delete=models.CASCADE)
-    date_time = models.DateTimeField(default=timezone.now)
+    user        = models.ForeignKey(UserProfile, related_name="reviews", on_delete=models.CASCADE)
+    group       = models.ForeignKey(KanjiGroup, related_name="reviews", on_delete=models.CASCADE)
+    date_time   = models.DateTimeField(default=timezone.now)
+    is_complete = models.BooleanField(default=False)
 
     def __str__(self):
         return ("review_%s"%(self.group.name))

@@ -1,34 +1,5 @@
 {% extends 'base/base.html' %}
 
-{% block javascript %}
-    <script>
-        $("#ajax-button").click(function (e) {
-            var character = $("#id-username").val();
-
-            $.ajax({
-                url: "{% url 'base:button_submit' %}",
-                data: {
-                    'character': character
-                },
-                dataType: 'json',
-                success: function (data) {
-                    if (data.is_kanji) {
-                        // alert("This kanji is in the database.");
-                        $('#ajax-button').html("Accepted");
-                        document.getElementById("id-username").value = "";
-                    } else {
-                        $('#ajax-button').html("Nope");
-                        document.getElementById("id-username").value = "";
-                    }
-                }
-            });
-            
-            e.preventDefault();
-            return false;
-        });
-    </script>
-{% endblock %}
-
 {% block content %}
 
     <nav class="navbar fixed-bottom navbar-light navbar-expand-lg bg-light">
@@ -65,14 +36,6 @@
                 <a href="{% url 'base:review_view' group.id %}">new_review_function</a>
             </div>
         {% endfor %}
-    </div>
-
-    <div class="row pt-2">
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="username" maxlength="150" id="id-username">
-            <button type="submit" id="ajax-button" class="btn btn-primary btn-block">AJAX</button>    
-        </form>
     </div>
 
 {% endblock %}

@@ -114,18 +114,6 @@ def modify_group_name_submit(request, group_id):
     return redirect('base:group_individual', group.id)
 
 @login_required
-def button_submit(request):
-    """ test ajax function call """
-
-    """ this is useless and due for deletion """
-
-    character = request.GET.get('character', None)
-    data = {
-        'is_kanji': Kanji.objects.filter(character=character).exists()
-    }
-    return JsonResponse(data)
-
-@login_required
 def review_view(request, group_id):
     """ creation and redirect to new review """
     group = get_object_or_404(KanjiGroup, pk=group_id)
@@ -212,3 +200,21 @@ def review_process(request, review_id):
     context = {"review": review}
     
     return render(request, 'base/review_view.html', context)
+
+@login_required
+def review_submit(request):
+
+    review_id = request.GET.get('review_id', -1)
+    object_id = request.GET.get('object_id', -1)
+    option_id = request.GET.get('option_id', -1)
+
+    review = get_object_or_404(KanjiReview, pk=review_id)
+    review_object = get_object_or_404(KanjiReviewObject, pk=object_id)
+    option = get_object_or_404(KanjiReviewObjectOption, pk=option_id)
+
+    # return whether the answer was correct or not
+    # as well as any other important metadata
+
+    data = {'correct': option.response_correct}
+
+    return JsonResponse(data) 

@@ -1,22 +1,61 @@
 {% extends 'base/base.html' %}
 
+{% block javascript %}
+    <script>
+        $("button[id^='option_']").click(function (e) {
+
+            var id_str = $(this).attr('id').split("_");
+
+            $.ajax({
+                url: "{% url 'base:review_submit' %}",
+                data: {
+                    'review_id': parseInt(id_str[1]),
+                    'object_id': parseInt(id_str[2]),
+                    'option_id': parseInt(id_str[3]),
+                },
+                dataType: 'json',
+                context: this,
+                success: function (data) {
+                    // whatever happens on success
+                    var disable_str = id_str.slice(0,-1).join('_');
+
+                    if (data.correct) {
+                        $(this).attr('class', "btn btn-success");
+                        $("button[id^=" + disable_str + "]").attr('disabled', true);
+                    } else {
+                        $(this).attr('class', "btn btn-danger");
+                        $("button[id^=" + disable_str + "]").attr('disabled', true);
+                    }
+                }
+            });
+            
+            e.preventDefault();
+            return false;
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
-    test page.
-
-    <div class="sm-col-12">
-        {{ review.user }}'s review for the group '{{ review.group }}'
-    </div>
-    {% for object in review.review_objects.all %}
-        <div class="sm-col-11 offset-1">
-            {{ object.kanji }}
+    <div class="row">
+        <div class="col-sm-12 py-2">
+            {{ review.user }}'s review for the group '{{ review.group }}'
         </div>
-        {% load shuffle %}
-        {% for option in object.options.all|shuffle %}
-            <div class="sm-col-10 offset-2">
-                {{ option.response_correct }} - {{ option.possible_response }}
+        {% for object in review.review_objects.all %}
+            <div class="col-sm-12 pt-1">
+                <h1>
+                    {{ object.kanji }}
+                </h1>
             </div>
+            {% load shuffle %}
+            {% for option in object.options.all|shuffle %}
+                <div class="col-sm-10 offset-2 pt-1">
+                    <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-secondary">
+                        {{ option.possible_response }}
+                    </button>
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+    </div>
 
 {% endblock %}
