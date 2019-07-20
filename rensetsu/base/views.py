@@ -127,6 +127,8 @@ def review_view(request, group_id):
     group = get_object_or_404(KanjiGroup, pk=group_id)
     userprofile = request.user.profile
 
+    # should return some 403s based on user
+
     is_review = group.reviews.all().exists()
     group_size = group.group_kanji.count()
     max_option_number = 3
@@ -221,7 +223,10 @@ def review_submit(request):
     option.save()
 
     # check if the whole quiz is complete
-    responses = list(KanjiReviewObject.objects.values_list('is_complete', flat=True))
+    responses = list(KanjiReviewObject.objects.filter(review__id=review_id).values_list('is_complete', flat=True))
+
+    print(responses)
+    
     if all(responses):
         review.is_complete = True
         review.save()
