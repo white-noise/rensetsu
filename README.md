@@ -11,6 +11,7 @@
 - post-saves should be handled outside of the model file
 - new reading format for kanji, and kana for jukugo (needs careful scrub)
 - email verification and sign-up for user accounts (latter before former)
+- methods for recording progress and global searches
 - figure out basic parsing of the stroke order database with pleasant small style (png, gif?)
 - for the love of god write tests
 - review model answers not always distinct?
