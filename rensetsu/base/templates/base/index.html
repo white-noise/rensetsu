@@ -3,21 +3,33 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-        <div class="row p-3 align-items-center">
-            <div class="col-sm-12 text-center">
-                <h2 class="main-title">
-                   hello {{ user.username }}
-                </h2>
+        <div class="row pt-2">
+            <div class="col-sm-12">
+                hello, {{ user.username }}
             </div>
         </div>
     {% else %}
-        <div class="row p-3 align-items-center">
-            <div class="col-sm-12 text-center">
-                <h2>
-                   you are not <a href="{% url 'login' %}">logged in</a>
-                </h2>
+        <div class="row pt-2">
+            <div class="col-sm-12">
+                you are not <a href="{% url 'login' %}">logged in</a>
             </div>
         </div>
     {% endif %}
+
+    <div class="row pt-2 align-items-center">
+        <div class="col-sm-12 py-2">
+            a kanji while you wait:
+        </div>
+        <div class="col-sm-1 py-2">
+            <h2>
+                {{ kanji.character }}
+            </h2>
+        </div>
+        <div class="col-sm-11 py-2">
+            <div>
+                {{ truncated_meaning }}
+            </div>
+        </div> 
+    </div>
 
 {% endblock %}

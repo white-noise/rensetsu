@@ -14,12 +14,12 @@
 
     <div class="row pt-2 align-items-center">
     {% for kanji in kanji_list %}
-        <div class="col-sm-1 pb-2">
-            <h1>
+        <div class="col-sm-1 py-2">
+            <h2>
                 <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
-            </h1>
+            </h2>
         </div>
-        <div class="col-sm-11 pb-2">
+        <div class="col-sm-11 py-2 border-bottom">
             <div>
                 {{ kanji.reading }}
             </div>

@@ -12,7 +12,15 @@ import random
 
 def index(request):
     """ whatever should be seen by landing, generic user """
-    context = {}
+
+    display_kanji = Kanji.objects.filter(grade=2)
+    possible_indices = Kanji.objects.values_list('id', flat=True)
+    random_kanji_index = random.choice(possible_indices)
+    kanji = Kanji.objects.get(id=random_kanji_index)
+
+    truncated_meaning = ','.join(((((kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
+
+    context = {'kanji': kanji, 'truncated_meaning': truncated_meaning}
     return render(request, 'base/index.html', context)
 
 @login_required
@@ -188,23 +196,7 @@ def review_view(request, group_id):
 def review_process(request, review_id):
     """ where the user is taken when a review exists """
 
-    """ 
-    within this function we will render the quiz, either all
-    at once or step by step. each of the elements will in turn
-    call another view via ajax (or fetch) that will silently mark
-    the answer as correct or incorrect, and the question as marked
-    or no (saved for display/deactivation on return)
-
-    on submit, this should take us to a review page, which gives
-    us a summary on the review, then deletes it, and redirects us
-    home.
-
-    there should also be a flag for whether a review is finished or
-    not, which tells us when it should be deleted. add this to the model,
-    maintaining concurrency, and display it on the link to the review
-    """
     review = get_object_or_404(KanjiReview, pk=review_id)
-
     context = {"review": review}
     
     return render(request, 'base/review_view.html', context)

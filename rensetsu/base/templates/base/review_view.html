@@ -20,10 +20,10 @@
                     var disable_str = id_str.slice(0,-1).join('_');
 
                     if (data.correct) {
-                        $(this).attr('class', "btn btn-success");
+                        $(this).attr('class', "btn btn-link text-success");
                         $("button[id^=" + disable_str + "]").attr('disabled', true);
                     } else {
-                        $(this).attr('class', "btn btn-danger");
+                        $(this).attr('class', "btn btn-link text-danger");
                         $("button[id^=" + disable_str + "]").attr('disabled', true);
                     }
                 }
@@ -37,42 +37,41 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-sm-12 py-2">
-            {{ review.user }}'s review for the group '{{ review.group }}'
-        </div>
+    <div class="row align-items-center">
         {% for object in review.review_objects.all %}
-            <div class="col-sm-12 pt-1">
+            <div class="col-sm-2 py-2">
                 <h1>
                     {{ object.kanji }}
                 </h1>
             </div>
             {% load shuffle %}
+            <div class="col-sm-10 pb-2 border-bottom">
             {% for option in object.options.all|shuffle %}
-                <div class="col-sm-10 offset-2 pt-1">
+                <div class="pt-1">
                     {% if object.is_complete %}
                         {% if option.response_chosen %}
                             {% if option.response_correct %}
-                                <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-success" disabled>
+                                <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-link text-success" disabled>
                                     {{ option.possible_response }}
                                 </button>
                             {% else %}
-                                <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-danger" disabled>
+                                <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-link text-danger" disabled>
                                     {{ option.possible_response }}
                                 </button>
                             {% endif %}
                         {% else %}
-                            <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-secondary" disabled>
+                            <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-link text-secondary" disabled>
                                 {{ option.possible_response }}
                             </button>
                         {% endif %}
                     {% else %}
-                        <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-secondary">
+                        <button id="option_{{ review.id }}_{{ object.id }}_{{ option.id }}" class="btn btn-link text-secondary">
                             {{ option.possible_response }}
                         </button>
                     {% endif %}
                 </div>
             {% endfor %}
+            </div>
         {% endfor %}
     </div>
 
