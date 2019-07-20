@@ -12,8 +12,9 @@ from django.utils import timezone
 @login_required
 def index(request):
     """ placeholder list of all kanji (eventually searchable) """
+    userprofile = request.user.profile
     kanji_list = Kanji.objects.all().order_by('grade')[0:50]
-    context    = {'kanji_list': kanji_list}
+    context    = {'kanji_list': kanji_list, 'userprofile': userprofile}
     
     return render(request, 'toshokan/index.html', context)
 

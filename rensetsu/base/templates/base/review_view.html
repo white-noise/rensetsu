@@ -40,9 +40,9 @@
     <div class="row align-items-center">
         {% for object in review.review_objects.all %}
             <div class="col-sm-2 py-2">
-                <h1>
+                <h2>
                     {{ object.kanji }}
-                </h1>
+                </h2>
             </div>
             {% load shuffle %}
             <div class="col-sm-10 pb-2 border-bottom">

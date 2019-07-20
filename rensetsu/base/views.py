@@ -127,8 +127,10 @@ def review_view(request, group_id):
     group = get_object_or_404(KanjiGroup, pk=group_id)
     userprofile = request.user.profile
 
-    # should return some 403s based on user
-
+    # should return some 403s here based on user
+    # comment this out if you don't want automatic group replacement
+    # group.reviews.all().delete()
+    
     is_review = group.reviews.all().exists()
     group_size = group.group_kanji.count()
     max_option_number = 3
@@ -147,6 +149,20 @@ def review_view(request, group_id):
             new_object = KanjiReviewObject(kanji=kanji, review=new_review)
             new_object.save()
 
+            # pre-select the kanji for no duplicates
+            # note naive protection for small groups 
+            if group_size == 0:
+                return HttpResponseNotFound()
+            elif group_size == 1:
+                option_number = 1
+            elif group_size == 2:
+                option_number = 2
+            else:
+                pass
+
+            restricted_kanji_set = group.group_kanji.exclude(character=kanji.character)
+            distinct_kanji = random.sample(list(restricted_kanji_set), option_number-1)
+
             # for each object, create a list of answers
             for count in range(option_number):
 
@@ -162,13 +178,8 @@ def review_view(request, group_id):
                             )
                     new_response.save()
                 else:
-                    # construct a plausible but wrong answer
-                    restricted_kanji_set = group.group_kanji.exclude(character=kanji.character)
 
-                    # note there is no protection for one-kanji groups
-                    # in that case, one should populate from random selection
-                    # of other kanji, or direct to error page
-                    random_distinct_kanji = random.choice(restricted_kanji_set)
+                    random_distinct_kanji = distinct_kanji[count-1]
                     incorrect_meaning = ','.join(((((random_distinct_kanji.on_meaning.split(";"))[0]).split(','))[0:3]))
 
                     new_response = KanjiReviewObjectOption(

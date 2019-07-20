@@ -19,14 +19,27 @@
                 <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
             </h2>
         </div>
-        <div class="col-sm-11 py-2 border-bottom">
+        <div class="col-sm-9 py-2">
             <div>
                 {{ kanji.reading }}
             </div>
             <div>
                 {{ kanji.on_meaning }}
             </div>
-        </div>  
+        </div>
+        <div class="col-sm-2 py-2">
+            <button class="btn btn-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-plus"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for group in userprofile.group_profile.all %}
+                    <button class="btn btn-link dropdown-item" href="#">{{ group.name }}</button>
+                {% endfor %}
+            </div>
+            <button class="btn btn-link" href="#">
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
     {% endfor %}
     </div>
 
