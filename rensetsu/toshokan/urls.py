@@ -20,4 +20,6 @@ urlpatterns = [
     path('<int:kanji_id>/delete_from_group/', views.kanji_delete_group_view, name='kanji_delete_group_view'),
     path('<int:kanji_id>/groups/<int:group_id>/', views.add_kanji_to_group, name='add_kanji_to_group'),
     path('<int:kanji_id>/remove_group/<int:group_id>/', views.remove_kanji_from_group, name='remove_kanji_from_group'),
+    path('ajax/group_submit/', views.group_submit, name='group_submit'),
+    path('ajax/like_submit/', views.like_submit, name='like_submit'),
 ]

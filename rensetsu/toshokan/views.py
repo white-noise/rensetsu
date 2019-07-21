@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
@@ -251,3 +251,42 @@ def remove_kanji_from_group(request, kanji_id, group_id):
             return HttpResponseNotFound()
     
     return redirect('toshokan:individual', kanji_id)
+
+@login_required
+def group_submit(request):
+
+    kanji_id = request.GET.get('kanji_id')
+    group_id = request.GET.get('group_id')
+
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+    group = get_object_or_404(KanjiGroup, pk=group_id)
+
+    kanji.group_kanji.add(group)
+
+    data = {
+            'kanji_character': kanji.character, 
+            'group_name': group.name
+            }
+
+    return JsonResponse(data)
+
+@login_required
+def like_submit(request):
+
+    userprofile = request.user.profile
+    kanji_id = request.GET.get('kanji_id')
+
+    kanji = get_object_or_404(Kanji, pk=kanji_id)
+
+    userprofile.interesting_kanji.add(kanji)
+
+    data = {
+            'kanji_character': kanji.character, 
+            }
+
+    return JsonResponse(data)
+
+
+
+
+

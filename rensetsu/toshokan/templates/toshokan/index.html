@@ -1,5 +1,54 @@
 {% extends 'base/base.html' %}
 
+{% block javascript %}
+    <script>
+        $("button[id^='group_']").click(function (e) {
+
+            var id_str = $(this).attr('id').split("_");
+
+            $.ajax({
+                url: "{% url 'toshokan:group_submit' %}",
+                data: {
+                    'group_id': parseInt(id_str[1]),
+                    'kanji_id': parseInt(id_str[2]),
+                },
+                dataType: 'json',
+                context: this,
+                success: function (data) {
+                    // whatever happens on success
+                    console.log(data.kanji_character);
+                    console.log(data.group_name);
+                }
+            });
+            
+            e.preventDefault();
+            return false;
+        });
+
+        $("button[id^='like_']").click(function (e) {
+
+            var id_str = $(this).attr('id').split("_");
+
+            $.ajax({
+                url: "{% url 'toshokan:like_submit' %}",
+                data: {
+                    'kanji_id': parseInt(id_str[1]),
+                },
+                dataType: 'json',
+                context: this,
+                success: function (data) {
+                    // whatever happens on success
+                    console.log(data.kanji_character);
+                    // console.log(data.group_name);
+                }
+            });
+            
+            e.preventDefault();
+            return false;
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     
     <div class="row pt-2 align-items-center">
@@ -33,10 +82,10 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {% for group in userprofile.group_profile.all %}
-                    <button class="btn btn-link dropdown-item" href="#">{{ group.name }}</button>
+                    <button id="group_{{ group.id }}_{{ kanji.id }}" class="btn btn-link dropdown-item">{{ group.name }}</button>
                 {% endfor %}
             </div>
-            <button class="btn btn-link" href="#">
+            <button id="like_{{ kanji.id }}" class="btn btn-link">
                 <i class="fas fa-check"></i>
             </button>
         </div>
