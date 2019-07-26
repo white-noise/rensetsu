@@ -17,6 +17,9 @@
 - iron out some ambiguous and probably superfluous or tenuous POSTS
 - permissions to shared objects not currently policed for groups and reviews
 - null on- and kun-yomi should be handled: new field for 'pretty' data (with division between short and verbose versions)
+- initialization and loose tracking of kanji recognition metric
+- method for choosing key value pairs for review: pronounciation, meaning
+- final styling
 
 ### jukugo roma-kana processing
 - organize into a series of passes, non-nested, handled by functions with names
