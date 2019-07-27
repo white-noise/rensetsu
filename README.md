@@ -14,6 +14,7 @@
 - svg kanji shape database incorporation (long term)
 - review updates when group updates and/or ability to delete/restart assessments as prompted when group contents are changed
 - AJAX everything relating to adding and deleting objects, posting comments, etc, so that no need to move away from (1) kanji individual page, (2) kanji inline object, (3) profile
+- randomization for review answers should be handled by seed generation based on, say, the time of creation for the review, so that answers do not keep shuffling on refresh (not bad behavior, just a little strange). that, or change the random filter to be deterministic based on review identity
 - iron out some ambiguous and probably superfluous or tenuous POSTS
 - permissions to shared objects not currently policed for groups and reviews
 - null on- and kun-yomi should be handled: new field for 'pretty' data (with division between short and verbose versions)
