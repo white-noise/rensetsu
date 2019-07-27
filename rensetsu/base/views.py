@@ -193,16 +193,17 @@ def review_view(request, group_id):
 
     else:
         
-        # ideally there should only ever be one
+        # there should only ever be one; better way to do this?
         review = group.reviews.all().first()
 
-        # if review has been completed, delete group and start again
-        if review.is_complete:
-            # eventually this should be gatekept by another flag
-            # that determines if review has been reviewed or not
+        # if review has been completed and submitted, remake
+        if review.is_complete and review.is_submitted:
+            
             group.reviews.all().delete()
             return redirect('base:review_view', group_id)
+        
         else:
+            
             return redirect('base:review_process', review.id)
 
 @login_required
@@ -216,6 +217,7 @@ def review_process(request, review_id):
 
 @login_required
 def review_submit(request):
+    """ ajax call for answering a review object """
 
     review_id = request.GET.get('review_id', -1)
     object_id = request.GET.get('object_id', -1)
@@ -225,23 +227,48 @@ def review_submit(request):
     review_object = get_object_or_404(KanjiReviewObject, pk=object_id)
     option = get_object_or_404(KanjiReviewObjectOption, pk=option_id)
 
-    # mark that question has been answered
+    # mark that question has been answered, and if correctly or not
     review_object.is_complete = True
+    is_correct = option.response_correct
+    review_object.is_correct = is_correct
     review_object.save()
 
     # mark which option was chosen
     option.response_chosen = True
     option.save()
 
-    # check if the whole quiz is complete
+    # check if the whole review is complete (filter to only current review)
     responses = list(KanjiReviewObject.objects.filter(review__id=review_id).values_list('is_complete', flat=True))
+    is_complete = all(responses)
+    review.is_complete = is_complete
+    review.save()
 
-    print(responses)
-    
-    if all(responses):
-        review.is_complete = True
-        review.save()
-
-    data = {'correct': option.response_correct}
+    data = {'correct': option.response_correct, 'is_complete': is_complete}
 
     return JsonResponse(data) 
+
+@login_required
+def review_restart(request, review_id):
+
+    review = get_object_or_404(KanjiReview, pk=review_id)
+    group  = review.group
+
+    review.delete()
+
+    return redirect('base:review_view', group.id)
+
+
+@login_required
+def review_overview(request, review_id):
+    """ view review answers with opportunity to go through """
+
+    review = get_object_or_404(KanjiReview, pk=review_id)
+
+    # this should happen probably only on the page itself, which will
+    # call a view to redirect back to the review page
+    review.is_submitted = True
+    review.save()
+
+    context = {"review": review}
+    
+    return render(request, 'base/review_overview.html', context)

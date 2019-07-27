@@ -19,6 +19,14 @@
                     // whatever happens on success
                     var disable_str = id_str.slice(0,-1).join('_');
 
+                    // if review is complete, enable submit button
+                    if (data.is_complete) {
+                        $("#submit_review").attr('class', "nav-link btn btn-link");
+                    } else {
+
+                    }
+
+                    // depending on if correct, mark up and disable buttons
                     if (data.correct) {
                         $(this).attr('class', "btn btn-link text-success");
                         $("button[id^=" + disable_str + "]").attr('disabled', true);
@@ -36,6 +44,23 @@
 {% endblock %}
 
 {% block content %}
+
+    <nav class="navbar fixed-bottom navbar-light navbar-expand-lg bg-light">
+        <a class="navbar-brand" href="{% url 'base:index' %}">連接</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavBottom" aria-controls="navbarNavBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavBottom">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="submit_review" class="nav-link btn btn-link {% if review.is_complete %}{% else %}disabled{% endif %}" href="{% url 'base:review_overview' review.id %}">submit review</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'base:review_restart' review.id %}">restart review</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="row align-items-center">
         {% for object in review.review_objects.all %}

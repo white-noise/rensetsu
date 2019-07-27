@@ -45,10 +45,11 @@ class KanjiComment(models.Model):
         return str(self.comment)
 
 class KanjiReview(models.Model):
-    user        = models.ForeignKey(UserProfile, related_name="reviews", on_delete=models.CASCADE)
-    group       = models.ForeignKey(KanjiGroup, related_name="reviews", on_delete=models.CASCADE)
-    date_time   = models.DateTimeField(default=timezone.now)
-    is_complete = models.BooleanField(default=False)
+    user         = models.ForeignKey(UserProfile, related_name="reviews", on_delete=models.CASCADE)
+    group        = models.ForeignKey(KanjiGroup, related_name="reviews", on_delete=models.CASCADE)
+    date_time    = models.DateTimeField(default=timezone.now)
+    is_complete  = models.BooleanField(default=False)
+    is_submitted = models.BooleanField(default=False)
 
     def __str__(self):
         return ("review_%s"%(self.group.name))
@@ -58,6 +59,7 @@ class KanjiReviewObject(models.Model):
     review      = models.ForeignKey(KanjiReview, related_name="review_objects", on_delete=models.CASCADE)
     score       = models.IntegerField(default=0)
     is_complete = models.BooleanField(default=False)
+    is_correct  = models.BooleanField(default=False)
 
     def __str__(self):
         return ("review_kanji_%s"%(self.kanji.character))

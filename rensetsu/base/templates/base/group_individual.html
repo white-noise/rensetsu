@@ -10,13 +10,16 @@
             <a href="{% url 'base:modify_group_name_view' group.id %}">modify group name</a>
         </div>
 		{% for kanji in group.group_kanji.all %}
-			<div class="col-sm-12 pt-2">
+			<div class="col-sm-10 pt-2">
 				<h2>
             	   <a href="{% url 'toshokan:individual' kanji.id %}">
                         {{ kanji.character }}
                     </a>
         		</h2>
 			</div>
+            <div class="col-sm-2 pt-2">
+                <button class="btn btn-link">delete (dummy)</button>
+            </div>
         {% endfor %}
     </div>
 
