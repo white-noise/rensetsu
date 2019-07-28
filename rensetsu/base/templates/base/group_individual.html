@@ -1,5 +1,39 @@
 {% extends 'base/base.html' %}
 
+{% block javascript %}
+    <script>
+        $("button[id^='kanjigroupelement']").click(function (e) {
+
+            var id_str = $(this).attr('id').split("_");
+
+            $.ajax({
+                url: "{% url 'base:delete_kanji_from_group' %}",
+                data: {
+                    'kanji_group_element_id': parseInt(id_str[1]),
+                },
+                dataType: 'json',
+                context: this,
+                success: function (data) {
+                    // if review is complete, enable submit button
+                    if (data.success) {
+                        var id_str_1 = "#div_1_" + id_str[1];
+                        var id_str_2 = "#div_2_" + id_str[1];
+                        
+                        $(id_str_1).hide();
+                        $(id_str_2).hide();
+                        
+                    } else {
+
+                    }
+                }
+            });
+            
+            e.preventDefault();
+            return false;
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
     <div class="row">
@@ -9,16 +43,16 @@
         <div class="col-sm-12 pt-2">
             <a href="{% url 'base:modify_group_name_view' group.id %}">modify group name</a>
         </div>
-		{% for kanji in group.group_kanji.all %}
-			<div class="col-sm-10 pt-2">
+		{% for kanji_element in group.kanjigroupelement_set.all %}
+			<div id="div_1_{{ kanji_element.id }}" class="col-sm-10 pt-2">
 				<h2>
-            	   <a href="{% url 'toshokan:individual' kanji.id %}">
-                        {{ kanji.character }}
+            	   <a href="{% url 'toshokan:individual' kanji_element.kanji.id %}">
+                        {{ kanji_element.kanji.character }}
                     </a>
         		</h2>
 			</div>
-            <div class="col-sm-2 pt-2">
-                <button class="btn btn-link">delete (dummy)</button>
+            <div id="div_2_{{ kanji_element.id }}" class="col-sm-2 pt-2">
+                <button id="kanjigroupelement_{{ kanji_element.id }}" class="btn btn-link" href="{% url 'base:delete_kanji_from_group' %}">remove</button>
             </div>
         {% endfor %}
     </div>

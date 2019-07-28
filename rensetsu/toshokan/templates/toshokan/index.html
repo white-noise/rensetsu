@@ -16,8 +16,8 @@
                 context: this,
                 success: function (data) {
                     // whatever happens on success
-                    console.log(data.kanji_character);
-                    console.log(data.group_name);
+                    $(this).attr('class', "btn btn-link dropdown-item text-success");
+                    console.log("added");
                 }
             });
             

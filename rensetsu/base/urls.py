@@ -17,6 +17,7 @@ urlpatterns = [
     path('review_view/<int:group_id>/', views.review_view, name='review_view'),
     path('review_process/<int:review_id>/', views.review_process, name='review_process'),
     path('ajax/review_submit/', views.review_submit, name='review_submit'),
+    path('ajax/delete_kanji_from_group/', views.delete_kanji_from_group, name='delete_kanji_from_group'),
     path('review_restart/<int:review_id>/', views.review_restart, name='review_restart'),
     path('review_overview/<int:review_id>/', views.review_overview, name='review_overview'),
 ]

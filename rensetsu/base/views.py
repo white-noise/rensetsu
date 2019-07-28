@@ -49,6 +49,19 @@ def group_individual(request, group_id):
         return HttpResponseNotFound()
 
 @login_required
+def delete_kanji_from_group(request):
+    """ delete given kanji from given group """
+    kanji_group_element_id = request.GET.get('kanji_group_element_id', -1)
+
+    kanji_group_element = get_object_or_404(KanjiGroupElement, pk=kanji_group_element_id)
+
+    kanji_group_element.delete()
+
+    data = {'success': True}
+
+    return JsonResponse(data)
+
+@login_required
 def add_group(request):
     """ add group for current user with given name """
     userprofile = request.user.profile
