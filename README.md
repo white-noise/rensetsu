@@ -7,9 +7,7 @@
 - question: how can this app gain a sense of what you know and do not know over time? have you come back. may be easier given discrete kanji set
 
 ### immediate to do
-- ajax delete on group individual page (currently dummy)
 - ajax library page indicating successful group addition, as well as filters to determine where kanji is already present
-- fiddle w/ ajax such that, when review is completed, navbar link is enabled
 - still big issue of access through url searching to other people's personal objects
 - post-saves should be handled outside of the model file
 - scrub and format meaning and readings with short and verbose versions (store them in model just because)
@@ -20,7 +18,6 @@
 - ajax everything relating to adding and deleting objects, posting comments, etc, so that no need to move away from (1) kanji individual page, (2) kanji inline object, (3) profile: redundancy
 - randomization for review answers should be handled by seed generation based on, say, the time of creation for the review, so that answers do not keep shuffling on refresh (not bad behavior, just a little strange). that, or change the random filter to be deterministic based on review identity
 - iron out some ambiguous and probably superfluous POSTS
-- permissions to shared objects not currently policed for groups and reviews
 - null on- and kun-yomi should be handled: new field for 'pretty' data (with division between short and verbose versions)
 - initialization and loose tracking of kanji recognition metric
 - method for choosing key value pairs for review: pronounciation, meaning
