@@ -16,6 +16,7 @@
                 context: this,
                 success: function (data) {
                     // whatever happens on success
+                    // this style is in flux, so watch out
                     $(this).attr('class', "btn btn-link dropdown-item text-success");
                     console.log("added");
                 }
@@ -51,24 +52,30 @@
 
 {% block content %}
     
-    <div class="row pt-2 align-items-center">
-         <form action="{% url 'toshokan:index_search' %}" class="form-inline col-sm-12" method="GET">
+    
+    <form action="{% url 'toshokan:index_search' %}" method="GET">
+        <div class="row pt-2 align-items-center">
             {% csrf_token %}
-            <input id="id_term" name="term" 
-                       type="text" class="form-control col-sm-10">
-            <input type="submit" value="submit search" 
-           class="btn btn-link col-sm-2" />
-        </form>
-    </div>
+            <div class="col-sm-10">
+                <input id="id_term" name="term" type="text" class="form-control">   
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-link text-left">
+                    search
+                </button>
+            </div>
+        </div>
+    </form>
+    
 
     <div class="row pt-2 align-items-center">
     {% for kanji in kanji_list %}
-        <div class="col-sm-1 py-2">
+        <div class="col-sm-1 pb-2">
             <h2>
                 <a href="{% url 'toshokan:individual' kanji.id %}">{{ kanji.character }}</a>
             </h2>
         </div>
-        <div class="col-sm-9 py-2">
+        <div class="col-sm-9 pb-2">
             <div>
                 {{ kanji.reading }}
             </div>
@@ -76,19 +83,22 @@
                 {{ kanji.on_meaning }}
             </div>
         </div>
-        <div class="col-sm-2 py-2">
-            <button class="btn btn-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-plus"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {% for group in userprofile.group_profile.all %}
-                    <button id="group_{{ group.id }}_{{ kanji.id }}" class="btn btn-link dropdown-item">{{ group.name }}</button>
-                {% endfor %}
-            </div>
-            <button id="like_{{ kanji.id }}" class="btn btn-link">
-                <i class="fas fa-check"></i>
+        <div class="col-sm-2 pb-2">
+            <a class="btn btn-link text-left" data-toggle="collapse" href="#collapse_example_{{ kanji.id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                add
+            </a>
+        </div>
+
+
+        <div class="col-sm-11 offset-1 collapse" id="collapse_example_{{ kanji.id }}">
+            {% for group in userprofile.group_profile.all %}
+                <button id="group_{{ group.id }}_{{ kanji.id }}" class="btn btn-link dropdown-item text-left text-primary pl-0 pb-1">{{ group.name }}</button>
+            {% endfor %}
+            <button id="like_{{ kanji.id }}" class="btn btn-link dropdown-item text-left text-primary pl-0 pb-3">
+                add to favorites
             </button>
         </div>
+
     {% endfor %}
     </div>
 

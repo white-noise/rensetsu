@@ -21,6 +21,8 @@ def index(request):
 @login_required
 def index_search(request):
 
+    userprofile = request.user.profile
+
     if request.method == 'GET':
         
         search_term = request.GET.get('term', None)
@@ -35,7 +37,7 @@ def index_search(request):
                 Q(on_meaning__icontains=search_term) |
                 Q(kun_meaning__icontains=search_term)
                 ).order_by('grade')
-            context = {'kanji_list' : query_set}
+            context = {'kanji_list' : query_set, 'userprofile': userprofile}
             
             return render(request, 'toshokan/index.html', context)
 

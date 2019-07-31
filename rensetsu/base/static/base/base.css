@@ -1,0 +1,5 @@
+body {
+	/* used to pad out fixed top navbar */
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
