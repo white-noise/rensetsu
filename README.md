@@ -7,14 +7,16 @@
 - question: how can this app gain a sense of what you know and do not know over time? have you come back. may be easier given discrete kanji set
 
 ### immediate to do
+- settings page, and some attribute model belonging to each profile: light/dark mode, whether to include romanizations, review format
+- when a question is answered, highlight also the correct answer
 - keep ajax class changes consistent with look and custom padding
 - make bottom navbar into a block element in the base template? not always used though
-- some sort of simple display carousel for review questions (one at a time, but all in CSS)
+- some sort of simple display carousel for review questions (one at a time, but all in CSS). we can also include a 'current question' field in the model, which is saved after each submission, through this requires careful ordering of the questions.
 - ajax library page indicating successful group addition, as well as filters to determine where kanji is already present
 - still big issue of access through url searching to other people's personal objects
 - post-saves should be handled outside of the model file
-- scrub and format meaning and readings with short and verbose versions (store them in model just because)
-- email verification and sign-up page for users
+- scrub and format meaning and readings with short and verbose versions (store them in model itself)
+- email verification and sign-up page for users (see the simple is better than complex page on the subject)
 - history for easy back-paging (a la midori), recently searched, recently added
 - svg kanji shape database incorporation (long term)
 - indicate when group updates, when review is incomplete, etc
@@ -25,7 +27,7 @@
 - initialization and loose tracking of kanji recognition metric
 - method for choosing key value pairs for review: pronounciation, meaning
 - metric for how many times a kanji has been identified correctly, kept track of on a user by user basis
-- final styling
+- final styling, choose consistent spacing, and cutting extraneous pages
 
 ### jukugo roma-kana processing
 - organize into a series of passes, non-nested, handled by functions with names
