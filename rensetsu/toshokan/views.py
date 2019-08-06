@@ -119,7 +119,6 @@ def toggle_known(request, kanji_id):
 def comment(request, kanji_id):
     """ view for writing comment given kanji """
     kanji = get_object_or_404(Kanji, pk=kanji_id)
-
     context = {'kanji': kanji, 'form': KanjiCommentForm(),}
 
     return render(request, 'toshokan/comment.html', context)
@@ -154,10 +153,10 @@ def delete_comment(request, kanji_id, comment_id):
     
     if request.method == 'POST':
         # check if comment poster is current user
-        if comment.user == userprofile:  
-            comment.delete()
-        else:
+        if not(comment.user == userprofile):
             return HttpResponseNotFound()
+        else:
+            comment.delete()
 
     return redirect('toshokan:individual', kanji_id)
 
@@ -171,10 +170,10 @@ def edit_comment(request, kanji_id, comment_id):
     
     context = {'kanji': kanji, 'comment': comment, 'form': form,}
 
-    if comment.user == userprofile:  
-        return render(request, 'toshokan/edit_comment.html', context)
-    else:
+    if not(comment.user == userprofile):
         return HttpResponseNotFound()
+    else:
+        return render(request, 'toshokan/edit_comment.html', context)
 
 @login_required
 def modify_comment(request, kanji_id, comment_id):
@@ -188,12 +187,12 @@ def modify_comment(request, kanji_id, comment_id):
         form = KanjiCommentForm(request.POST)
 
         if form.is_valid():
-            if comment.user == userprofile:
+            if not(comment.user.id == userprofile.id):
+                return HttpResponseNotFound()
+            else:
                 comment.comment = form.cleaned_data['comment']
                 comment.date_time = timezone.now()
                 comment.save()
-            else:
-                return HttpResponseNotFound()
         else:
             context = {'kanji': kanji, 'comment': comment, 'form': form,}
             return render(request, 'toshokan/edit_comment.html', context)
@@ -202,9 +201,10 @@ def modify_comment(request, kanji_id, comment_id):
 
 @login_required
 def kanji_group_view(request, kanji_id):
-    """ view for all groups kanji is in for curren user """
+    """ view for all groups kanji is in for current user """
     kanji = get_object_or_404(Kanji, pk=kanji_id)
     userprofile = request.user.profile
+
     context = {'kanji': kanji, 'userprofile': userprofile}
 
     return render(request, 'toshokan/group_view.html', context)
@@ -228,10 +228,10 @@ def add_kanji_to_group(request, kanji_id, group_id):
     
     if request.method == 'POST':
         
-        if group.user == userprofile:
-            kanji.group_kanji.add(group)
-        else:
+        if not(group.user == userprofile):
             return HttpResponseNotFound()
+        else:
+            kanji.group_kanji.add(group)
 
     return redirect('toshokan:individual', kanji_id)
 
@@ -244,13 +244,13 @@ def remove_kanji_from_group(request, kanji_id, group_id):
     
     if request.method == 'POST':
         
-        if group.user == userprofile:  
+        if not(group.user == userprofile):
+            return HttpResponseNotFound()
+        else:
             if kanji.group_kanji.filter(id=group.id).exists():
                 kanji.group_kanji.remove(group)
             else:
                 return HttpResponseNotFound()
-        else:
-            return HttpResponseNotFound()
     
     return redirect('toshokan:individual', kanji_id)
 
@@ -263,23 +263,25 @@ def group_submit(request):
     kanji = get_object_or_404(Kanji, pk=kanji_id)
     group = get_object_or_404(KanjiGroup, pk=group_id)
 
-    kanji.group_kanji.add(group)
+    userprofile = request.user.profile
+    
+    if not(group.user.id == userprofile.id):
+        return HttpResponseNotFound()
+    else:
+        kanji.group_kanji.add(group)
+        data = {
+                'kanji_character': kanji.character, 
+                'group_name': group.name
+                }
 
-    data = {
-            'kanji_character': kanji.character, 
-            'group_name': group.name
-            }
-
-    return JsonResponse(data)
+        return JsonResponse(data)
 
 @login_required
 def like_submit(request):
 
     userprofile = request.user.profile
     kanji_id = request.GET.get('kanji_id')
-
     kanji = get_object_or_404(Kanji, pk=kanji_id)
-
     userprofile.interesting_kanji.add(kanji)
 
     data = {
@@ -287,8 +289,3 @@ def like_submit(request):
             }
 
     return JsonResponse(data)
-
-
-
-
-
