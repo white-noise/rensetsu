@@ -17,7 +17,7 @@
                 success: function (data) {
                     // whatever happens on success
                     // this style is in flux, so watch out
-                    $(this).attr('class', "btn btn-link dropdown-item text-success");
+                    $(this).attr('class', "btn btn-link dropdown-item text-left text-success pl-0 pb-1");
                     console.log("added");
                 }
             });
@@ -60,7 +60,7 @@
                 <input id="id_term" name="term" type="text" class="form-control">   
             </div>
             <div class="col-sm-2">
-                <button type="submit" class="btn btn-link text-left">
+                <button type="submit" class="btn btn-link text-left pl-0">
                     search
                 </button>
             </div>
@@ -84,13 +84,21 @@
             </div>
         </div>
         <div class="col-sm-2 pb-2">
-            <a class="btn btn-link text-left" data-toggle="collapse" href="#collapse_example_{{ kanji.id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a class="btn btn-link text-left pl-0" data-toggle="collapse" href="#collapse_example_{{ kanji.id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
                 add
             </a>
         </div>
 
 
         <div class="col-sm-11 offset-1 collapse" id="collapse_example_{{ kanji.id }}">
+            <!-- 
+
+            next question is whether way to quickly check inclusion here,
+            where the more vacuous answer is that we include group_profile
+            as reference to dictionary with the inclusion status for each item
+            ajax needs to match, but will be fine on page refresh
+
+             -->
             {% for group in userprofile.group_profile.all %}
                 <button id="group_{{ group.id }}_{{ kanji.id }}" class="btn btn-link dropdown-item text-left text-primary pl-0 pb-1">{{ group.name }}</button>
             {% endfor %}

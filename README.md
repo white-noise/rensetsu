@@ -6,7 +6,13 @@
 - non competitive, reminder/review based study. some metric of progress
 - question: how can this app gain a sense of what you know and do not know over time? have you come back. may be easier given discrete kanji set
 
-### immediate to do
+### to do in next session
+- group inclusion indicator for toshokan index
+- identical format for group view and toshokan view (definitions)
+- non-verbose, non-empty data for kanji (displayed inline)
+- consistent 1-9-2 patterning
+
+### in general to do
 - settings page, and some attribute model belonging to each profile: light/dark mode, whether to include romanizations, review format
 - when a question is answered, highlight also the correct answer
 - keep ajax class changes consistent with look and custom padding
