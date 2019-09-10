@@ -1,5 +1,8 @@
 ## rensetsu 連接 (a kanji collection app)
 
+### attribution
+- zane rossi (zmr), 2019
+
 ### objective of app
 - language as collection
 - navigability within referential net
