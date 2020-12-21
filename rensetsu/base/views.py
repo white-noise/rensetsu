@@ -72,13 +72,14 @@ def add_group(request):
         form = KanjiGroupForm(request.POST)
         
         if form.is_valid():
-            if group.user.id == userprofile.id:
-                new_group = form.save(commit=False)
-                new_group.user = userprofile
-                new_group.save()
-                form.save_m2m()
-            else:
-                return HttpResponseNotFound()
+            # This is a mystical edit, check to make sure we cant add groups from other members
+            # if group.user.id == userprofile.id:
+            new_group = form.save(commit=False)
+            new_group.user = userprofile
+            new_group.save()
+            form.save_m2m()
+            # else:
+                # return HttpResponseNotFound()
         else:
             context = {'form': form}
             return render(request, 'base/group.html', context)

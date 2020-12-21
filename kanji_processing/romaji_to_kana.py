@@ -1,4 +1,5 @@
 import re
+import json
 
 char_dict = {
 	'a': 'あ',
@@ -89,14 +90,25 @@ char_dict = {
 	'n': 'ん',
 }
 
-# for regex matching:
-# basic syllable pass
-# check for dipthongs
-# check for small characters (dipthong and stressed)
-# use of n at the end of a syllable
+# with open('complete_jukugo.json') as file:
+#   jukugo_data = json.load(file)
 
-sample_text = ['kawabata', 'teikan', 'reiken', 'ryuuzi', 
-				'zyoo', 'soozi', 'oote', 'tairyoo', 'tyotto', 'tenki', 'hiai', 'ryoonai', 'airaku', 'aityaku', 'enzen']
+# print(len(jukugo_data))
+
+# sample_jukugo = []
+# for i in range(len(jukugo_data)):
+# 	pronunciation = jukugo_data[i]['pronunciation']
+# 	if (',' in pronunciation) or (pronunciation == "ERROR"):
+# 		# right now only 'simote, heta' appears
+# 		# print(jukugo_data[i]['pronunciation'])
+# 		continue
+# 	else:
+# 		characters = jukugo_data[i]['jukugo']
+# 		sample_jukugo.append((characters, pronunciation))
+
+# print(sample_jukugo)
+
+# sample_text = ['kawabata', 'teikan', 'reiken', 'ryuuzi', 'zyoo', 'soozi', 'oote', 'tairyoo', 'tyotto', 'tenki', 'hiai', 'ryoonai', 'airaku', 'aityaku', 'enzen']
 
 # for replacing, e.g., 'ryo' with 'ri' 's_yo' 'o'
 def small_character(syllable):
@@ -106,34 +118,36 @@ def small_character(syllable):
 def repeat_consonant(syllable):
 
 	return 's_tu %s'%(syllable.group(0)[1:])
-
-for word in sample_text:
 	
-	# this breaks into obvious syllables
-	re_pattern = '([kgmnrhbptdyszw]*[aiueo]+)'
-	# leaving dipthongs and extended vowels unsplit
-	syllables = list(filter(None, re.split(re_pattern, word)))
+def romaji_to_kana(romaji_jukugo):
 
-	print('%s split into %s'%(word, syllables))
+	pronunciation = romaji_jukugo
+
+	# break into obvious syllables; dipthongs and vowels unsplit
+	re_pattern = '([kgmnrhbptdyszw]*[aiueo]+)'
+	syllables = list(filter(None, re.split(re_pattern, pronunciation)))
+
+	# print('%s split into %s'%(pronunciation, syllables))
 
 	decomposition = []
 	for elem in syllables:
 		re_pattern = '([kgmnrhbptdyszw]*[aiueo])'
 		second_division = list(filter(None, re.split(re_pattern, elem, maxsplit=1)))
-		print('\t%s split into %s'%(elem, second_division))
+		# print('\t%s split into %s'%(elem, second_division))
 
 		# split all consecutive vowels apart
 		for syllable in second_division:
 			vowel_pattern = '((?<=[aeiou])[aeiou])'
-			vowel_division = list(filter(None, re.split(vowel_pattern, elem, maxsplit=1)))
-			print('\t%s vowel split into %s'%(elem, vowel_division))
+			# note that we do not bound how often this split can happen
+			vowel_division = list(filter(None, re.split(vowel_pattern, elem)))
+			# print('\t%s vowel split into %s'%(elem, vowel_division))
 
 		sub_decomposition = []
 		for syllable in vowel_division:
 			re_small_pattern = '([kgmnrhbptdyszw]y[aiueo])'
 			third_division   = re.sub(re_small_pattern, small_character, syllable)
 			third_division   = third_division.split(' ')
-			print('\t\tthird division: %s'%third_division)
+			# print('\t\tthird division: %s'%third_division)
 
 			sub_decomposition = sub_decomposition + third_division
 
@@ -144,14 +158,14 @@ for word in sample_text:
 		n_pattern = '(^n)(?=[^aeiou])'
 		n_division = list(filter(None, re.split(n_pattern, elem, maxsplit=1)))
 		n_decomposition = n_decomposition + n_division
-		print('\t%s n split into %s'%(elem, n_division))
+		# print('\t%s n split into %s'%(elem, n_division))
 
 	final_decomposition = []
 	for elem in n_decomposition:
 		re_repeat_pattern = '([kgmnrhbptdyszw][kgmnrhbptdyszw][aiueo]*)'
 		fourth_division = (re.sub(re_repeat_pattern, repeat_consonant, elem)).split(' ')
 		final_decomposition = final_decomposition + fourth_division
-		print('\t\t\tfourth division: %s'%fourth_division)
+		# print('\t\t\tfourth division: %s'%fourth_division)
 
 
 	# here we need another pass for 'o' specifically and determining if it should be modified to an 'u'
@@ -172,14 +186,20 @@ for word in sample_text:
 			clean_decomposition = clean_decomposition + [elem]
 			position = position + 1
 
-	print("\n\tdecomposition: %s\n"%clean_decomposition)
+	# print("\tdecomp: %s\n"%clean_decomposition)
 
 	translated_string = ''.join(map(lambda x: char_dict[x], clean_decomposition))
 
-	print("\n\ttranslates to: %s\n"%translated_string)
+	# print("\t%s\n"%translated_string)
 
-# for o versus u there should be some sort of check for a lone 'o' following
-# either another 'o'-terminated block. 'u' is always 'u' but not the inverse.
+	return translated_string
 
-# instead of recursive we can make this iterative, with different passes,
-# each given their own function. that is saved for optimization
+# for index in range(10):
+	
+# 	kanji_compound = sample_jukugo[index][0]
+# 	pronunciation = sample_jukugo[index][1]
+
+# 	print("\n%s: %s\n"%(str(index), kanji_compound))
+# 	print("\t%s\n"%pronunciation)
+
+# 	print(romaji_to_kana(pronunciation))

@@ -22,7 +22,9 @@
         </div>
         <div class="col-sm-1 py-2">
             <h2>
-                {{ kanji.character }}
+                <a href="{% url 'toshokan:individual' kanji.id %}">
+                    {{ kanji.character }}
+                </a>
             </h2>
         </div>
         <div class="col-sm-11 py-2">

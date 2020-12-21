@@ -6,8 +6,10 @@
 ### objective of app
 - language as collection
 - navigability within referential net
-- non competitive, reminder/review based study. some metric of progress
+- non competitive, reminder/review based study
+- some intuitive metric of progress
 - question: how can this app gain a sense of what you know and do not know over time? have you come back. may be easier given discrete kanji set
+- with both kanji and jukugo, we can employ text from interesting literature.
 
 ### to do in next session
 - group inclusion indicator for toshokan index
@@ -38,10 +40,8 @@
 - metric for how many times a kanji has been identified correctly, kept track of on a user by user basis
 - final styling, choose consistent spacing, and cutting extraneous pages
 
-### jukugo roma-kana processing
-- organize into a series of passes, non-nested, handled by functions with names
-- (1) initial generous syllable break, (2) obvious dipthong break, (3) small character break, (4) retroactive insertion of long vowels with option for user correction, (5) non-standard characters and invalid romanizations
-- the reverse of this is slightly easier, with recognition of small characters and scrubbing for various non-visibles
+### jukugo kana processing
+- new helper function (internal module) for converting between kana and romaji (the easier direction) and between hiragana and katakana
 
 ### what is displayed on a profile
 - standard user data: name, username

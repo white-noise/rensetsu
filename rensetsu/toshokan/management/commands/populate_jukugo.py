@@ -12,10 +12,10 @@ class Command(BaseCommand):
 	def _populate(self):
 
 		# deletes previous library entries in the table, if uncommented
-		# Kanji.objects.all().delete()
+		KanjiCompound.objects.all().delete()
 
 		# use path as according to manage.py
-		json_data = open("toshokan/static/toshokan/json/complete_jukugo.json").read()
+		json_data = open("toshokan/static/toshokan/json/kana_jukugo.json").read()
 		json_obj  = json.loads(json_data)
 
 		print("populating...")
@@ -73,7 +73,7 @@ class Command(BaseCommand):
 
 					kanji_compound = KanjiCompound(characters=jukugo_raw,
 						meaning=meaning,
-						reading_eng=pronunciation,
+						reading_jpn=pronunciation,
 						frequency=frequency)
 					kanji_compound.save()
 

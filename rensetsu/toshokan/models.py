@@ -26,8 +26,8 @@ class KanjiCompound(models.Model):
     characters        = models.CharField(max_length=20)
     meaning           = models.TextField()
     frequency         = models.IntegerField(default=0, blank=True)
-    # reading_jpn       = models.CharField(max_length=100)   
-    reading_eng       = models.CharField(max_length=100)
+    reading_jpn       = models.CharField(max_length=100, default="")
+    reading_eng       = models.CharField(max_length=100, default="")
     constituent_kanji = models.ManyToManyField(Kanji, 
         blank=True, 
         related_name="constituent_kanji", 
