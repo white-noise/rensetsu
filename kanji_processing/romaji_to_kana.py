@@ -89,13 +89,14 @@ char_dict = {
 	'n': 'ん',
 }
 
-# for regex matching, ideally we want syllables
-# basic combos like 'ra', 'mi', etc, with one kana
-# then things like 'oo', 'ryu', etc.
-# edge cases like 'n', etc.
+# for regex matching:
+# basic syllable pass
+# check for dipthongs
+# check for small characters (dipthong and stressed)
+# use of n at the end of a syllable
 
 sample_text = ['kawabata', 'teikan', 'reiken', 'ryuuzi', 
-				'zyoo', 'soozi', 'oote', 'tairyoo', 'tyotto']
+				'zyoo', 'soozi', 'oote', 'tairyoo', 'tyotto', 'tenki', 'hiai', 'ryoonai', 'airaku', 'aityaku', 'enzen']
 
 # for replacing, e.g., 'ryo' with 'ri' 's_yo' 'o'
 def small_character(syllable):
@@ -121,8 +122,14 @@ for word in sample_text:
 		second_division = list(filter(None, re.split(re_pattern, elem, maxsplit=1)))
 		print('\t%s split into %s'%(elem, second_division))
 
-		sub_decomposition = []
+		# split all consecutive vowels apart
 		for syllable in second_division:
+			vowel_pattern = '((?<=[aeiou])[aeiou])'
+			vowel_division = list(filter(None, re.split(vowel_pattern, elem, maxsplit=1)))
+			print('\t%s vowel split into %s'%(elem, vowel_division))
+
+		sub_decomposition = []
+		for syllable in vowel_division:
 			re_small_pattern = '([kgmnrhbptdyszw]y[aiueo])'
 			third_division   = re.sub(re_small_pattern, small_character, syllable)
 			third_division   = third_division.split(' ')
@@ -132,20 +139,42 @@ for word in sample_text:
 
 		decomposition = decomposition + sub_decomposition
 
-	final_decomposition = []
+	n_decomposition = []
 	for elem in decomposition:
+		n_pattern = '(^n)(?=[^aeiou])'
+		n_division = list(filter(None, re.split(n_pattern, elem, maxsplit=1)))
+		n_decomposition = n_decomposition + n_division
+		print('\t%s n split into %s'%(elem, n_division))
+
+	final_decomposition = []
+	for elem in n_decomposition:
 		re_repeat_pattern = '([kgmnrhbptdyszw][kgmnrhbptdyszw][aiueo]*)'
 		fourth_division = (re.sub(re_repeat_pattern, repeat_consonant, elem)).split(' ')
 		final_decomposition = final_decomposition + fourth_division
 		print('\t\t\tfourth division: %s'%fourth_division)
 
 
-	# need to have one last pass looking for lone consonants for
-	# small tu etc. words like 'zyotto'
+	# here we need another pass for 'o' specifically and determining if it should be modified to an 'u'
+	# rules for this are, if last character of preceeding syllable is an o, and if not first or second character
+	position = 0
+	clean_decomposition = []
+	for elem in final_decomposition:
+		if elem == 'o':
+			if (position == 0):
+				clean_decomposition = clean_decomposition + [elem]
+			# if first and second symbol are 'o', do nothing, else if previous syllable ends in 'o', replace
+			elif (final_decomposition[position - 1][-1] == 'o') and (not (position == 1 and (final_decomposition[position - 1] == 'o'))):
+				clean_decomposition = clean_decomposition + ['u']
+			else:
+				clean_decomposition = clean_decomposition + [elem]
+			position = position + 1
+		else:
+			clean_decomposition = clean_decomposition + [elem]
+			position = position + 1
 
-	print("\n\ttotal decomposition: %s\n"%final_decomposition)
+	print("\n\tdecomposition: %s\n"%clean_decomposition)
 
-	translated_string = ''.join(map(lambda x: char_dict[x], final_decomposition))
+	translated_string = ''.join(map(lambda x: char_dict[x], clean_decomposition))
 
 	print("\n\ttranslates to: %s\n"%translated_string)
 
